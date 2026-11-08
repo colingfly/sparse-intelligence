@@ -247,7 +247,7 @@ print(result["answer"])`},{step:"4. Run an eval",desc:"Create an eval suite in t
   "total": 5
 }`})}function ase(){return P.jsx(rv,{method:"GET",path:"/v1/health",desc:"Check API health. Returns service status and API version.",auth:"None required",request:"curl https://sparseintelligence.ai/v1/health",response:`{
   "status": "ok",
-  "service": "cane",
+  "service": "sparse-intelligence",
   "api_version": "v1"
 }`})}function ise(){return P.jsx(rv,{method:"POST",path:"/v1/agents/register",desc:"Register an external agent into the Sparse Intelligence network. The agent gets a workspace ID and appears in the network graph. When a native agent delegates to it, Sparse Intelligence POSTs to the endpoint.",auth:"Bearer token (API key)",params:[{name:"name",type:"string",required:!0,desc:"Agent name"},{name:"description",type:"string",required:!1,desc:"What this agent does (used for routing decisions)"},{name:"endpoint",type:"string",required:!0,desc:'HTTP endpoint URL that accepts POST with {"query": "..."}'},{name:"auth_type",type:"string",required:!1,desc:'"bearer", "header", or "none" (default: "none")'},{name:"auth_token",type:"string",required:!1,desc:"Auth token (encrypted at rest)"},{name:"icon",type:"string",required:!1,desc:"Emoji or short icon string"}],request:`curl -X POST https://sparseintelligence.ai/v1/agents/register \\
   -H "Authorization: Bearer sparse_xxx" \\
