@@ -1,30 +1,30 @@
 """
-Cane Python SDK client.
+Sparse Intelligence Python SDK client.
 
 Usage:
-    from cane import Cane
+    from sparse_intelligence import SparseClient
 
-    client = Cane(api_key="cane_xxx")
+    client = SparseClient(api_key="sparse_xxx")
     result = client.ask("What is our refund policy?", workspace_id="xxx")
 """
 import httpx
-from .exceptions import CaneAPIError, CaneConnectionError
+from .exceptions import SparseAPIError, SparseConnectionError
 
 
-class Cane:
-    """Client for the Cane agentic AI platform API."""
+class SparseClient:
+    """Client for the Sparse Intelligence agentic AI platform API."""
 
-    def __init__(self, api_key: str, base_url: str = "https://cane.fyi", timeout: float = 30.0):
+    def __init__(self, api_key: str, base_url: str = "https://sparseintelligence.ai", timeout: float = 30.0):
         """
-        Initialize the Cane client.
+        Initialize the Sparse Intelligence client.
 
         Args:
-            api_key: Your Cane API key (starts with "cane_").
-            base_url: Base URL of your Cane instance.
+            api_key: Your Sparse Intelligence API key (starts with "sparse_").
+            base_url: Base URL of your Sparse Intelligence instance.
             timeout: Request timeout in seconds.
         """
-        if not api_key or not api_key.startswith("cane_"):
-            raise ValueError("api_key must start with 'cane_'")
+        if not api_key or not api_key.startswith("sparse_"):
+            raise ValueError("api_key must start with 'sparse_'")
 
         self._base_url = base_url.rstrip("/")
         self._client = httpx.Client(
@@ -41,11 +41,11 @@ class Cane:
         try:
             resp = self._client.request(method, path, json=json)
         except httpx.ConnectError as e:
-            raise CaneConnectionError(f"Cannot connect to {self._base_url}: {e}")
+            raise SparseConnectionError(f"Cannot connect to {self._base_url}: {e}")
         except httpx.TimeoutException as e:
-            raise CaneConnectionError(f"Request timed out: {e}")
+            raise SparseConnectionError(f"Request timed out: {e}")
         except httpx.HTTPError as e:
-            raise CaneConnectionError(f"HTTP error: {e}")
+            raise SparseConnectionError(f"HTTP error: {e}")
 
         if resp.status_code >= 400:
             try:
@@ -53,7 +53,7 @@ class Cane:
             except Exception:
                 body = {"detail": resp.text}
             message = body.get("detail", body.get("message", resp.text))
-            raise CaneAPIError(resp.status_code, str(message), body)
+            raise SparseAPIError(resp.status_code, str(message), body)
 
         try:
             return resp.json()
@@ -116,10 +116,10 @@ class Cane:
         parameters: list = None,
     ) -> dict:
         """
-        Register an external agent into the Cane network.
+        Register an external agent into the Sparse Intelligence network.
 
         The agent gets a workspace ID and appears in the network graph.
-        When a native Cane agent delegates to it, Cane POSTs to the endpoint.
+        When a native Sparse Intelligence agent delegates to it, Sparse Intelligence POSTs to the endpoint.
 
         Args:
             name: Agent name.
@@ -307,7 +307,7 @@ class Cane:
                 detail = response.json().get("detail", response.text)
             except Exception:
                 detail = response.text
-            raise CaneAPIError(response.status_code, detail)
+            raise SparseAPIError(response.status_code, detail)
         return response.text
 
     # -- Eval Scheduling --

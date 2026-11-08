@@ -1,19 +1,19 @@
-# Cane Python SDK
+# Sparse Intelligence Python SDK
 
-Python client for the [Cane](https://cane.fyi) agentic AI platform.
+Python client for the [Sparse Intelligence](https://sparseintelligence.ai) agentic AI platform.
 
 ## Install
 
 ```bash
-pip install cane
+pip install sparse-intelligence
 ```
 
 ## Quick Start
 
 ```python
-from cane import Cane
+from sparse_intelligence import SparseClient
 
-client = Cane(api_key="cane_your_key_here")
+client = SparseClient(api_key="sparse_your_key_here")
 
 # Ask a question against your documents
 result = client.ask("What is our refund policy?", workspace_id="your-agent-id")
@@ -27,7 +27,7 @@ for chunk in results["results"]:
 
 ## Register External Agents
 
-Plug agents from any framework into Cane's network graph and observability layer.
+Plug agents from any framework into Sparse Intelligence's network graph and observability layer.
 
 ```python
 # Register an agent running on your own infrastructure
@@ -40,7 +40,7 @@ agent = client.register_agent(
 )
 print(agent["agent_id"])
 
-# Link it as a sub-agent of an existing Cane agent
+# Link it as a sub-agent of an existing Sparse Intelligence agent
 client.link_agent(
     agent_id=agent["agent_id"],
     parent_agent_id="your-parent-agent-id",
@@ -56,7 +56,7 @@ for a in agents["agents"]:
 
 ## Observability
 
-Log communications between your agents so they show up in Cane's network graph.
+Log communications between your agents so they show up in Sparse Intelligence's network graph.
 
 ```python
 # Log a call between two agents
@@ -77,7 +77,7 @@ print(f"Total calls: {network['stats']['total_communications']}")
 
 ## External Agent Endpoint Format
 
-When Cane delegates to your external agent, it sends a POST request:
+When Sparse Intelligence delegates to your external agent, it sends a POST request:
 
 ```json
 {
@@ -98,21 +98,21 @@ Also accepted: `{"answer": "..."}` or `{"result": "..."}`.
 ## Error Handling
 
 ```python
-from cane import Cane, CaneAPIError, CaneConnectionError
+from sparse_intelligence import SparseClient, SparseAPIError, SparseConnectionError
 
-client = Cane(api_key="cane_xxx")
+client = SparseClient(api_key="sparse_xxx")
 
 try:
     result = client.ask("question", workspace_id="xxx")
-except CaneAPIError as e:
+except SparseAPIError as e:
     print(f"API error {e.status_code}: {e.message}")
-except CaneConnectionError as e:
+except SparseConnectionError as e:
     print(f"Connection failed: {e.message}")
 ```
 
 ## Context Manager
 
 ```python
-with Cane(api_key="cane_xxx") as client:
+with SparseClient(api_key="sparse_xxx") as client:
     result = client.ask("question", workspace_id="xxx")
 ```

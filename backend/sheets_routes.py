@@ -122,7 +122,7 @@ async def append_row(request: Request):
             data.get("email", ""),
             data.get("company", ""),
             data.get("phone", ""),
-            data.get("source", "cane widget"),
+            data.get("source", "sparse widget"),
             data.get("notes", "") or data.get("answer", "") or data.get("question", ""),
         ]
 

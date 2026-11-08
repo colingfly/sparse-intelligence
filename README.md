@@ -1,4 +1,4 @@
-# Cane
+# Sparse Intelligence
 
 Agentic RAG platform with hybrid retrieval, multi-stage reranking, LLM-as-a-Judge evaluation, and a closed-loop fine-tuning pipeline. 
 
@@ -116,13 +116,13 @@ Closed-loop pipeline: eval -> mine failures -> fine-tune -> deploy -> re-eval.
 
 ## Softmax Gulch
 
-Multi-agent social simulation where AI agents live in a Western frontier town. Built on top of Cane's agent, eval, and memory infrastructure.
+Multi-agent social simulation where AI agents live in a Western frontier town. Built on top of Sparse Intelligence's agent, eval, and memory infrastructure.
 
 ### Hierarchical Memory
 
 - **Layer 1 (Topic Cloud)**: compact JSON (~300 tokens) always in context. Tracks self-narrative, topics, relationships, unresolved threads, core memories, active goals. Updated end-of-day via Claude Sonnet.
 - **Layer 2 (Thread Summaries)**: 1-3 sentence memories of significant moments. Generated real-time after conversations via significance check. Retrieved by matching topic cloud keywords.
-- **Layer 3 (Full Traces)**: Cane's existing RAG pipeline. Game conversations indexed into ChromaDB. Triggered by agent `[RECALL: query]` mechanism.
+- **Layer 3 (Full Traces)**: Sparse Intelligence's existing RAG pipeline. Game conversations indexed into ChromaDB. Triggered by agent `[RECALL: query]` mechanism.
 
 ### The Hospital (Personality Eval)
 
@@ -156,10 +156,10 @@ CREATE DATABASE cane CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 cd backend
 pip install -r requirements.txt
 
-export CANE_DB_USER=root
-export CANE_DB_PASSWORD=yourpassword
-export CANE_DB_NAME=cane
-export CANE_SECRET_KEY=your-random-secret-key
+export SPARSE_DB_USER=root
+export SPARSE_DB_PASSWORD=yourpassword
+export SPARSE_DB_NAME=cane
+export SPARSE_SECRET_KEY=your-random-secret-key
 export ANTHROPIC_API_KEY=sk-ant-...
 export OPENROUTER_API_KEY=sk-or-...  # optional, for open source models
 
@@ -181,18 +181,18 @@ Vite proxies `/api` to the backend at `:8000`.
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| CANE_DB_USER | root | MySQL user |
-| CANE_DB_PASSWORD | (empty) | MySQL password |
-| CANE_DB_HOST | localhost | MySQL host |
-| CANE_DB_PORT | 3306 | MySQL port |
-| CANE_DB_NAME | cane | MySQL database name |
-| CANE_SECRET_KEY | (generated) | JWT signing key |
+| SPARSE_DB_USER | root | MySQL user |
+| SPARSE_DB_PASSWORD | (empty) | MySQL password |
+| SPARSE_DB_HOST | localhost | MySQL host |
+| SPARSE_DB_PORT | 3306 | MySQL port |
+| SPARSE_DB_NAME | cane | MySQL database name |
+| SPARSE_SECRET_KEY | (generated) | JWT signing key |
 | ANTHROPIC_API_KEY | (required) | Claude API access |
 | OPENROUTER_API_KEY | (optional) | Open source models via OpenRouter |
 | OPENAI_API_KEY | (optional) | Fine-tuning + deployed models |
-| CANE_CLAUDE_MODEL | claude-haiku-4-5-20251001 | Default agent model |
-| CANE_BASE_DIR | /data/cane | Data storage root |
-| CANE_ENV | development | Set to "production" for Railway |
+| SPARSE_CLAUDE_MODEL | claude-haiku-4-5-20251001 | Default agent model |
+| SPARSE_BASE_DIR | /data/cane | Data storage root |
+| SPARSE_ENV | development | Set to "production" for Railway |
 | PORT | 8000 | Server port |
 
 ## Roles

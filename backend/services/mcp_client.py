@@ -169,7 +169,7 @@ def discover_tools(
         init_req = _jsonrpc_request("initialize", {
             "protocolVersion": "2024-11-05",
             "capabilities": {},
-            "clientInfo": {"name": "cane", "version": "1.0.0"},
+            "clientInfo": {"name": "sparse-intelligence", "version": "1.0.0"},
         })
         init_resp = _post_jsonrpc(server_url, init_req, headers, timeout=10)
 
@@ -204,7 +204,7 @@ def discover_tools(
             init_req = _jsonrpc_request("initialize", {
                 "protocolVersion": "2024-11-05",
                 "capabilities": {},
-                "clientInfo": {"name": "cane", "version": "1.0.0"},
+                "clientInfo": {"name": "sparse-intelligence", "version": "1.0.0"},
             })
             _post_jsonrpc(endpoint, init_req, headers, timeout=10)
 

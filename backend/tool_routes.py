@@ -239,7 +239,7 @@ def test_tool(
     from tool_executor import execute_tool
     try:
         # Test with sample data
-        test_input = {"question": "Test question from Cane", "answer": "This is a test execution."}
+        test_input = {"question": "Test question from Sparse Intelligence", "answer": "This is a test execution."}
         result = execute_tool(tool, test_input)
         return {"status": "ok", "result": result}
     except Exception as e:

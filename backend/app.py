@@ -1,5 +1,5 @@
 """
-app.py — Cane API Server.
+app.py — Sparse Intelligence API Server.
 
 Multi-tenant document search API with auth.
 All route logic lives in routes/. Shared services live in services/.
@@ -40,7 +40,7 @@ auto_seed()
 
 print(f"""
 {'='*60}
-  Cane — Document Intelligence API
+  Sparse Intelligence — Document Intelligence API
 {'='*60}
   BASE:      {BASE_DIR}
   DB:        {DB_PATH}
@@ -65,7 +65,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from security import SecurityHeadersMiddleware, RequestIDMiddleware
 
-app = FastAPI(title="Cane", version="1.0.0", docs_url=None if IS_PRODUCTION else "/docs")
+app = FastAPI(title="Sparse Intelligence", version="1.0.0", docs_url=None if IS_PRODUCTION else "/docs")
 
 # Middleware
 app.add_middleware(SecurityHeadersMiddleware)
@@ -206,7 +206,7 @@ async def start_guest_cleanup():
 # ── Health check ──
 @app.get("/api/health")
 def health_check():
-    return {"status": "ok", "service": "cane"}
+    return {"status": "ok", "service": "sparse-intelligence"}
 
 
 # ── Embeddable Widget ──

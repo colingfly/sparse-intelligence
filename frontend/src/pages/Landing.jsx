@@ -23,7 +23,7 @@ export default function Landing() {
 
       {/* Nav */}
       <nav className="lp-nav">
-        <Link to="/" className="lp-logo">Cane</Link>
+        <Link to="/" className="lp-logo">Sparse Intelligence</Link>
         <div className="lp-nav-links">
           <div className="lp-dropdown">
             <span className="lp-dropdown-trigger">Products <span className="lp-chevron">&#9662;</span></span>
@@ -56,14 +56,14 @@ export default function Landing() {
               The feedback loop<br />for AI agents.
             </h1>
             <p className="lp-hero-sub lp-reveal">
-              Your agents run. Cane evaluates them, mines their failures, and generates training data to make them better. Every interaction makes your agents smarter.
+              Your agents run. Sparse Intelligence evaluates them, mines their failures, and generates training data to make them better. Every interaction makes your agents smarter.
             </p>
             <div className="lp-hero-actions lp-reveal">
               <Link to="/register" className="lp-btn-fill">Get started free</Link>
-              <a href="https://github.com/colingfly/cane-eval" target="_blank" rel="noopener noreferrer" className="lp-btn-ghost">Star on GitHub</a>
+              <a href="https://github.com/colingfly/sparse-eval" target="_blank" rel="noopener noreferrer" className="lp-btn-ghost">Star on GitHub</a>
             </div>
             <div className="lp-trust-line lp-reveal">
-              <code>pip install cane-eval</code>
+              <code>pip install sparse-eval</code>
               <span className="lp-trust-sep">|</span>
               <span>Open-source eval engine. Free forever.</span>
             </div>
@@ -108,7 +108,7 @@ export default function Landing() {
         <div className="lp-stats-inner">
           {[
             ['Closed-loop pipeline', 'Eval to training data, automatically'],
-            ['Open-source eval', 'cane-eval on PyPI and GitHub'],
+            ['Open-source eval', 'sparse-eval on PyPI and GitHub'],
             ['LLM-as-Judge', 'Automated scoring with weighted criteria'],
             ['4 export formats', 'SFT, DPO, OpenAI, raw JSONL'],
           ].map(([title, desc], i) => (
@@ -125,7 +125,7 @@ export default function Landing() {
         <div className="lp-contain">
           <div className="lp-section-head lp-reveal" style={{ textAlign: 'center' }}>
             <h2>The agent data flywheel.</h2>
-            <p>Most teams build agents and hope they work. Cane closes the loop. Every failure becomes training data. Every training run makes your agents better. The flywheel spins faster the more you use it.</p>
+            <p>Most teams build agents and hope they work. Sparse Intelligence closes the loop. Every failure becomes training data. Every training run makes your agents better. The flywheel spins faster the more you use it.</p>
           </div>
 
           <div className="lp-flywheel-steps lp-reveal">
@@ -199,7 +199,7 @@ export default function Landing() {
             {[
               ['Agent-to-Agent Delegation', 'Link any agent as a callable tool for another agent. A supervisor delegates questions to specialists and combines their answers. Depth-limited recursion prevents runaway chains.'],
               ['Orchestrator Mode', 'Flip one toggle and an agent becomes a router. It auto-discovers every other agent in your workspace, reads their descriptions, and routes incoming queries to the right specialist.'],
-              ['External Agent Registry', 'Register any HTTP endpoint as an agent in the Cane network. Bearer, header, or no auth. Your external agents appear in the graph and can be delegated to by any native agent.'],
+              ['External Agent Registry', 'Register any HTTP endpoint as an agent in the Sparse Intelligence network. Bearer, header, or no auth. Your external agents appear in the graph and can be delegated to by any native agent.'],
               ['Execution Tracing', 'Every inter-agent call is logged with caller, callee, query, response, depth level, and millisecond timing. Reconstruct full session flows. Detect performance hotspots and error patterns.'],
             ].map(([title, desc], i) => (
               <div key={i} className="lp-product-card lp-reveal">
@@ -218,9 +218,9 @@ export default function Landing() {
                 <span className="lp-code-dot" style={{ background: '#28c840' }} />
                 <span className="lp-code-file">orchestrate.py</span>
               </div>
-              <pre className="lp-code-body">{`from cane import Cane
+              <pre className="lp-code-body">{`from sparse_intelligence import SparseClient
 
-client = Cane(api_key="cane_xxx")
+client = SparseClient(api_key="sparse_xxx")
 
 # Register an external agent
 client.register_agent(
@@ -281,17 +281,17 @@ print(f"{len(graph['nodes'])} agents, {len(graph['edges'])} links")`}</pre>
                 <span className="lp-code-file">terminal</span>
               </div>
               <pre className="lp-code-body">{`# List available eval suites
-curl -H "Authorization: Bearer cane_xxx" \\
-  https://cane.fyi/v1/eval/suites
+curl -H "Authorization: Bearer sparse_xxx" \\
+  https://sparseintelligence.ai/v1/eval/suites
 
 # Submit your agent for evaluation
-curl -X POST -H "Authorization: Bearer cane_xxx" \\
-  "https://cane.fyi/v1/eval/run?environment_id=suite_123\\
+curl -X POST -H "Authorization: Bearer sparse_xxx" \\
+  "https://sparseintelligence.ai/v1/eval/run?environment_id=suite_123\\
   &target_url=https://your-agent.com/ask"
 
 # Get results
-curl -H "Authorization: Bearer cane_xxx" \\
-  https://cane.fyi/v1/eval/run/run_456
+curl -H "Authorization: Bearer sparse_xxx" \\
+  https://sparseintelligence.ai/v1/eval/run/run_456
 
 # Response:
 # {
@@ -355,8 +355,8 @@ curl -H "Authorization: Bearer cane_xxx" \\
                 <span className="lp-code-file">terminal</span>
               </div>
               <pre className="lp-code-body">{`# Export high-scoring results as OpenAI training data
-curl -H "Authorization: Bearer cane_xxx" \\
-  "https://cane.fyi/v1/eval/export/run_456\\
+curl -H "Authorization: Bearer sparse_xxx" \\
+  "https://sparseintelligence.ai/v1/eval/export/run_456\\
   ?format=openai&min_score=80"
 
 # Output (JSONL):
@@ -376,10 +376,10 @@ curl -H "Authorization: Bearer cane_xxx" \\
           <div className="lp-oss-grid">
             <div className="lp-oss-left">
               <div className="lp-product-label">Open Source</div>
-              <h2>Start with cane-eval. Scale with Cane.</h2>
-              <p>cane-eval is our open-source eval engine. YAML test suites, LLM-as-Judge scoring, regression diffs, and failure mining. Use it standalone or connect it to the full Cane platform when you need orchestration and post-training.</p>
+              <h2>Start with sparse-eval. Scale with Sparse Intelligence.</h2>
+              <p>sparse-eval is our open-source eval engine. YAML test suites, LLM-as-Judge scoring, regression diffs, and failure mining. Use it standalone or connect it to the full Sparse Intelligence platform when you need orchestration and post-training.</p>
               <div className="lp-hero-actions" style={{ marginTop: 24 }}>
-                <a href="https://github.com/colingfly/cane-eval" target="_blank" rel="noopener noreferrer" className="lp-btn-fill">View on GitHub</a>
+                <a href="https://github.com/colingfly/sparse-eval" target="_blank" rel="noopener noreferrer" className="lp-btn-fill">View on GitHub</a>
                 <Link to="/guide" className="lp-btn-ghost">Read the docs</Link>
               </div>
             </div>
@@ -391,9 +391,9 @@ curl -H "Authorization: Bearer cane_xxx" \\
                   <span className="lp-code-dot" style={{ background: '#28c840' }} />
                   <span className="lp-code-file">terminal</span>
                 </div>
-                <pre className="lp-code-body">{`$ pip install cane-eval
+                <pre className="lp-code-body">{`$ pip install sparse-eval
 
-$ cane-eval run suite.yaml --target http://localhost:8000/ask
+$ sparse-eval run suite.yaml --target http://localhost:8000/ask
 
 Running 12 test cases...
 
@@ -422,7 +422,7 @@ Overall: 87.3 avg | 10 passed | 1 warned | 1 failed`}</pre>
           </p>
           <div style={{ display: 'flex', gap: 12, justifyContent: 'center' }}>
             <Link to="/register" className="lp-btn-fill">Get started free</Link>
-            <a href="https://github.com/colingfly/cane-eval" target="_blank" rel="noopener noreferrer" className="lp-btn-ghost">Try cane-eval</a>
+            <a href="https://github.com/colingfly/sparse-eval" target="_blank" rel="noopener noreferrer" className="lp-btn-ghost">Try sparse-eval</a>
           </div>
         </div>
       </section>
@@ -435,8 +435,8 @@ Overall: 87.3 avg | 10 passed | 1 warned | 1 failed`}</pre>
           <a href="#post-training">Post-Training</a>
           <Link to="/guide">Docs</Link>
           <Link to="/marketplace">Marketplace</Link>
-          <a href="https://github.com/colingfly/cane-eval" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="mailto:hello@cane.fyi">Contact</a>
+          <a href="https://github.com/colingfly/sparse-eval" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="mailto:hello@sparseintelligence.ai">Contact</a>
         </div>
       </footer>
     </div>

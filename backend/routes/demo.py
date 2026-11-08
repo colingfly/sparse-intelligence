@@ -45,7 +45,7 @@ def _get_or_create_demo_tenant(db: Session) -> Tenant:
     tenant = db.query(Tenant).filter(Tenant.slug == DEMO_TENANT_SLUG).first()
     if not tenant:
         tenant = Tenant(
-            name="Cane Demo",
+            name="Sparse Intelligence Demo",
             slug=DEMO_TENANT_SLUG,
             plan="free",
             is_active=True,
@@ -70,7 +70,7 @@ def _get_or_create_demo_api_key(db: Session, tenant_id: str) -> str:
         ApiKey.name == "Demo API Key",
     ).delete()
 
-    raw_key = f"cane_{secrets.token_hex(24)}"
+    raw_key = f"sparse_{secrets.token_hex(24)}"
     api_key_record = ApiKey(
         tenant_id=tenant_id,
         name="Demo API Key",

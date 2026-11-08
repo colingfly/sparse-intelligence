@@ -1,5 +1,5 @@
 """
-smart_chunker.py — Semantic-aware chunking for Cane.
+smart_chunker.py — Semantic-aware chunking for Sparse Intelligence.
 
 Replaces the naive fixed-window chunker with:
   1. Page/slide boundary awareness (never splits mid-page unless page is huge)

@@ -1069,14 +1069,14 @@ def get_run_profile(
     if not results:
         raise HTTPException(status.HTTP_400_BAD_REQUEST, "No results in this run")
 
-    # Build cane-eval compatible structures
+    # Build sparse-eval compatible structures
     try:
-        from cane_eval.profiler import Profiler, _compute_traits, _aggregate_personality, _extract_contrastive_pairs, _compute_steering_vectors, _cluster_kmeans, _project_pca, _label_clusters, _embed_texts, EmbeddedResult
+        from sparse_eval.profiler import Profiler, _compute_traits, _aggregate_personality, _extract_contrastive_pairs, _compute_steering_vectors, _cluster_kmeans, _project_pca, _label_clusters, _embed_texts, EmbeddedResult
         import numpy as np
     except ImportError:
         raise HTTPException(
             status.HTTP_500_INTERNAL_SERVER_ERROR,
-            "cane-eval profiler not available. Install: pip install cane-eval[profile]"
+            "sparse-eval profiler not available. Install: pip install sparse-eval[profile]"
         )
 
     # Step 1: Build embedded results with traits
@@ -1219,7 +1219,7 @@ def test_webhook(
         "environment_id": env.id,
         "environment_name": env.name,
         "workspace_id": env.workspace_id,
-        "message": "This is a test webhook from Cane. If you see this, your webhook is configured correctly.",
+        "message": "This is a test webhook from Sparse Intelligence. If you see this, your webhook is configured correctly.",
         "sample_data": {
             "overall_score": 62.5,
             "total_cases": 10,
@@ -1278,7 +1278,7 @@ def test_target(
     target_payload_template = getattr(env, "target_payload_template", '{"message": "{{question}}"}') or '{"message": "{{question}}"}'
     target_response_path = getattr(env, "target_response_path", "response") or "response"
 
-    sample_question = "What is 2 + 2? (This is a connectivity test from Cane.)"
+    sample_question = "What is 2 + 2? (This is a connectivity test from Sparse Intelligence.)"
 
     from eval_engine import _get_external_agent_answer
     result = _get_external_agent_answer(

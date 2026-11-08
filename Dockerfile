@@ -1,6 +1,6 @@
 # cache-bust-v10
 # ═══════════════════════════════════════════════════════════
-#  Cane — Multi-stage Docker build for Railway
+#  Sparse Intelligence — Multi-stage Docker build for Railway
 # ═══════════════════════════════════════════════════════════
 
 # Stage 1: Build React frontend
@@ -72,9 +72,9 @@ COPY --from=frontend-build /app/frontend/dist ./static
 RUN mkdir -p /data/cane/chroma_db /data/cane/extracted /data/cane/uploads /data/cane/input
 
 # Environment defaults
-ENV CANE_BASE_DIR=/data/cane
-ENV CANE_STATIC_DIR=/app/static
-ENV CANE_ENV=production
+ENV SPARSE_BASE_DIR=/data/cane
+ENV SPARSE_STATIC_DIR=/app/static
+ENV SPARSE_ENV=production
 ENV PORT=8000
 # Tell HuggingFace to use cached models
 ENV TRANSFORMERS_CACHE=/root/.cache/huggingface

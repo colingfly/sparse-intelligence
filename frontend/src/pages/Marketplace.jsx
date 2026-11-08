@@ -33,7 +33,7 @@ function ScoreBadge({ score, size = 'md' }) {
       <div style={{ width: lg ? 8 : 6, height: lg ? 8 : 6, borderRadius: 99, background: color }} />
       <span style={{
         fontFamily: 'var(--font-display)', fontWeight: 800,
-        fontSize: lg ? '1.1rem' : '0.88rem', color: 'var(--cane-100)',
+        fontSize: lg ? '1.1rem' : '0.88rem', color: 'var(--sparse-100)',
       }}>
         {Math.round(score)}
       </span>
@@ -76,7 +76,7 @@ function FeaturedCard({ listing, onClick }) {
       style={{
         padding: '28px 30px',
         background: 'var(--bg-card)',
-        border: `1.5px solid ${hovered ? 'var(--cane-500)' : 'var(--cane-200)'}`,
+        border: `1.5px solid ${hovered ? 'var(--sparse-500)' : 'var(--sparse-200)'}`,
         borderRadius: 'var(--radius)',
         cursor: 'pointer',
         transition: 'all 0.2s',
@@ -150,7 +150,7 @@ function FeaturedCard({ listing, onClick }) {
       }}>
         <span style={{
           padding: '3px 10px', borderRadius: 5,
-          background: listing.pack_type === 'open' ? 'rgba(74,222,128,0.08)' : 'var(--cane-50)',
+          background: listing.pack_type === 'open' ? 'rgba(74,222,128,0.08)' : 'var(--sparse-50)',
           color: listing.pack_type === 'open' ? 'var(--status-pass)' : 'var(--text-muted)',
           fontWeight: 600, fontSize: '0.65rem', textTransform: 'uppercase',
           letterSpacing: '0.04em', fontFamily: 'var(--font-mono)',
@@ -168,7 +168,7 @@ function FeaturedCard({ listing, onClick }) {
         {tags.slice(0, 3).map(t => (
           <span key={t} style={{
             padding: '3px 8px', borderRadius: 5,
-            background: 'var(--cane-100)', color: 'var(--cane-600)',
+            background: 'var(--sparse-100)', color: 'var(--sparse-600)',
             fontSize: '0.62rem', fontWeight: 600, fontFamily: 'var(--font-mono)',
           }}>{t}</span>
         ))}
@@ -176,7 +176,7 @@ function FeaturedCard({ listing, onClick }) {
         <span style={{
           display: 'flex', alignItems: 'center', gap: 4,
           fontSize: '0.78rem', fontWeight: 600,
-          color: hovered ? 'var(--cane-700)' : 'var(--text-muted)',
+          color: hovered ? 'var(--sparse-700)' : 'var(--text-muted)',
           transition: 'color 0.15s',
         }}>
           View <ArrowRight size={14} />
@@ -197,7 +197,7 @@ function ListingCard({ listing, onClick }) {
       style={{
         padding: '20px 22px',
         background: 'var(--bg-card)',
-        border: `1px solid ${hovered ? 'var(--cane-500)' : 'var(--rule)'}`,
+        border: `1px solid ${hovered ? 'var(--sparse-500)' : 'var(--rule)'}`,
         borderRadius: 'var(--radius)',
         cursor: 'pointer',
         transition: 'border-color 0.15s, box-shadow 0.15s',
@@ -208,7 +208,7 @@ function ListingCard({ listing, onClick }) {
       <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
         <div style={{
           width: 42, height: 42, borderRadius: 10,
-          background: 'rgba(255,255,255,0.1)', color: 'var(--cane-400)',
+          background: 'rgba(255,255,255,0.1)', color: 'var(--sparse-400)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           fontFamily: 'var(--font-display)', fontWeight: 700,
           fontSize: '0.85rem', flexShrink: 0,
@@ -392,7 +392,7 @@ export default function Marketplace() {
                 fontWeight: active ? 700 : 500,
                 color: active ? 'var(--text)' : 'var(--text-muted)',
                 background: 'none', border: 'none',
-                borderBottom: active ? '2px solid var(--cane-900)' : '2px solid transparent',
+                borderBottom: active ? '2px solid var(--sparse-900)' : '2px solid transparent',
                 marginBottom: -1, cursor: 'pointer',
                 fontFamily: 'var(--font-body)',
                 whiteSpace: 'nowrap',

@@ -1,10 +1,10 @@
-class CaneError(Exception):
-    """Base exception for all Cane SDK errors."""
+class SparseError(Exception):
+    """Base exception for all Sparse Intelligence SDK errors."""
     pass
 
 
-class CaneAPIError(CaneError):
-    """Raised when the Cane API returns an error response."""
+class SparseAPIError(SparseError):
+    """Raised when the Sparse Intelligence API returns an error response."""
 
     def __init__(self, status_code: int, message: str, body: dict = None):
         self.status_code = status_code
@@ -13,8 +13,8 @@ class CaneAPIError(CaneError):
         super().__init__(f"[{status_code}] {message}")
 
 
-class CaneConnectionError(CaneError):
-    """Raised when the SDK cannot reach the Cane API."""
+class SparseConnectionError(SparseError):
+    """Raised when the SDK cannot reach the Sparse Intelligence API."""
 
     def __init__(self, message: str):
         self.message = message

@@ -1,5 +1,5 @@
 """
-streaming.py — SSE streaming for Cane Ask endpoint.
+streaming.py — SSE streaming for Sparse Intelligence Ask endpoint.
 
 Provides:
   - stream_claude(): Generator that yields SSE events from Claude API

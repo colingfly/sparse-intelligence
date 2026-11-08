@@ -1,7 +1,7 @@
 """
 eval_api.py -- Public Eval-as-a-Service API.
 
-Lets external developers evaluate any agent against Cane's eval suites
+Lets external developers evaluate any agent against Sparse Intelligence's eval suites
 using API key auth. Three endpoints:
 
   POST /v1/eval/run      -- submit an agent for evaluation
@@ -581,7 +581,7 @@ def api_delete_eval_schedule(
     return {"deleted": True}
 
 
-# ── Push results from cane-eval CLI/integrations ──
+# ── Push results from sparse-eval CLI/integrations ──
 
 @router.post("/results/{environment_id}")
 def push_eval_results(
@@ -591,10 +591,10 @@ def push_eval_results(
     db: Session = Depends(get_db),
 ):
     """
-    Accept pre-computed eval results from the cane-eval open-source package.
+    Accept pre-computed eval results from the sparse-eval open-source package.
 
-    This allows users to run evals locally (via cane-eval CLI or integrations)
-    and push results to Cane Cloud for dashboards, trend tracking, and collaboration.
+    This allows users to run evals locally (via sparse-eval CLI or integrations)
+    and push results to Sparse Intelligence Cloud for dashboards, trend tracking, and collaboration.
 
     Body:
     {
@@ -660,9 +660,9 @@ def push_eval_results(
         warned=body.get("warned", 0),
         failed=body.get("failed", 0),
         overall_score=body.get("overall_score", 0),
-        agent_prompt="(cane-eval push)",
+        agent_prompt="(sparse-eval push)",
         criteria_snapshot=None,
-        target_snapshot=json.dumps({"source": "cane-eval", "suite_name": body.get("suite_name", "")}),
+        target_snapshot=json.dumps({"source": "sparse-eval", "suite_name": body.get("suite_name", "")}),
         api_key_id=api_key.id,
         started_at=datetime.utcnow(),
         completed_at=datetime.utcnow(),

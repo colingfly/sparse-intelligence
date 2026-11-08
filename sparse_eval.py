@@ -1,12 +1,12 @@
 """
-Cane Document Intelligence — Retrieval Eval
+Sparse Intelligence Document Intelligence — Retrieval Eval
 ============================================
 Tests search and Ask AI quality against known ground-truth answers
 from the 3 DOE AI documents.
 
 Usage:
     pip install requests
-    python cane_eval.py --url https://cane-production.up.railway.app --email colingfly@gmail.com --password YOUR_PASSWORD
+    python sparse_eval.py --url https://cane-production.up.railway.app --email colingfly@gmail.com --password YOUR_PASSWORD
 
 Optional:
     --workspace "DOE AI Docs"   (scope to a specific workspace)
@@ -144,7 +144,7 @@ TEST_CASES = [
 
 # ─── API Client ──────────────────────────────────────────────────
 
-class CaneClient:
+class SparseClient:
     def __init__(self, base_url: str, email: str, password: str):
         self.base_url = base_url.rstrip("/")
         self.session = requests.Session()
@@ -213,7 +213,7 @@ class TestResult:
     search_error: str = ""
 
 
-def evaluate_search(client: CaneClient, test: TestCase, workspace: str = None) -> dict:
+def evaluate_search(client: SparseClient, test: TestCase, workspace: str = None) -> dict:
     """Evaluate search results against ground truth."""
     result = TestResult(test=test)
 
@@ -232,7 +232,7 @@ def evaluate_search(client: CaneClient, test: TestCase, workspace: str = None) -
             page = None
             score = 0.0
 
-            # Adapt to Cane's response shape
+            # Adapt to Sparse Intelligence's response shape
             if isinstance(r, dict):
                 text = (r.get("text", "") or r.get("content", "") or "").lower()
                 doc_name = (r.get("source_file", "") or r.get("document_name", "") or "").lower()
@@ -265,12 +265,12 @@ def evaluate_search(client: CaneClient, test: TestCase, workspace: str = None) -
     return result
 
 
-def evaluate_ask_ai(client: CaneClient, test: TestCase, result: TestResult, workspace: str = None) -> TestResult:
+def evaluate_ask_ai(client: SparseClient, test: TestCase, result: TestResult, workspace: str = None) -> TestResult:
     """Evaluate Ask AI response against ground truth."""
     try:
         data = client.ask_ai(test.query, workspace)
 
-        # Handle Cane's response shape
+        # Handle Sparse Intelligence's response shape
         status = data.get("status", "") if isinstance(data, dict) else ""
         
         if status == "no_results":
@@ -309,7 +309,7 @@ def evaluate_ask_ai(client: CaneClient, test: TestCase, result: TestResult, work
 
 def print_report(results: list[TestResult]):
     print("\n" + "=" * 70)
-    print("  CANE RETRIEVAL EVAL REPORT")
+    print("  SPARSE INTELLIGENCE RETRIEVAL EVAL REPORT")
     print("=" * 70)
 
     # Summary
@@ -391,19 +391,19 @@ def print_report(results: list[TestResult]):
 # ─── Main ────────────────────────────────────────────────────────
 
 def main():
-    parser = argparse.ArgumentParser(description="Cane Retrieval Eval")
-    parser.add_argument("--url", required=True, help="Cane base URL")
+    parser = argparse.ArgumentParser(description="Sparse Intelligence Retrieval Eval")
+    parser.add_argument("--url", required=True, help="Sparse Intelligence base URL")
     parser.add_argument("--email", required=True, help="Admin email")
     parser.add_argument("--password", required=True, help="Admin password")
     parser.add_argument("--workspace", default=None, help="Workspace name to scope queries")
     parser.add_argument("--skip-ask", action="store_true", help="Skip Ask AI tests")
     args = parser.parse_args()
 
-    print(f"\n  Cane Eval — {args.url}")
+    print(f"\n  Sparse Intelligence Eval — {args.url}")
     print(f"  {len(TEST_CASES)} test cases\n")
 
     # Connect
-    client = CaneClient(args.url, args.email, args.password)
+    client = SparseClient(args.url, args.email, args.password)
 
     # Show what's in the system
     try:

@@ -353,10 +353,10 @@ def submit_finetune(
 
     # Step 1: Upload training file to OpenAI
     api_key = _get_openai_key()
-    file_name = f"cane_ft_{env.name.replace(' ', '_')}_{datetime.utcnow().strftime('%Y%m%d')}.jsonl"
+    file_name = f"sparse_ft_{env.name.replace(' ', '_')}_{datetime.utcnow().strftime('%Y%m%d')}.jsonl"
 
     # Use requests-style upload via urllib
-    boundary = f"----cane{uuid.uuid4().hex}"
+    boundary = f"----sparse{uuid.uuid4().hex}"
     body = (
         f"--{boundary}\r\n"
         f'Content-Disposition: form-data; name="purpose"\r\n\r\n'
