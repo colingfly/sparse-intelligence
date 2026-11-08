@@ -56,7 +56,7 @@ print(f"""
 # Initialize ChromaDB (must happen after dirs/db are ready)
 from services.chroma import text_col, image_col  # noqa: F401 — triggers init + prints
 
-print(f"\n  → http://localhost:8000\n{'='*60}\n")
+print(f"\n  -> http://localhost:8000\n{'='*60}\n")
 
 # ── FastAPI app ──
 from fastapi import FastAPI, HTTPException

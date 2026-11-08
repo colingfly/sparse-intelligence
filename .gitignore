@@ -39,3 +39,9 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Next.js build output
+.next/
+
+# Claude Code local settings
+.claude/settings.local.json

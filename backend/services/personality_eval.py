@@ -263,8 +263,14 @@ def run_personality_eval(
     # Get game state
     game_state = db.query(AgentGameState).filter(AgentGameState.workspace_id == workspace_id).first()
 
-    # Determine which model to use for the agent
-    agent_model = model_override or getattr(ws, "inference_model", None) or "trinity-large-thinking"
+    # Record which model actually powers this agent (for the leaderboard).
+    # Falls back to "claude (default)" when no inference_provider/model is set.
+    if model_override:
+        agent_model = model_override
+    elif getattr(ws, "inference_provider", None) and getattr(ws, "inference_model", None):
+        agent_model = f"{ws.inference_provider}/{ws.inference_model}"
+    else:
+        agent_model = "claude (default)"
     judge = judge_model or "claude-sonnet"
 
     # Create eval run record
@@ -300,13 +306,14 @@ def run_personality_eval(
             if scenario.get("setup_context"):
                 scenario_prompt = f"Context: {scenario['setup_context']}\n\n{scenario_prompt}"
 
-            # Get agent response
+            # Get agent response — use the agent's configured inference backend
+            # (workspace.inference_provider/model/config). Falls back to Claude if unset.
             try:
-                agent_response = model_router.call(
-                    task="agent_conversation",
+                from services.inference import infer
+                agent_response = infer(
                     prompt=scenario_prompt,
                     system=agent_system,
-                    model_override=agent_model if agent_model != "trinity-large-thinking" else None,
+                    workspace=ws,
                     max_tokens=300,
                     temperature=0.7,
                 )

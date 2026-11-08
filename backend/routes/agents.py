@@ -72,6 +72,10 @@ def create_agent(
     request: Request,
     agent_type: str = Form("custom"), name: str = Form(""),
     description: str = Form(""), icon: str = Form(""),
+    system_prompt: str = Form(""),
+    inference_provider: str = Form(""),
+    inference_model: str = Form(""),
+    inference_config: str = Form(""),
     user: User = Depends(get_optional_user), db: Session = Depends(get_db),
 ):
     """Create a new agent (works for both authenticated and anonymous users)."""
@@ -91,10 +95,10 @@ def create_agent(
     name = sanitize_form_field(name)
     description = sanitize_form_field(description)
     icon = sanitize_form_field(icon)
+    system_prompt = sanitize_form_field(system_prompt) or ""
 
     agent_type = agent_type or "custom"
     icon = icon or "CA"
-    system_prompt = ""
 
     if not name:
         return JSONResponse({"error": "Agent name is required"}, status_code=400)
@@ -104,6 +108,9 @@ def create_agent(
         agent_type=agent_type, agent_icon=icon, agent_description=description,
         system_prompt=system_prompt, show_on_homepage=False, is_default=False,
         guest_session_id=guest_session_id,
+        inference_provider=inference_provider or None,
+        inference_model=inference_model or None,
+        inference_config=inference_config or None,
     )
     db.add(ws)
     db.commit()
@@ -113,6 +120,8 @@ def create_agent(
         "id": ws.id, "name": ws.name, "agent_type": ws.agent_type,
         "agent_icon": ws.agent_icon or "", "agent_description": ws.agent_description or "",
         "system_prompt": ws.system_prompt or "",
+        "inference_provider": ws.inference_provider or "",
+        "inference_model": ws.inference_model or "",
         "show_on_homepage": getattr(ws, "show_on_homepage", False) or False,
     }
 

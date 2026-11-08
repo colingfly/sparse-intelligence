@@ -191,6 +191,8 @@ def get_game_agents(
             "system_prompt": ws.system_prompt,
             "agent_type": ws.agent_type,
             "icon": ws.agent_icon,
+            "inference_provider": ws.inference_provider or "",
+            "inference_model": ws.inference_model or "",
             # Game state
             "current_location": game_state.current_location,
             "position_x": game_state.position_x,
@@ -493,6 +495,196 @@ def create_game_event(
     db.commit()
 
     return {"id": e.id, "status": "created"}
+
+
+# ─── Generate Conversation Turn (memory-aware) ───
+
+class GenerateRequest(BaseModel):
+    workspace_id: str
+    location: str = "saloon"
+    game_hour: int = 17
+    game_minute: int = 0
+    game_day: int = 0
+
+
+@router.post("/conversations/generate")
+def generate_conversation(
+    body: GenerateRequest,
+    user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    """
+    Generate an AI conversation turn for an agent using the full
+    three-layer memory system. This is the main game conversation endpoint.
+
+    Flow:
+    1. Load agent + game state
+    2. Find nearby agents at same location
+    3. Get recent messages at this location
+    4. Build memory-enriched context (cloud + threads + situation)
+    5. Call Claude
+    6. Process [RECALL] tags if present
+    7. Record the response
+    8. Background: index to ChromaDB + thread summary check
+    9. Return response
+    """
+    from services.inference import infer
+    from services.game_memory import (
+        build_agent_context, process_recall,
+        index_game_conversation, maybe_create_thread_summary,
+    )
+
+    # 1. Get workspace + game state
+    ws = db.query(Workspace).filter(
+        Workspace.id == body.workspace_id,
+        Workspace.tenant_id == user.tenant_id,
+    ).first()
+    if not ws:
+        raise HTTPException(404, "Agent not found")
+
+    game_state = db.query(AgentGameState).filter(
+        AgentGameState.workspace_id == body.workspace_id,
+    ).first()
+    if not game_state:
+        raise HTTPException(404, "Agent game state not found")
+
+    # 2. Find nearby agents (same location)
+    nearby_states = db.query(AgentGameState).filter(
+        AgentGameState.tenant_id == user.tenant_id,
+        AgentGameState.current_location == body.location,
+        AgentGameState.is_active == True,
+        AgentGameState.workspace_id != body.workspace_id,
+    ).all()
+
+    nearby_ws_ids = [s.workspace_id for s in nearby_states]
+    nearby_workspaces = {}
+    if nearby_ws_ids:
+        for w in db.query(Workspace).filter(Workspace.id.in_(nearby_ws_ids)).all():
+            nearby_workspaces[w.id] = w
+
+    nearby_agents = []
+    for s in nearby_states:
+        w = nearby_workspaces.get(s.workspace_id)
+        if w:
+            nearby_agents.append({
+                "name": w.name,
+                "game_role": s.game_role or "citizen",
+                "mood": s.mood or "neutral",
+                "intoxication": s.intoxication or 0,
+            })
+
+    # 3. Get recent messages at this location
+    recent_msgs = db.query(GameConversation).filter(
+        GameConversation.tenant_id == user.tenant_id,
+        GameConversation.location == body.location,
+    ).order_by(GameConversation.created_at.desc()).limit(10).all()
+
+    ws_ids_in_msgs = list(set(m.workspace_id for m in recent_msgs))
+    ws_name_map = {}
+    if ws_ids_in_msgs:
+        for w in db.query(Workspace).filter(Workspace.id.in_(ws_ids_in_msgs)).all():
+            ws_name_map[w.id] = w.name
+
+    recent_events = []
+    for m in reversed(recent_msgs):
+        recent_events.append({
+            "type": "speech",
+            "agent": ws_name_map.get(m.workspace_id, "Unknown"),
+            "text": m.content,
+        })
+
+    # 4. Build memory-enriched context
+    system_prompt, user_message = build_agent_context(
+        workspace_id=body.workspace_id,
+        tenant_id=user.tenant_id,
+        agent_name=ws.name,
+        game_state=game_state,
+        system_prompt=ws.system_prompt or "",
+        nearby_agents=nearby_agents,
+        recent_events=recent_events,
+        db=db,
+    )
+
+    # 5. Route to the agent's configured inference backend
+    # (workspace.inference_provider/model/config). Falls back to Claude if unset.
+    response_text = infer(
+        prompt=user_message,
+        system=system_prompt,
+        workspace=ws,
+        max_tokens=200,
+        temperature=0.7,
+    )
+
+    # 6. Process [RECALL] tags
+    cleaned_response, recall_results = process_recall(
+        response_text, body.workspace_id, user.tenant_id,
+    )
+
+    # If recall was triggered, re-prompt with the recalled info
+    if recall_results:
+        recall_context = "\n".join(f"- {r['text']}" for r in recall_results)
+        reprompt = user_message + f"\n\n[Your memory surfaces:\n{recall_context}]\n\nNow respond incorporating what you remembered. 1-2 sentences."
+        cleaned_response = infer(
+            prompt=reprompt,
+            system=system_prompt,
+            workspace=ws,
+            max_tokens=200,
+            temperature=0.7,
+        )
+
+    # 7. Record the response as a conversation turn
+    msg = GameConversation(
+        workspace_id=body.workspace_id,
+        tenant_id=user.tenant_id,
+        location=body.location,
+        message_type="speak",
+        content=cleaned_response,
+        intoxication_at_time=game_state.intoxication or 0,
+        mood_at_time=game_state.mood or "neutral",
+        game_hour=body.game_hour,
+        game_minute=body.game_minute,
+    )
+    db.add(msg)
+
+    # Update game state
+    game_state.last_turn_at = datetime.utcnow()
+    game_state.state = "talking"
+    db.commit()
+
+    # 8. Background: index + thread summary
+    index_game_conversation(body.workspace_id, user.tenant_id, msg, ws.name)
+
+    recent_for_summary = db.query(GameConversation).filter(
+        GameConversation.location == body.location,
+        GameConversation.tenant_id == user.tenant_id,
+    ).order_by(GameConversation.created_at.desc()).limit(6).all()
+
+    if recent_for_summary:
+        ws_ids_s = list(set(m.workspace_id for m in recent_for_summary))
+        ws_map_s = {w.id: w.name for w in db.query(Workspace).filter(Workspace.id.in_(ws_ids_s)).all()}
+        msgs_text = [f"{ws_map_s.get(m.workspace_id, '?')}: {m.content}" for m in reversed(recent_for_summary)]
+        participants = list(set(ws_map_s.get(m.workspace_id, "?") for m in recent_for_summary))
+        maybe_create_thread_summary(
+            workspace_id=body.workspace_id,
+            tenant_id=user.tenant_id,
+            agent_name=ws.name,
+            recent_messages=msgs_text,
+            participants=participants,
+            location=body.location,
+            game_day=body.game_day,
+            game_hour=body.game_hour,
+        )
+
+    return {
+        "workspace_id": body.workspace_id,
+        "agent_name": ws.name,
+        "response": cleaned_response,
+        "location": body.location,
+        "mood": game_state.mood,
+        "intoxication": game_state.intoxication,
+        "recall_used": len(recall_results) > 0,
+        "message_id": msg.id,
+    }
 
 
 # ─── Agent Memory (Hierarchical: Cloud + Threads + Recall) ───
