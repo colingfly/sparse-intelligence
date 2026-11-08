@@ -119,7 +119,7 @@ def web_scrape(url: str = Query(..., description="URL to scrape")):
         jina_url = f"https://r.jina.ai/{url}"
         req = urllib.request.Request(jina_url, headers={
             "Accept": "text/plain",
-            "User-Agent": "Mozilla/5.0 (compatible; CaneBot/1.0)",
+            "User-Agent": "Mozilla/5.0 (compatible; SparseBot/1.0)",
         })
 
         with urllib.request.urlopen(req, timeout=30) as resp:

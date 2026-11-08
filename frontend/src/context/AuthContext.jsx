@@ -10,7 +10,7 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const token = localStorage.getItem('cane_token')
+    const token = localStorage.getItem('sparse_token')
     if (token) {
       getMe()
         .then(data => {

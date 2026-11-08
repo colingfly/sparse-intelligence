@@ -9,7 +9,7 @@ export default function Layout({ children }) {
     <div className="app-layout">
       <aside className="sidebar">
         <div className="sidebar-brand">
-          <h1>Cane</h1>
+          <h1>Sparse Intelligence</h1>
           <p style={{ fontSize: '0.56rem', color: 'rgba(255,255,255,0.3)', marginTop: 8, letterSpacing: '0.12em', fontWeight: 700, textTransform: 'uppercase' }}>
             Agentic AI Platform
           </p>

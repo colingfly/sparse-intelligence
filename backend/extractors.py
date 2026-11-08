@@ -1,5 +1,5 @@
 """
-extractors.py — File extraction pipeline for Cane.
+extractors.py — File extraction pipeline for Sparse Intelligence.
 
 Supported formats:
   - PDF  (via PyMuPDF/fitz)

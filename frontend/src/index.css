@@ -1,20 +1,20 @@
 /* ═══════════════════════════════════════════
-   Cane — Design System
+   Sparse Intelligence — Design System
    Black/white minimal aesthetic
    ═══════════════════════════════════════════ */
 
 :root {
   /* Core palette — white at various opacities */
-  --cane-900: #ffffff;
-  --cane-800: rgba(255,255,255,0.85);
-  --cane-700: rgba(255,255,255,0.5);
-  --cane-600: rgba(255,255,255,0.4);
-  --cane-500: rgba(255,255,255,0.3);
-  --cane-400: rgba(255,255,255,0.5);
-  --cane-300: rgba(255,255,255,0.7);
-  --cane-200: rgba(255,255,255,0.1);
-  --cane-100: rgba(255,255,255,0.06);
-  --cane-50:  rgba(255,255,255,0.03);
+  --sparse-900: #ffffff;
+  --sparse-800: rgba(255,255,255,0.85);
+  --sparse-700: rgba(255,255,255,0.5);
+  --sparse-600: rgba(255,255,255,0.4);
+  --sparse-500: rgba(255,255,255,0.3);
+  --sparse-400: rgba(255,255,255,0.5);
+  --sparse-300: rgba(255,255,255,0.7);
+  --sparse-200: rgba(255,255,255,0.1);
+  --sparse-100: rgba(255,255,255,0.06);
+  --sparse-50:  rgba(255,255,255,0.03);
 
   /* Accent — blue */
   --accent: #2563eb;
@@ -122,7 +122,7 @@ a:hover { color: #fff; }
   font-weight: 800;
   font-size: 1.5rem;
   letter-spacing: -0.02em;
-  color: var(--cane-100);
+  color: var(--sparse-100);
   background: linear-gradient(135deg, #ffffff 60%, #60a5fa 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -131,7 +131,7 @@ a:hover { color: #fff; }
 
 .sidebar-brand .tenant-name {
   font-size: 0.75rem;
-  color: var(--cane-500);
+  color: var(--sparse-500);
   margin-top: 4px;
   font-weight: 500;
 }
@@ -150,7 +150,7 @@ a:hover { color: #fff; }
   gap: 10px;
   padding: 10px 12px;
   border-radius: var(--radius-sm);
-  color: var(--cane-400);
+  color: var(--sparse-400);
   font-size: 0.875rem;
   font-weight: 500;
   transition: all 0.2s ease;
@@ -159,7 +159,7 @@ a:hover { color: #fff; }
 
 .sidebar-nav a:hover {
   background: rgba(255,255,255,0.06);
-  color: var(--cane-200);
+  color: var(--sparse-200);
 }
 
 .sidebar-nav a.active {
@@ -188,28 +188,28 @@ a:hover { color: #fff; }
 
 .sidebar-footer .user-email {
   font-size: 0.75rem;
-  color: var(--cane-500);
+  color: var(--sparse-500);
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .sidebar-footer .user-name {
   font-size: 0.8125rem;
-  color: var(--cane-300);
+  color: var(--sparse-300);
   font-weight: 500;
 }
 
 .sidebar-logout {
   background: none;
   border: none;
-  color: var(--cane-500);
+  color: var(--sparse-500);
   font-size: 0.75rem;
   cursor: pointer;
   padding: 4px 0;
   margin-top: 6px;
 }
 
-.sidebar-logout:hover { color: var(--cane-300); }
+.sidebar-logout:hover { color: var(--sparse-300); }
 
 /* ── Main Content ── */
 .main-content {
@@ -295,7 +295,7 @@ a:hover { color: #fff; }
 
 .btn-secondary:hover {
   border-color: var(--border-hover);
-  background: var(--cane-50);
+  background: var(--sparse-50);
 }
 
 .btn-ghost {
@@ -423,7 +423,7 @@ select.search-mode-btn optgroup {
 
 .search-mode-btn:hover {
   border-color: var(--border-hover);
-  background: var(--cane-100);
+  background: var(--sparse-100);
 }
 
 .search-mode-btn.active {
@@ -604,8 +604,8 @@ select.search-mode-btn optgroup {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: var(--cane-100);
-  color: var(--cane-600);
+  background: var(--sparse-100);
+  color: var(--sparse-600);
   font-size: 0.7rem;
   font-weight: 600;
   flex-shrink: 0;
@@ -663,12 +663,12 @@ select.search-mode-btn optgroup {
 .doc-table td {
   padding: 12px 14px;
   font-size: 0.875rem;
-  border-bottom: 1px solid var(--cane-100);
+  border-bottom: 1px solid var(--sparse-100);
   color: var(--text-secondary);
 }
 
 .doc-table tr:hover td {
-  background: var(--cane-50);
+  background: var(--sparse-50);
 }
 
 .doc-table .filename {
@@ -778,24 +778,24 @@ select.search-mode-btn optgroup {
   font-family: var(--font-display);
   font-size: 2.5rem;
   font-weight: 900;
-  color: var(--cane-100);
+  color: var(--sparse-100);
   letter-spacing: -0.04em;
 }
 
 .login-brand p {
-  color: var(--cane-500);
+  color: var(--sparse-500);
   font-size: 0.875rem;
   margin-top: 6px;
 }
 
 .login-card .form-group label {
-  color: var(--cane-400);
+  color: var(--sparse-400);
 }
 
 .login-card .form-input {
   background: rgba(255,255,255,0.06);
   border-color: rgba(255,255,255,0.1);
-  color: var(--cane-100);
+  color: var(--sparse-100);
 }
 
 .login-card .form-input:focus {
@@ -803,7 +803,7 @@ select.search-mode-btn optgroup {
 }
 
 .login-card .form-input::placeholder {
-  color: var(--cane-600);
+  color: var(--sparse-600);
 }
 
 .login-card .btn-primary {

@@ -27,7 +27,7 @@ EXPORT_MIME_MAP = {
     "application/vnd.google-apps.presentation": ("application/pdf", ".pdf"),
 }
 
-# Direct-download MIME types we support (maps to Cane EXT_MAP)
+# Direct-download MIME types we support (maps to Sparse Intelligence EXT_MAP)
 SUPPORTED_MIME_TYPES = {
     "application/pdf": ".pdf",
     "application/vnd.openxmlformats-officedocument.wordprocessingml.document": ".docx",

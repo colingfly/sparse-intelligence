@@ -1,7 +1,7 @@
 """
 services/personality_eval.py -- Personality evaluation for Softmax Gulch agents.
 
-Runs personality test scenarios through Cane's eval engine, scores agents on
+Runs personality test scenarios through Sparse Intelligence's eval engine, scores agents on
 8 dimensions, and maintains a leaderboard. This is the Hospital.
 
 Dimensions: consistency, theory_of_mind, emotional_range, social_awareness,

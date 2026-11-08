@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "cane-ai"
+name = "sparse-intelligence"
 version = "0.1.0"
 description = "Open-source agentic infrastructure. Build, eval, fine-tune, and deploy AI agents."
 readme = "README.md"
@@ -42,7 +42,7 @@ dependencies = [
 
 [project.optional-dependencies]
 all = [
-    "cane-ai[google,audio]",
+    "sparse-intelligence[google,audio]",
 ]
 google = [
     "google-auth>=2.0.0",
@@ -58,13 +58,13 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://cane.fyi"
-Documentation = "https://docs.cane.fyi"
+Homepage = "https://sparseintelligence.ai"
+Documentation = "https://docs.sparseintelligence.ai"
 Repository = "https://github.com/colingfly/cane"
 Issues = "https://github.com/colingfly/cane/issues"
 
 [project.scripts]
-cane = "cane.cli.main:main"
+sparse = "sparse_intelligence.cli.main:main"
 
 [tool.hatch.build.targets.wheel]
-packages = ["cane"]
+packages = ["sparse_intelligence"]

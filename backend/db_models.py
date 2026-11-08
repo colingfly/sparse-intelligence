@@ -1,5 +1,5 @@
 """
-db_models.py — SQLAlchemy ORM models for Cane multi-tenant system.
+db_models.py — SQLAlchemy ORM models for Sparse Intelligence multi-tenant system.
 
 Tenant  →  the company
 User    →  belongs to a tenant, has a role

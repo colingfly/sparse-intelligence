@@ -1,15 +1,15 @@
 """
 softmax/app.py -- Softmax.pro application entry point.
 
-This is how softmax.pro uses the Cane package. It's just a Cane app
+This is how softmax.pro uses the Sparse Intelligence package. It's just a Sparse Intelligence app
 with specific configuration for the hosted platform.
 
 Usage:
     python -m softmax.app
 """
-from cane import Cane
+from sparse_intelligence import SparseClient
 
-app = Cane(
+app = Sparse(
     enable_game=True,
     enable_marketplace=True,
 )

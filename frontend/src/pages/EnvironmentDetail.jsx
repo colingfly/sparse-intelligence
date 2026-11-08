@@ -477,22 +477,22 @@ export default function EnvironmentDetail() {
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
               <div>
                 <div style={{ fontWeight: 700, fontSize: '0.95rem', display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <Globe size={16} style={{ color: 'var(--cane-600)' }} />
+                  <Globe size={16} style={{ color: 'var(--sparse-600)' }} />
                   Agent Target
                 </div>
                 <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: 2 }}>
-                  Evaluate a Cane agent or any external agent via HTTP endpoint.
+                  Evaluate a Sparse Intelligence agent or any external agent via HTTP endpoint.
                 </div>
               </div>
             </div>
 
             <div style={{ display: 'flex', gap: 12, marginBottom: 16 }}>
-              <label style={{ display: 'flex', alignItems: 'center', gap: 6, cursor: 'pointer', padding: '8px 16px', borderRadius: 8, border: targetType === 'internal' ? '2px solid var(--cane-600)' : '1px solid var(--border)', background: targetType === 'internal' ? 'rgba(37, 99, 235, 0.08)' : 'transparent' }}>
+              <label style={{ display: 'flex', alignItems: 'center', gap: 6, cursor: 'pointer', padding: '8px 16px', borderRadius: 8, border: targetType === 'internal' ? '2px solid var(--sparse-600)' : '1px solid var(--border)', background: targetType === 'internal' ? 'rgba(37, 99, 235, 0.08)' : 'transparent' }}>
                 <input type="radio" name="targetType" checked={targetType === 'internal'} onChange={() => setTargetType('internal')} style={{ display: 'none' }} />
                 <Zap size={14} />
-                <span style={{ fontWeight: 600, fontSize: '0.85rem' }}>Cane Agent</span>
+                <span style={{ fontWeight: 600, fontSize: '0.85rem' }}>Sparse Intelligence Agent</span>
               </label>
-              <label style={{ display: 'flex', alignItems: 'center', gap: 6, cursor: 'pointer', padding: '8px 16px', borderRadius: 8, border: targetType === 'external' ? '2px solid var(--cane-600)' : '1px solid var(--border)', background: targetType === 'external' ? 'rgba(37, 99, 235, 0.08)' : 'transparent' }}>
+              <label style={{ display: 'flex', alignItems: 'center', gap: 6, cursor: 'pointer', padding: '8px 16px', borderRadius: 8, border: targetType === 'external' ? '2px solid var(--sparse-600)' : '1px solid var(--border)', background: targetType === 'external' ? 'rgba(37, 99, 235, 0.08)' : 'transparent' }}>
                 <input type="radio" name="targetType" checked={targetType === 'external'} onChange={() => setTargetType('external')} style={{ display: 'none' }} />
                 <Globe size={14} />
                 <span style={{ fontWeight: 600, fontSize: '0.85rem' }}>External Agent (HTTP)</span>
@@ -630,7 +630,7 @@ export default function EnvironmentDetail() {
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
               <div>
                 <div style={{ fontWeight: 700, fontSize: '0.95rem', display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <Bell size={16} style={{ color: 'var(--cane-600)' }} />
+                  <Bell size={16} style={{ color: 'var(--sparse-600)' }} />
                   Webhook Notifications
                 </div>
                 <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: 2 }}>
@@ -738,10 +738,10 @@ export default function EnvironmentDetail() {
 
           {/* Auto-generate panel */}
           {showGenerate && (
-            <div className="card" style={{ marginBottom: 16, borderLeft: '3px solid var(--cane-500)' }}>
+            <div className="card" style={{ marginBottom: 16, borderLeft: '3px solid var(--sparse-500)' }}>
               <div style={{ marginBottom: 16 }}>
                 <div style={{ fontWeight: 700, fontSize: '0.95rem', marginBottom: 4, display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <Wand2 size={16} style={{ color: 'var(--cane-600)' }} />
+                  <Wand2 size={16} style={{ color: 'var(--sparse-600)' }} />
                   Auto-Generate Test Cases
                 </div>
                 <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
@@ -857,7 +857,7 @@ export default function EnvironmentDetail() {
                       <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
                         <span style={{
                           width: 24, height: 24, borderRadius: '50%',
-                          background: 'var(--cane-100)', color: 'var(--cane-600)',
+                          background: 'var(--sparse-100)', color: 'var(--sparse-600)',
                           display: 'flex', alignItems: 'center', justifyContent: 'center',
                           fontSize: '0.7rem', fontWeight: 600, flexShrink: 0,
                         }}>{i + 1}</span>
@@ -871,7 +871,7 @@ export default function EnvironmentDetail() {
                           }}>Expected Answer</div>
                           <div style={{
                             fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.5,
-                            padding: '10px 14px', background: 'var(--cane-50)',
+                            padding: '10px 14px', background: 'var(--sparse-50)',
                             borderRadius: 8, border: '1px solid var(--border)',
                           }}>{tc.expected_answer}</div>
                         </div>
@@ -1036,13 +1036,13 @@ export default function EnvironmentDetail() {
               position: 'relative', overflow: 'hidden',
             }}>
               <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: 'rgba(255,255,255,0.15)' }} />
-              <div className="spinner" style={{ margin: '0 auto 12px', width: 24, height: 24, borderColor: 'var(--cane-800)', borderTopColor: 'var(--accent)' }} />
+              <div className="spinner" style={{ margin: '0 auto 12px', width: 24, height: 24, borderColor: 'var(--sparse-800)', borderTopColor: 'var(--accent)' }} />
               <div style={{ fontWeight: 700, marginBottom: 4, color: 'var(--text-inverse)' }}>Evaluation running...</div>
-              <div style={{ fontSize: '0.78rem', color: 'var(--cane-700)', marginBottom: 8 }}>
+              <div style={{ fontSize: '0.78rem', color: 'var(--sparse-700)', marginBottom: 8 }}>
                 {runDetail?.results?.length || 0} / {env.test_cases?.length || 0} test cases complete
               </div>
               {env.test_cases?.length > 0 && (
-                <div style={{ width: '60%', margin: '0 auto', height: 4, background: 'var(--cane-800)', borderRadius: 2, overflow: 'hidden' }}>
+                <div style={{ width: '60%', margin: '0 auto', height: 4, background: 'var(--sparse-800)', borderRadius: 2, overflow: 'hidden' }}>
                   <div style={{
                     width: `${((runDetail?.results?.length || 0) / env.test_cases.length) * 100}%`,
                     height: '100%', background: 'var(--accent)', borderRadius: 2,
@@ -1099,14 +1099,14 @@ export default function EnvironmentDetail() {
                     minWidth: 160, position: 'relative',
                   }}>
                     <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: 'rgba(255,255,255,0.15)' }} />
-                    <div style={{ fontSize: '0.58rem', color: 'var(--cane-700)', fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 10 }}>
+                    <div style={{ fontSize: '0.58rem', color: 'var(--sparse-700)', fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 10 }}>
                       Overall Score
                     </div>
                     <div style={{ display: 'flex', alignItems: 'baseline', gap: 4 }}>
                       <span style={{ fontFamily: 'var(--font-display)', fontSize: '2.6rem', fontWeight: 800, color: 'var(--text-inverse)', lineHeight: 1, letterSpacing: '-0.04em' }}>
                         {Math.round(runDetail.overall_score || 0)}
                       </span>
-                      <span style={{ fontSize: '0.85rem', color: 'var(--cane-700)' }}>/100</span>
+                      <span style={{ fontSize: '0.85rem', color: 'var(--sparse-700)' }}>/100</span>
                     </div>
                   </div>
                   {/* Stats inline */}
@@ -2153,7 +2153,7 @@ export default function EnvironmentDetail() {
             <h3 style={{ margin: '0 0 12px', fontSize: 16 }}>How Eval Scheduling Works</h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8, fontSize: 13, color: 'var(--text-secondary)' }}>
               <div style={{ display: 'flex', gap: 8 }}><span style={{ color: '#3b82f6', fontWeight: 700 }}>1.</span> Set a schedule (daily at a specific time, or every N hours)</div>
-              <div style={{ display: 'flex', gap: 8 }}><span style={{ color: '#3b82f6', fontWeight: 700 }}>2.</span> Cane automatically runs your full eval suite against your agent</div>
+              <div style={{ display: 'flex', gap: 8 }}><span style={{ color: '#3b82f6', fontWeight: 700 }}>2.</span> Sparse Intelligence automatically runs your full eval suite against your agent</div>
               <div style={{ display: 'flex', gap: 8 }}><span style={{ color: '#3b82f6', fontWeight: 700 }}>3.</span> If scores regress, your webhook fires with the details</div>
               <div style={{ display: 'flex', gap: 8 }}><span style={{ color: '#3b82f6', fontWeight: 700 }}>4.</span> Optionally auto-mine failures and generate training data</div>
               <div style={{ display: 'flex', gap: 8 }}><span style={{ color: '#3b82f6', fontWeight: 700 }}>5.</span> Check the Results tab for all scheduled run history</div>

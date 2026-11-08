@@ -560,8 +560,8 @@ def clone_listing(
             from tool_models import AgentTool
             for t in tools_data:
                 tool_url = t.get("url", "")
-                # Platform tools (cane.fyi) are safe to pre-fill
-                is_platform = tool_url.startswith("https://cane.fyi/api/")
+                # Platform tools (sparseintelligence.ai) are safe to pre-fill
+                is_platform = tool_url.startswith("https://sparseintelligence.ai/api/")
                 new_tool = AgentTool(
                     workspace_id=new_ws.id,
                     tenant_id=tenant_id,

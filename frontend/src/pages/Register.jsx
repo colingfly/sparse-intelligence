@@ -37,14 +37,14 @@ export default function Register() {
           borderRadius: 16, padding: 40,
         }}>
           <div className="login-brand">
-            <h1>Cane</h1>
+            <h1>Sparse Intelligence</h1>
             <p>Create your account</p>
             <Link to="/guide" style={{
-              color: 'var(--cane-500)', fontSize: '0.78rem', fontWeight: 500,
+              color: 'var(--sparse-500)', fontSize: '0.78rem', fontWeight: 500,
               textDecoration: 'underline', textDecorationColor: 'rgba(255,255,255,0.1)',
               textUnderlineOffset: 3,
             }}>
-              What is Cane? →
+              What is Sparse Intelligence? →
             </Link>
           </div>
 

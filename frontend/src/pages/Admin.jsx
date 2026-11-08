@@ -292,7 +292,7 @@ function TenantDetail({ detail, selectedTenant, editingTenant, tenantName, tenan
                 display: 'flex',
                 justifyContent: 'space-between',
                 padding: '8px 12px',
-                background: 'var(--cane-50)',
+                background: 'var(--sparse-50)',
                 borderRadius: 'var(--radius-sm)',
                 fontSize: '0.875rem',
               }}>
@@ -319,7 +319,7 @@ function TenantDetail({ detail, selectedTenant, editingTenant, tenantName, tenan
             justifyContent: 'space-between',
             alignItems: 'center',
             padding: '10px 0',
-            borderBottom: i < detail.users.length - 1 ? '1px solid var(--cane-100)' : 'none',
+            borderBottom: i < detail.users.length - 1 ? '1px solid var(--sparse-100)' : 'none',
             fontSize: '0.875rem',
           }}>
             {editingUser === u.id ? (
@@ -386,7 +386,7 @@ function TenantDetail({ detail, selectedTenant, editingTenant, tenantName, tenan
             display: 'flex',
             justifyContent: 'space-between',
             padding: '8px 0',
-            borderBottom: i < detail.documents.length - 1 ? '1px solid var(--cane-100)' : 'none',
+            borderBottom: i < detail.documents.length - 1 ? '1px solid var(--sparse-100)' : 'none',
             fontSize: '0.875rem',
           }}>
             <span className="filename">{d.filename}</span>

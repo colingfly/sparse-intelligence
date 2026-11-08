@@ -33,8 +33,8 @@ def compute_badge_level(score) -> str:
 
 
 BADGE_COLORS = {
-    "verified": {"bg": "#22c55e", "label": "Cane Verified"},
-    "tested": {"bg": "#eab308", "label": "Cane Tested"},
+    "verified": {"bg": "#22c55e", "label": "Sparse Intelligence Verified"},
+    "tested": {"bg": "#eab308", "label": "Sparse Intelligence Tested"},
     "unverified": {"bg": "#6b7280", "label": "Unverified"},
 }
 

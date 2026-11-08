@@ -3,9 +3,9 @@ auto_seed.py — Automatic database initialization for production.
 
 Called on startup. Creates tables and admin account if they don't exist.
 Uses environment variables:
-  CANE_ADMIN_EMAIL
-  CANE_ADMIN_PASSWORD
-  CANE_ADMIN_NAME
+  SPARSE_ADMIN_EMAIL
+  SPARSE_ADMIN_PASSWORD
+  SPARSE_ADMIN_NAME
 """
 import os
 import sys
@@ -58,16 +58,16 @@ def auto_seed():
             return
 
         # Create admin from env vars
-        email = os.getenv("CANE_ADMIN_EMAIL", "")
-        password = os.getenv("CANE_ADMIN_PASSWORD", "")
-        name = os.getenv("CANE_ADMIN_NAME", "Admin")
+        email = os.getenv("SPARSE_ADMIN_EMAIL", "")
+        password = os.getenv("SPARSE_ADMIN_PASSWORD", "")
+        name = os.getenv("SPARSE_ADMIN_NAME", "Admin")
 
         if not email or not password:
-            print("[AutoSeed]  No admin account and CANE_ADMIN_EMAIL/PASSWORD not set. Skipping.")
+            print("[AutoSeed]  No admin account and SPARSE_ADMIN_EMAIL/PASSWORD not set. Skipping.")
             return
 
         # Create platform tenant
-        platform_tenant = Tenant(name="Cane Platform", slug="cane-platform")
+        platform_tenant = Tenant(name="Sparse Intelligence Platform", slug="cane-platform")
         db.add(platform_tenant)
         db.flush()
 

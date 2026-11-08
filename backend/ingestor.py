@@ -1,7 +1,7 @@
 """
 ingestor.py — Indexes ExtractionResults into ChromaDB.
 
-Cane multi-tenant version:
+Sparse Intelligence multi-tenant version:
   - Every chunk gets tenant_id, workspace_id, document_id in metadata
   - Enrichment headers use company/workspace context instead of class/professor
   - Quality filter catches junk before it hits the DB

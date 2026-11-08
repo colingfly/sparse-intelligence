@@ -123,7 +123,7 @@ async def book_meeting(request: Request):
     Body:
       {
         "attendee": "visitor@example.com",
-        "title": "Cane Demo Call",
+        "title": "Sparse Intelligence Demo Call",
         "date": "2025-03-15" or "tomorrow" or "March 15, 2025",
         "time": "2:30 PM" or "14:30",
         "duration": 30,  (minutes, default 30)
@@ -157,7 +157,7 @@ async def book_meeting(request: Request):
     # Build event payload
     event = {
         "summary": title,
-        "description": description or f"Booked by Cane AI agent",
+        "description": description or f"Booked by Sparse Intelligence AI agent",
         "start": {
             "dateTime": start_dt.strftime("%Y-%m-%dT%H:%M:%S"),
             "timeZone": timezone,

@@ -1,7 +1,7 @@
 """
 llm_reranker.py
 
-Two-tier reranking for Cane search results:
+Two-tier reranking for Sparse Intelligence search results:
 
 Tier 1 - Cross-Encoder (fast, local, no API key needed):
     Uses a lightweight cross-encoder model to rescore query-chunk pairs.

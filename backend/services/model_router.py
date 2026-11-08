@@ -204,7 +204,7 @@ def _call_openrouter(
     headers = {
         "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json",
-        "HTTP-Referer": "https://cane.fyi",
+        "HTTP-Referer": "https://sparseintelligence.ai",
         "X-Title": "Softmax Gulch",
     }
 

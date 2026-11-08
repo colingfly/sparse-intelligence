@@ -221,7 +221,7 @@ async def v1_register_agent(
     api_key: ApiKey = Depends(get_api_key_auth),
     db: Session = Depends(get_db),
 ):
-    """Register an external agent into the Cane network."""
+    """Register an external agent into the Sparse Intelligence network."""
     try:
         body = await request.json()
     except Exception:

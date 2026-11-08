@@ -1,17 +1,17 @@
-# Cane
+# Sparse Intelligence
 
 Open-source agentic infrastructure. Build, eval, fine-tune, and deploy AI agents.
 
 ```
-pip install cane-ai
+pip install sparse-intelligence
 ```
 
 ## Quickstart
 
 ```python
-from cane import Cane
+from sparse_intelligence import SparseClient
 
-app = Cane()
+app = Sparse()
 
 agent = app.agents.create(
     name="Dusty",
@@ -32,28 +32,28 @@ app.serve(port=8000)
 
 ```bash
 # Core
-pip install cane-ai
+pip install sparse-intelligence
 
 # With Google integrations (Drive, Sheets, Calendar)
-pip install cane-ai[google]
+pip install sparse-intelligence[google]
 
 # With audio transcription (Whisper)
-pip install cane-ai[audio]
+pip install sparse-intelligence[audio]
 
 # Everything
-pip install cane-ai[all]
+pip install sparse-intelligence[all]
 ```
 
 ## CLI
 
 ```bash
-cane init                  # Create .env template and data directory
-cane serve                 # Start API server on :8000
-cane serve --port 3000     # Custom port
-cane dev                   # Dev mode with auto-reload
-cane agent-create --name "Dusty" --personality "A retired gunslinger"
-cane agent-list            # List all agents
-cane eval Dusty --suite basic_personality
+sparse init                  # Create .env template and data directory
+sparse serve                 # Start API server on :8000
+sparse serve --port 3000     # Custom port
+sparse dev                   # Dev mode with auto-reload
+sparse agent-create --name "Dusty" --personality "A retired gunslinger"
+sparse agent-list            # List all agents
+sparse eval Dusty --suite basic_personality
 ```
 
 ## What You Get
@@ -84,12 +84,12 @@ cane eval Dusty --suite basic_personality
 | Database | MySQL via SQLAlchemy |
 | Vector store | ChromaDB (BGE-base-en-v1.5 text, CLIP ViT-B/32 images) |
 | LLM | Anthropic Claude, OpenAI, OpenRouter (open source) |
-| Deployment | Docker, Railway, or `cane serve` |
+| Deployment | Docker, Railway, or `sparse serve` |
 
 ## Package Structure
 
 ```
-cane/
+sparse_intelligence/
   core/          Config, database, models, migrations, security
   agents/        Memory, streaming, prompts, scheduling, conversations
   rag/           Ingestor, chunker, search, reranker, chroma, context
@@ -107,9 +107,9 @@ cane/
 ### Agent with Memory
 
 ```python
-from cane import Cane
+from sparse_intelligence import SparseClient
 
-app = Cane()
+app = Sparse()
 agent = app.agents.create(name="Dusty", personality="...")
 
 conversation = agent.conversation()
@@ -151,9 +151,9 @@ print(f"Before: {results['grade']} -> After: {new_results['grade']}")
 ### Full Server
 
 ```python
-from cane import Cane
+from sparse_intelligence import SparseClient
 
-app = Cane(
+app = Sparse(
     database_url="mysql+pymysql://user:pass@localhost/cane",
     chroma_path="/data/chroma",
     secret_key="your-jwt-secret",
@@ -172,15 +172,15 @@ app.serve(host="0.0.0.0", port=8000)
 | ANTHROPIC_API_KEY | (required) | Claude API |
 | OPENROUTER_API_KEY | (optional) | Open source models |
 | OPENAI_API_KEY | (optional) | Fine-tuning + deployed models |
-| CANE_DB_USER | root | MySQL user |
-| CANE_DB_PASSWORD | (empty) | MySQL password |
-| CANE_DB_HOST | localhost | MySQL host |
-| CANE_DB_PORT | 3306 | MySQL port |
-| CANE_DB_NAME | cane | MySQL database |
-| CANE_SECRET_KEY | (generated) | JWT signing key |
-| CANE_CLAUDE_MODEL | claude-haiku-4-5-20251001 | Default agent model |
-| CANE_BASE_DIR | /data/cane | Data storage root |
-| CANE_ENV | development | "production" for deployed environments |
+| SPARSE_DB_USER | root | MySQL user |
+| SPARSE_DB_PASSWORD | (empty) | MySQL password |
+| SPARSE_DB_HOST | localhost | MySQL host |
+| SPARSE_DB_PORT | 3306 | MySQL port |
+| SPARSE_DB_NAME | cane | MySQL database |
+| SPARSE_SECRET_KEY | (generated) | JWT signing key |
+| SPARSE_CLAUDE_MODEL | claude-haiku-4-5-20251001 | Default agent model |
+| SPARSE_BASE_DIR | /data/cane | Data storage root |
+| SPARSE_ENV | development | "production" for deployed environments |
 | PORT | 8000 | Server port |
 
 ## Model Router

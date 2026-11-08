@@ -1,14 +1,14 @@
 """
 Custom RAG example.
 
-Use Cane's RAG pipeline directly without the agent wrapper.
+Use Sparse Intelligence's RAG pipeline directly without the agent wrapper.
 """
-from cane import Cane
+from sparse_intelligence import SparseClient
 
-app = Cane()
+app = Sparse()
 
 # Use the RAG pipeline directly
-from cane.rag.context import build_context, build_system_prompt, call_claude
+from sparse_intelligence.rag.context import build_context, build_system_prompt, call_claude
 
 # Build context from a workspace's documents
 ctx = build_context(

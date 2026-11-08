@@ -3,9 +3,9 @@ Eval pipeline example.
 
 Run personality eval on an agent and check the results.
 """
-from cane import Cane
+from sparse_intelligence import SparseClient
 
-app = Cane()
+app = Sparse()
 agent = app.agents.get("Dusty")
 
 # Run personality eval

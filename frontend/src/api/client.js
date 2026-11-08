@@ -5,38 +5,38 @@
 const API_BASE = '/api'
 
 export function getToken() {
-  return localStorage.getItem('cane_token')
+  return localStorage.getItem('sparse_token')
 }
 
 export function setToken(token) {
   if (token) {
-    localStorage.setItem('cane_token', token)
+    localStorage.setItem('sparse_token', token)
   } else {
-    localStorage.removeItem('cane_token')
+    localStorage.removeItem('sparse_token')
   }
 }
 
 // Guest session management
 export function getGuestSession() {
-  let session = localStorage.getItem('cane_guest_session')
+  let session = localStorage.getItem('sparse_guest_session')
   if (!session) {
     session = crypto.randomUUID()
-    localStorage.setItem('cane_guest_session', session)
+    localStorage.setItem('sparse_guest_session', session)
   }
   return session
 }
 
 export function clearGuestSession() {
-  localStorage.removeItem('cane_guest_session')
-  localStorage.removeItem('cane_guest_agent_id')
+  localStorage.removeItem('sparse_guest_session')
+  localStorage.removeItem('sparse_guest_agent_id')
 }
 
 export function getGuestAgentId() {
-  return localStorage.getItem('cane_guest_agent_id')
+  return localStorage.getItem('sparse_guest_agent_id')
 }
 
 export function setGuestAgentId(id) {
-  localStorage.setItem('cane_guest_agent_id', id)
+  localStorage.setItem('sparse_guest_agent_id', id)
 }
 
 async function request(path, options = {}) {
@@ -87,7 +87,7 @@ export async function register(email, password, name = '', companyName = '') {
   form.append('name', name)
   form.append('company_name', companyName)
   // Include guest session for migration
-  const guestSession = localStorage.getItem('cane_guest_session')
+  const guestSession = localStorage.getItem('sparse_guest_session')
   if (guestSession) form.append('guest_session_id', guestSession)
   const result = await request('/auth/register', { method: 'POST', body: form })
   // Clear guest data after successful registration

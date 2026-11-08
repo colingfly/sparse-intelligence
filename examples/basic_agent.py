@@ -3,9 +3,9 @@ Basic agent example.
 
 Create an agent, ingest documents, and ask questions.
 """
-from cane import Cane
+from sparse_intelligence import SparseClient
 
-app = Cane()
+app = Sparse()
 
 # Create an agent
 agent = app.agents.create(

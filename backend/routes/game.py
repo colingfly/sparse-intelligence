@@ -1,9 +1,9 @@
 """
 routes/game.py — Softmax Gulch game-specific endpoints.
 
-Mounted at /api/game/. These sit alongside Cane's existing routers.
+Mounted at /api/game/. These sit alongside Sparse Intelligence's existing routers.
 They manage game-world state (positions, conversations, relationships, events)
-while relying on Cane's existing workspace/agent system for everything else.
+while relying on Sparse Intelligence's existing workspace/agent system for everything else.
 """
 from typing import Optional, List
 from datetime import datetime
@@ -184,7 +184,7 @@ def get_game_agents(
             db.flush()
 
         result.append({
-            # Cane workspace data
+            # Sparse Intelligence workspace data
             "workspace_id": ws.id,
             "name": ws.name,
             "description": ws.description,

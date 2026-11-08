@@ -41,7 +41,7 @@ export default function Demo() {
   const [widgetColor, setWidgetColor] = useState('#ffffff')
   const [widgetGreeting, setWidgetGreeting] = useState('Hi! Ask me anything.')
   const [widgetPosition, setWidgetPosition] = useState('right')
-  const [widgetSubtitle, setWidgetSubtitle] = useState('Powered by Cane')
+  const [widgetSubtitle, setWidgetSubtitle] = useState('Powered by Sparse Intelligence')
 
   // Deploy
   const [copied, setCopied] = useState(false)
@@ -752,7 +752,7 @@ export default function Demo() {
                 type="text"
                 value={widgetSubtitle}
                 onChange={e => setWidgetSubtitle(e.target.value)}
-                placeholder="Powered by Cane"
+                placeholder="Powered by Sparse Intelligence"
                 style={{
                   width: '100%', padding: '6px 10px', background: 'var(--paper)',
                   border: '1px solid var(--rule)', borderRadius: 6, color: 'var(--text)',

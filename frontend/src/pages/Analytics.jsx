@@ -106,7 +106,7 @@ export default function Analytics() {
       {/* Stats row */}
       <div style={{ display: 'flex', gap: 12, marginBottom: 24, flexWrap: 'wrap' }}>
         <StatCard icon={MessageSquare} label="Conversations" value={total} color="var(--accent)" />
-        <StatCard icon={Clock} label="Avg Response" value={d.avg_response_ms ? `${(d.avg_response_ms / 1000).toFixed(1)}s` : '--'} color="var(--cane-600)" />
+        <StatCard icon={Clock} label="Avg Response" value={d.avg_response_ms ? `${(d.avg_response_ms / 1000).toFixed(1)}s` : '--'} color="var(--sparse-600)" />
         <StatCard
           icon={ThumbsUp} label="Satisfaction"
           value={satisfactionPct !== null ? `${satisfactionPct}%` : '--'}
@@ -140,7 +140,7 @@ export default function Analytics() {
                 <div key={ch} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <span style={{
                     fontSize: '0.8rem', fontWeight: 600, textTransform: 'capitalize',
-                    padding: '2px 10px', borderRadius: 4, background: 'var(--cane-100)',
+                    padding: '2px 10px', borderRadius: 4, background: 'var(--sparse-100)',
                   }}>{ch}</span>
                   <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.82rem', fontWeight: 700 }}>{count}</span>
                 </div>
@@ -195,8 +195,8 @@ export default function Analytics() {
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 4, flexShrink: 0 }}>
                     <span style={{
                       fontSize: '0.6rem', fontWeight: 600, padding: '1px 6px', borderRadius: 4,
-                      background: q.channel === 'widget' ? 'rgba(74,222,128,0.1)' : q.channel === 'api' ? 'rgba(147,197,253,0.1)' : 'var(--cane-100)',
-                      color: q.channel === 'widget' ? 'var(--success)' : q.channel === 'api' ? '#93c5fd' : 'var(--cane-700)',
+                      background: q.channel === 'widget' ? 'rgba(74,222,128,0.1)' : q.channel === 'api' ? 'rgba(147,197,253,0.1)' : 'var(--sparse-100)',
+                      color: q.channel === 'widget' ? 'var(--success)' : q.channel === 'api' ? '#93c5fd' : 'var(--sparse-700)',
                       textTransform: 'uppercase',
                     }}>{q.channel}</span>
                     {q.response_time_ms && (
