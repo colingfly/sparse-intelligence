@@ -81,12 +81,12 @@ const GLYPHS = {
 }
 
 const SERVICES = [
-  { glyph: 'audit', title: 'AI opportunity audit', body: 'We map how your business runs and identify where AI actually saves time or money. You get a prioritized plan with cost and effort estimates, not a pitch deck.' },
-  { glyph: 'docs', title: 'Document intelligence', body: 'Ask questions across your contracts, SOPs, invoices, and records. Answers cite their sources so your team can verify instead of guessing.' },
-  { glyph: 'flow', title: 'Workflow automation', body: 'Intake, scheduling, follow-ups, reporting. We automate the recurring work your team does by hand, and leave humans in the loop where it matters.' },
-  { glyph: 'chat', title: 'Customer-facing assistants', body: 'Chat on your website that answers from your real business information, in your voice, with limits on what it is allowed to say.' },
-  { glyph: 'measure', title: 'Measurement and reliability', body: 'Everything we ship is tested and scored before it touches a customer. You see the accuracy numbers and decide what is good enough.' },
-  { glyph: 'train', title: 'Team training', body: 'We train your staff to use AI tools well: what to trust, what to check, and how to get consistent results day to day.' },
+  { glyph: 'audit', title: 'Operational assessment', body: 'We interview your team, map the workflows that consume the most hours, and write up where AI can help and where it cannot. The report covers expected time savings, build costs, and a recommended order of work. This is usually the first engagement, and it stands on its own whether or not you continue with us.' },
+  { glyph: 'docs', title: 'Document search and answers', body: 'We index your contracts, policies, project records, and correspondence so your team can ask questions in plain language and get answers with citations to the source documents. This is the same retrieval technology our published research covers, applied to your files.' },
+  { glyph: 'flow', title: 'Workflow automation', body: 'Email intake, data entry between systems that do not talk to each other, scheduling, and recurring reports. We automate the repetitive steps and route anything ambiguous to a person for review.' },
+  { glyph: 'chat', title: 'Customer-facing assistants', body: 'A chat assistant on your website that answers questions from your documentation, states what it does not know, and hands the conversation to your staff when it reaches the edge of its scope.' },
+  { glyph: 'measure', title: 'Evaluation of existing systems', body: 'If a vendor or an internal team has already built you an AI system, we measure how well it performs. We assemble a test set from your historical cases, run the system against it, and give you a written report of the results.' },
+  { glyph: 'train', title: 'Staff training', body: 'Working sessions with your team on using AI tools in daily work: which tasks they are suited to, how to check their output, and how to write instructions that produce consistent results.' },
 ]
 
 export default function Landing() {
@@ -113,34 +113,36 @@ export default function Landing() {
           <Lockup height={40} />
         </Link>
         <div className="lp-nav-links">
-          <a href="#services">services</a>
-          <a href="#process">process</a>
-          <a href="#about">about</a>
-          <a href="#contact">contact</a>
-          <Link to="/login" className="lp-nav-cta">client sign in</Link>
+          <a href="#services">Services</a>
+          <a href="#process">Process</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+          <Link to="/login" className="lp-nav-cta">Client sign in</Link>
         </div>
       </nav>
 
       <section className="lp-hero">
         <div className="lp-hero-grid">
           <div className="lp-hero-copy">
-            <div className="lp-kicker lp-reveal"><span className="lp-node lp-node-blue" />ai consultancy for small business</div>
+            <div className="lp-kicker lp-reveal"><span className="lp-node lp-node-blue" />Sparse Intelligence</div>
             <h1 className="lp-reveal">
-              A few well-chosen<br />systems. <span className="lp-blue">Measured.</span><br />Nothing else.
+              AI consulting for small and mid-sized businesses.
             </h1>
             <p className="lp-hero-sub lp-reveal">
-              Most businesses do not need an AI transformation. They need sparse AI:
-              the two or three places where it genuinely saves hours, built properly,
-              with accuracy you can see before it touches a customer.
+              We build AI systems for companies that have a specific problem to
+              solve: finding answers inside large sets of documents, automating
+              repetitive office work, and handling routine customer questions.
+              Everything we build is tested against your historical cases, and
+              you see the accuracy figures before anything goes live.
             </p>
             <div className="lp-hero-actions lp-reveal">
               <a href="mailto:hello@sparseintelligence.ai?subject=Consultation%20request" className="lp-btn-fill">
-                Book a free consultation
+                Start a conversation
               </a>
-              <a href="#services" className="lp-btn-ghost">What we do</a>
+              <a href="#services" className="lp-btn-ghost">Services</a>
             </div>
             <p className="lp-hero-note lp-reveal">
-              30 minutes, no cost. If AI is not worth it for your business, we say so.
+              The first conversation is free and takes about half an hour.
             </p>
           </div>
           <div className="lp-hero-mark lp-reveal">
@@ -157,10 +159,10 @@ export default function Landing() {
         <div className="lp-section-inner">
           <div className="lp-section-head lp-reveal">
             <span className="lp-index">01</span>
-            <h2>what we do</h2>
+            <h2>Services</h2>
           </div>
           <p className="lp-section-sub lp-reveal">
-            Every engagement starts with your operations, not with a tool we want to sell.
+            Most engagements fall into one of six categories.
           </p>
           <div className="lp-cards">
             {SERVICES.map(s => (
@@ -178,27 +180,27 @@ export default function Landing() {
         <div className="lp-section-inner">
           <div className="lp-section-head lp-reveal">
             <span className="lp-index lp-index-dark">02</span>
-            <h2>how an engagement works</h2>
+            <h2>How an engagement works</h2>
           </div>
           <div className="lp-timeline lp-reveal" aria-hidden="true">
             <span className="lp-tl-node lp-tl-blue" /><span className="lp-tl-line" /><span className="lp-tl-node" /><span className="lp-tl-line" /><span className="lp-tl-node" />
           </div>
           <div className="lp-steps">
             <div className="lp-step lp-reveal">
-              <h3><span className="lp-step-k">discovery</span></h3>
-              <p>Free, 30 minutes. We learn how your business runs and tell you where AI fits. If it does not fit, we say so.</p>
+              <h3><span className="lp-step-k">Initial conversation</span></h3>
+              <p>A call of about thirty minutes, at no cost. We ask how the business runs, where the hours go, and what you have already tried. If the problem is not a good fit for AI, we tell you that on the call.</p>
             </div>
             <div className="lp-step lp-reveal">
-              <h3><span className="lp-step-k">pilot</span></h3>
-              <p>One workflow, two to four weeks, fixed price. We build it, test it against your real cases, and show you the numbers.</p>
+              <h3><span className="lp-step-k">Pilot project</span></h3>
+              <p>A fixed-price build of one system, usually over two to four weeks. We agree on what success looks like in numbers before starting, build against your historical cases, and present the measured results at the end.</p>
             </div>
             <div className="lp-step lp-reveal">
-              <h3><span className="lp-step-k">scale</span></h3>
-              <p>What works gets rolled out and maintained. What does not gets cut. You keep ownership of your data and systems either way.</p>
+              <h3><span className="lp-step-k">Rollout and support</span></h3>
+              <p>Systems that meet their targets go into daily use. We handle hosting, monitoring, and changes as your business changes, and your data remains yours throughout.</p>
             </div>
           </div>
           <div className="lp-dark-foot lp-reveal">
-            <p>Every pilot ends with an evaluation report: accuracy against your real cases, measured on the same open-source tooling we publish.</p>
+            <p>Every pilot ends with a written evaluation report based on your own historical cases. The tooling that produces these reports is open source and publicly available.</p>
           </div>
         </div>
       </section>
@@ -207,35 +209,35 @@ export default function Landing() {
         <div className="lp-section-inner">
           <div className="lp-section-head lp-reveal">
             <span className="lp-index">03</span>
-            <h2>why sparse intelligence</h2>
+            <h2>About Sparse Intelligence</h2>
           </div>
           <div className="lp-about-grid">
             <div className="lp-about-item lp-reveal">
               <span className="lp-node lp-node-blue" />
               <div>
-                <h3>We build on our own platform</h3>
-                <p>The document search, agents, and evaluation systems we deploy for clients run on infrastructure we built and operate ourselves. We are not reselling someone else's product with a markup.</p>
+                <h3>The platform</h3>
+                <p>Client systems run on software we built and operate ourselves: document ingestion, retrieval, agents, and an evaluation pipeline. When something needs to change, the people who wrote the code make the change.</p>
               </div>
             </div>
             <div className="lp-about-item lp-reveal">
               <span className="lp-node" />
               <div>
-                <h3>Measured, not promised</h3>
-                <p>Our evaluation pipeline scores every system against real examples from your business before launch. Accuracy is a number you see, not an adjective in a proposal.</p>
+                <h3>The research</h3>
+                <p>Sparse Intelligence began as research at the Frost Institute for Data Science and Computing at the University of Miami. That work, on diagnosing why retrieval systems fail, was published at an ICLR workshop and is the basis for how we test what we build.</p>
               </div>
             </div>
             <div className="lp-about-item lp-reveal">
               <span className="lp-node" />
               <div>
-                <h3>Research background</h3>
-                <p>Founded by Colin Gibbons-Fly as a spinout of research at the Frost Institute for Data Science and Computing, including published work on diagnosing failures in retrieval systems.</p>
+                <h3>Who does the work</h3>
+                <p>Engagements are led by Colin Gibbons-Fly, who founded the company after technical roles at Plaid, YouGov, and CSAA Insurance, where he deployed language-model systems for automated claims review.</p>
               </div>
             </div>
             <div className="lp-about-item lp-reveal">
               <span className="lp-node" />
               <div>
-                <h3>Built for smaller teams</h3>
-                <p>You do not need a data team or an enterprise budget. Pilots are fixed price, scoped to one workflow, and designed to pay for themselves.</p>
+                <h3>Pricing</h3>
+                <p>Assessments and pilots are fixed price, agreed before work starts. Ongoing systems are a monthly fee that covers hosting, monitoring, and changes. There are no open-ended retainers.</p>
               </div>
             </div>
           </div>
@@ -245,8 +247,8 @@ export default function Landing() {
       <section className="lp-contact" id="contact">
         <div className="lp-contact-inner lp-reveal">
           <Mark size={120} />
-          <h2>Tell us what eats your team's time.</h2>
-          <p>We will tell you whether AI can fix it, and what it would cost to find out for sure.</p>
+          <h2>Get in touch</h2>
+          <p>Write to us with a short description of the work that takes up your team's time. We usually reply within one business day, and the first conversation costs nothing.</p>
           <a href="mailto:hello@sparseintelligence.ai?subject=Consultation%20request" className="lp-btn-fill lp-btn-big">
             hello@sparseintelligence.ai
           </a>
@@ -257,10 +259,10 @@ export default function Landing() {
         <div className="lp-footer-inner">
           <Lockup ink="#F4F2EB" sub="#8a887f" dot="#3a3a37" height={46} />
           <div className="lp-footer-links">
-            <a href="#services">services</a>
-            <a href="#process">process</a>
-            <a href="#contact">contact</a>
-            <Link to="/login">client sign in</Link>
+            <a href="#services">Services</a>
+            <a href="#process">Process</a>
+            <a href="#contact">Contact</a>
+            <Link to="/login">Client sign in</Link>
           </div>
           <p>&copy; 2026 Sparse Intelligence LLC</p>
         </div>
@@ -321,7 +323,7 @@ const landingStyles = `
   .lp-kicker {
     display: inline-flex; align-items: center; gap: 10px;
     font-family: 'Outfit', sans-serif; font-weight: 600;
-    font-size: 0.85rem; letter-spacing: 0.22em; text-transform: lowercase;
+    font-size: 0.85rem; letter-spacing: 0.22em;
     color: var(--ink-soft);
     border: 1px solid var(--cream-deep); border-radius: 999px;
     background: var(--card);
