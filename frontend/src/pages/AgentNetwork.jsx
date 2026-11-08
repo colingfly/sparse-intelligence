@@ -173,7 +173,7 @@ export default function AgentNetwork() {
         <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem', marginBottom: 20 }}>
           Create agents and link them together to see your agent network.
         </p>
-        <Link to="/" className="btn" style={{ fontSize: '0.8125rem' }}>Create an Agent</Link>
+        <Link to="/app" className="btn" style={{ fontSize: '0.8125rem' }}>Create an Agent</Link>
       </div>
     )
   }

@@ -35,7 +35,7 @@ function ProtectedRoute({ children }) {
 function AdminRoute({ children }) {
   const { isAdmin, loading } = useAuth()
   if (loading) return <div className="loading-center"><div className="spinner" /></div>
-  if (!isAdmin) return <Navigate to="/" replace />
+  if (!isAdmin) return <Navigate to="/app" replace />
   return children
 }
 
@@ -49,15 +49,18 @@ export default function App() {
   return (
     <Routes>
       <Route path="/login" element={
-        user ? <Navigate to="/" replace /> : <Login />
+        user ? <Navigate to="/app" replace /> : <Login />
       } />
 
       <Route path="/register" element={
-        user ? <Navigate to="/" replace /> : <Register />
+        user ? <Navigate to="/app" replace /> : <Register />
       } />
 
+      {/* Marketing site */}
+      <Route path="/" element={<Landing />} />
+
       {/* Open routes: accessible to everyone (with Layout) */}
-      <Route path="/" element={
+      <Route path="/app" element={
         <Layout><AgentBuilder /></Layout>
       } />
 

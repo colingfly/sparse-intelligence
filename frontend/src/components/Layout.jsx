@@ -16,7 +16,7 @@ export default function Layout({ children }) {
         </div>
 
         <nav className="sidebar-nav">
-          <NavLink to="/" end>
+          <NavLink to="/app" end>
             <Bot />
             Agent Builder
           </NavLink>
