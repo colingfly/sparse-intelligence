@@ -153,7 +153,7 @@ export default function MarketplaceDetail() {
       }}>
         <div style={{
           width: 56, height: 56, borderRadius: 14,
-          background: 'rgba(255,255,255,0.1)', color: 'var(--cane-400)',
+          background: 'rgba(255,255,255,0.1)', color: 'var(--sparse-400)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           fontFamily: 'var(--font-display)', fontWeight: 700,
           fontSize: '1.1rem', flexShrink: 0,
@@ -278,7 +278,7 @@ export default function MarketplaceDetail() {
                 letterSpacing: '0.04em', fontFamily: 'var(--font-mono)',
               }}>
                 <Shield size={10} />
-                {listing.badge_level === 'verified' ? 'Cane Verified' : 'Cane Tested'}
+                {listing.badge_level === 'verified' ? 'Sparse Intelligence Verified' : 'Sparse Intelligence Tested'}
               </span>
             )}
             <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginLeft: 'auto' }}>
@@ -487,7 +487,7 @@ export default function MarketplaceDetail() {
                   borderBottom: i < listing.tools.length - 1 ? '1px solid var(--rule-light)' : 'none',
                 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                    <Zap size={13} style={{ color: 'var(--cane-600)', flexShrink: 0 }} />
+                    <Zap size={13} style={{ color: 'var(--sparse-600)', flexShrink: 0 }} />
                     <div style={{ flex: 1 }}>
                       <div style={{ fontSize: '0.78rem', fontWeight: 600, color: 'var(--text)' }}>{t.name}</div>
                       <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginTop: 1 }}>{t.description}</div>
@@ -504,9 +504,9 @@ export default function MarketplaceDetail() {
                       {t.parameters.map((p, j) => (
                         <span key={j} style={{
                           padding: '2px 8px', borderRadius: 4,
-                          background: 'var(--cane-50)', border: '1px solid var(--cane-100)',
+                          background: 'var(--sparse-50)', border: '1px solid var(--sparse-100)',
                           fontSize: '0.62rem', fontFamily: 'var(--font-mono)',
-                          color: 'var(--cane-700)',
+                          color: 'var(--sparse-700)',
                         }}>
                           {p.name}{p.required ? '*' : ''}
                           <span style={{ color: 'var(--text-faint)', marginLeft: 3 }}>{p.type || 'str'}</span>
@@ -519,10 +519,10 @@ export default function MarketplaceDetail() {
               <div style={{
                 fontSize: '0.72rem', color: 'var(--text-muted)',
                 marginTop: 10, padding: '8px 12px',
-                background: 'var(--cane-50)', borderRadius: 'var(--radius-sm)',
+                background: 'var(--sparse-50)', borderRadius: 'var(--radius-sm)',
                 lineHeight: 1.5,
               }}>
-                Tool schemas are cloned with parameters and config. Cane platform tools (email, calendar, sheets) work immediately. External webhooks need your own URL and credentials.
+                Tool schemas are cloned with parameters and config. Sparse Intelligence platform tools (email, calendar, sheets) work immediately. External webhooks need your own URL and credentials.
               </div>
             </div>
           )}

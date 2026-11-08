@@ -1,5 +1,5 @@
 """
-chunk_enricher.py — Contextual enrichment for Cane.
+chunk_enricher.py — Contextual enrichment for Sparse Intelligence.
 
 Enriches chunks BEFORE they get embedded, so the vector representation
 captures not just the raw text but also the context of where it came from.

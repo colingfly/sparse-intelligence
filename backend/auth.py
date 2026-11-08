@@ -1,5 +1,5 @@
 """
-auth.py — Authentication utilities for Cane.
+auth.py — Authentication utilities for Sparse Intelligence.
 
 Handles:
   - Password hashing (bcrypt via passlib)
@@ -132,8 +132,8 @@ import secrets
 from datetime import date
 
 def generate_api_key() -> str:
-    """Generate a new API key with cane_ prefix."""
-    return f"cane_{secrets.token_hex(24)}"
+    """Generate a new API key with sparse_ prefix."""
+    return f"sparse_{secrets.token_hex(24)}"
 
 
 def get_api_key_auth(
@@ -141,12 +141,12 @@ def get_api_key_auth(
     db: Session = Depends(get_db),
 ) -> ApiKey:
     """
-    Authenticate via API key (cane_... prefix).
+    Authenticate via API key (sparse_... prefix; legacy cane_ keys still accepted).
     Returns the ApiKey object with tenant info.
     """
     token = credentials.credentials
 
-    if not token.startswith("cane_"):
+    if not token.startswith(("sparse_", "cane_")):
         raise HTTPException(status.HTTP_401_UNAUTHORIZED, "Invalid API key format")
 
     # Find matching keys by prefix (first 12 chars)

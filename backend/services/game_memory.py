@@ -7,7 +7,7 @@ Three layers:
   Layer 2: Thread Summaries -- 1-3 sentence memories of significant moments.
            Generated real-time after significant conversations.
            Retrieved by matching topic tags against current conversation.
-  Layer 3: Full Traces -- Cane's existing RAG pipeline (ChromaDB search).
+  Layer 3: Full Traces -- Sparse Intelligence's existing RAG pipeline (ChromaDB search).
            Triggered by agent via [RECALL: query] mechanism.
 """
 import json
@@ -369,12 +369,12 @@ def get_relevant_threads(
     return relevant[:limit]
 
 
-# ── Layer 3: Deep Recall (wraps Cane's existing search) ──
+# ── Layer 3: Deep Recall (wraps Sparse Intelligence's existing search) ──
 
 def deep_recall(workspace_id: str, query: str, tenant_id: str, limit: int = 3) -> list[dict]:
     """
     RAG search over an agent's full conversation history.
-    Uses Cane's existing ChromaDB search pipeline.
+    Uses Sparse Intelligence's existing ChromaDB search pipeline.
     """
     from services.search import search_text, build_tenant_where
 
@@ -391,7 +391,7 @@ def deep_recall(workspace_id: str, query: str, tenant_id: str, limit: int = 3) -
 def index_game_conversation(workspace_id: str, tenant_id: str, message: GameConversation, agent_name: str):
     """
     Index a game conversation message into ChromaDB so it's searchable
-    via Cane's RAG pipeline (Layer 3). Runs in background.
+    via Sparse Intelligence's RAG pipeline (Layer 3). Runs in background.
     """
     thread = threading.Thread(
         target=_index_message,

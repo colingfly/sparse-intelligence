@@ -1,11 +1,21 @@
 """
-config.py — Single source of truth for the Cane pipeline.
+config.py — Single source of truth for the Sparse Intelligence pipeline.
 """
 import os
 from pathlib import Path
 
+def _env(name: str, default: str = "") -> str:
+    """Read SPARSE_* env var, falling back to legacy CANE_* name."""
+    legacy = "CANE_" + name[len("SPARSE_"):]
+    val = os.getenv(name)
+    if val is None:
+        val = os.getenv(legacy)
+    return default if val is None else val
+
+
+
 # ── Paths ──
-BASE_DIR = Path(os.getenv("CANE_BASE_DIR", "/data/cane"))
+BASE_DIR = Path(_env("SPARSE_BASE_DIR", "/data/cane"))
 INPUT_DIR = BASE_DIR / "input"
 DB_PATH = str(BASE_DIR / "chroma_db")
 EXTRACTED_DIR = BASE_DIR / "extracted"
@@ -13,17 +23,17 @@ UPLOAD_DIR = BASE_DIR / "uploads"      # per-tenant uploads stored here
 CONNECTOR_SYNC_DIR = BASE_DIR / "connector_downloads"  # files pulled from live connectors
 
 # ── Static frontend (built React app) ──
-STATIC_DIR = Path(os.getenv("CANE_STATIC_DIR", str(Path(__file__).resolve().parent.parent / "frontend" / "dist")))
+STATIC_DIR = Path(_env("SPARSE_STATIC_DIR", str(Path(__file__).resolve().parent.parent / "frontend" / "dist")))
 
 # ── MySQL ──
 # Railway provides DATABASE_URL directly; fall back to individual vars for local dev
 DATABASE_URL = os.getenv("DATABASE_URL", "")
 if not DATABASE_URL:
-    MYSQL_USER = os.getenv("CANE_DB_USER", "root")
-    MYSQL_PASSWORD = os.getenv("CANE_DB_PASSWORD", "")
-    MYSQL_HOST = os.getenv("CANE_DB_HOST", "localhost")
-    MYSQL_PORT = os.getenv("CANE_DB_PORT", "3306")
-    MYSQL_DATABASE = os.getenv("CANE_DB_NAME", "cane")
+    MYSQL_USER = _env("SPARSE_DB_USER", "root")
+    MYSQL_PASSWORD = _env("SPARSE_DB_PASSWORD", "")
+    MYSQL_HOST = _env("SPARSE_DB_HOST", "localhost")
+    MYSQL_PORT = _env("SPARSE_DB_PORT", "3306")
+    MYSQL_DATABASE = _env("SPARSE_DB_NAME", "cane")
     DATABASE_URL = (
         f"mysql+pymysql://{MYSQL_USER}:{MYSQL_PASSWORD}"
         f"@{MYSQL_HOST}:{MYSQL_PORT}/{MYSQL_DATABASE}"
@@ -38,12 +48,12 @@ GUEST_TENANT_ID = "00000000-0000-0000-0000-000000000000"
 
 # ── Auth ──
 def _get_secret_key():
-    key = os.getenv("CANE_SECRET_KEY", "")
+    key = _env("SPARSE_SECRET_KEY", "")
     if not key:
         import warnings
         warnings.warn(
-            "CANE_SECRET_KEY not set! Using random key (tokens won't survive restarts). "
-            "Set it: export CANE_SECRET_KEY=$(python -c 'import secrets; print(secrets.token_hex(32))')",
+            "SPARSE_SECRET_KEY not set! Using random key (tokens won't survive restarts). "
+            "Set it: export SPARSE_SECRET_KEY=$(python -c 'import secrets; print(secrets.token_hex(32))')",
             stacklevel=2,
         )
         import secrets
@@ -55,15 +65,15 @@ JWT_ALGORITHM = "HS256"
 JWT_EXPIRE_HOURS = 24  # Tightened from 72h
 
 # ── CORS ──
-ALLOWED_ORIGINS = os.getenv("CANE_ALLOWED_ORIGINS", "http://localhost:5173,http://localhost:3000").split(",")
+ALLOWED_ORIGINS = _env("SPARSE_ALLOWED_ORIGINS", "http://localhost:5173,http://localhost:3000").split(",")
 
 # ── Environment ──
-IS_PRODUCTION = os.getenv("CANE_ENV", "development").lower() == "production"
+IS_PRODUCTION = _env("SPARSE_ENV", "development").lower() == "production"
 
 # ── Base URL (for resolving relative tool URLs to self) ──
 # Railway sets PORT dynamically; use it so self-referencing tool calls work
 _PORT = os.getenv("PORT", "8000")
-BASE_URL = os.getenv("CANE_BASE_URL", f"http://localhost:{_PORT}")
+BASE_URL = _env("SPARSE_BASE_URL", f"http://localhost:{_PORT}")
 
 # ── Google OAuth (app-level credentials for Live Connectors) ──
 GOOGLE_OAUTH_CLIENT_ID = os.getenv("GOOGLE_OAUTH_CLIENT_ID", "")
@@ -71,12 +81,12 @@ GOOGLE_OAUTH_CLIENT_SECRET = os.getenv("GOOGLE_OAUTH_CLIENT_SECRET", "")
 
 # ── LLM (Claude API) ──
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
-CLAUDE_MODEL = os.getenv("CANE_CLAUDE_MODEL", "claude-haiku-4-5-20251001")
+CLAUDE_MODEL = _env("SPARSE_CLAUDE_MODEL", "claude-haiku-4-5-20251001")
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
 
 # ── Embedding Model ──
 # BGE-large is 3x better retrieval than BGE-base, still runs locally
-TEXT_EMBED_MODEL = os.getenv("CANE_EMBED_MODEL", "BAAI/bge-base-en-v1.5")
+TEXT_EMBED_MODEL = _env("SPARSE_EMBED_MODEL", "BAAI/bge-base-en-v1.5")
 
 def get_embedding_function():
     """Return the embedding function."""
@@ -96,7 +106,7 @@ IMAGE_COLLECTION = "cane_images"
 
 # ── Models ──
 CLIP_MODEL = "openai/clip-vit-base-patch32"
-WHISPER_MODEL = os.getenv("CANE_WHISPER_MODEL", "base")  # base=fast/light, medium=better accuracy
+WHISPER_MODEL = _env("SPARSE_WHISPER_MODEL", "base")  # base=fast/light, medium=better accuracy
 
 # ── Chunking ──
 CHUNK_SIZE = 2000

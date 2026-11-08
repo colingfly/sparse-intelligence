@@ -23,7 +23,7 @@ from auth import hash_password
 
 
 def seed():
-    print("Initializing Cane database...\n")
+    print("Initializing Sparse Intelligence database...\n")
 
     # Create tables
     init_db()
@@ -44,8 +44,8 @@ def seed():
         else:
             # Admin gets a special internal tenant
             admin_tenant = Tenant(
-                name="Cane Platform",
-                slug="cane-platform",
+                name="Sparse Intelligence Platform",
+                slug="sparse-intelligence-platform",
                 plan="admin",
             )
             db.add(admin_tenant)

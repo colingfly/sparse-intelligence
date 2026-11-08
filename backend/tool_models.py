@@ -95,7 +95,7 @@ class AgentCommunication(Base):
 
 
 class ExternalAgent(Base):
-    """Stores endpoint config for agents registered from outside Cane."""
+    """Stores endpoint config for agents registered from outside Sparse Intelligence."""
     __tablename__ = "external_agents"
 
     id = Column(String(36), primary_key=True, default=_uuid)

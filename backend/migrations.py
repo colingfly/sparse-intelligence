@@ -727,7 +727,7 @@ def _migrate_orchestrator_mode_column():
 
 
 def _migrate_external_agents_table():
-    """Create external_agents table for agents registered from outside Cane."""
+    """Create external_agents table for agents registered from outside Sparse Intelligence."""
     insp = inspect(engine)
     if "external_agents" not in insp.get_table_names():
         try:

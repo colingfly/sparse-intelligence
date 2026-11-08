@@ -96,7 +96,7 @@ export default function AgentBuilder() {
           borderRadius: 12, padding: '20px 24px', marginBottom: 28,
         }}>
           <div style={{ fontWeight: 700, fontSize: '0.9375rem', marginBottom: 4, fontFamily: 'var(--font-display)' }}>
-            Welcome to Cane
+            Welcome to Sparse Intelligence
           </div>
           <div style={{ fontSize: '0.8125rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
             Create a custom agent, upload your files, and your agent will be ready to answer questions in minutes.
@@ -142,7 +142,7 @@ export default function AgentBuilder() {
           <div style={{ marginBottom: 12 }}>
             <div style={{
               width: 40, height: 40, borderRadius: 4,
-              border: '2px dashed var(--cane-500)', color: 'var(--cane-500)',
+              border: '2px dashed var(--sparse-500)', color: 'var(--sparse-500)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
             }}>
               <Plus size={18} />
@@ -191,12 +191,12 @@ export default function AgentBuilder() {
                 {/* Info */}
                 <div style={{ flex: 1 }}>
                   <div style={{
-                    fontSize: '0.88rem', fontWeight: 700, color: 'var(--cane-900)',
+                    fontSize: '0.88rem', fontWeight: 700, color: 'var(--sparse-900)',
                     fontFamily: 'var(--font-display)', letterSpacing: '-0.01em',
                   }}>
                     {a.name}
                   </div>
-                  <div style={{ fontSize: '0.7rem', color: 'var(--cane-400)', marginTop: 1 }}>
+                  <div style={{ fontSize: '0.7rem', color: 'var(--sparse-400)', marginTop: 1 }}>
                     {a.document_count} documents · {a.agent_type === 'custom' ? 'Custom' : a.agent_type?.replace('_', ' ')}
                   </div>
                 </div>

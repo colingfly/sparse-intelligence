@@ -1,7 +1,7 @@
 """
 crypto.py — Simple Fernet encryption for storing OAuth tokens in the database.
 
-Derives the encryption key from CANE_SECRET_KEY via PBKDF2, so no new env vars needed.
+Derives the encryption key from SPARSE_SECRET_KEY via PBKDF2, so no new env vars needed.
 """
 import base64
 import hashlib

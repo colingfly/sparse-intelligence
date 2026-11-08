@@ -233,7 +233,7 @@ const SECTIONS = [
     group: 'PYTHON SDK',
     items: [
       { id: 'sdk-install', label: 'Installation' },
-      { id: 'sdk-cane', label: 'Cane()' },
+      { id: 'sdk-sparse', label: 'SparseClient()' },
       { id: 'sdk-ask', label: 'ask()' },
       { id: 'sdk-search', label: 'search()' },
       { id: 'sdk-health', label: 'health()' },
@@ -272,7 +272,7 @@ function SectionContent({ id }) {
     case 'api-mine-status': return <ApiMineStatusSection />
     case 'api-mine-export': return <ApiMineExportSection />
     case 'sdk-install': return <SdkInstallSection />
-    case 'sdk-cane': return <SdkCaneSection />
+    case 'sdk-sparse': return <SdkSparseSection />
     case 'sdk-ask': return <SdkAskSection />
     case 'sdk-search': return <SdkSearchSection />
     case 'sdk-health': return <SdkHealthSection />
@@ -296,7 +296,7 @@ function ApiOverviewSection() {
     <div>
       <h2 style={h2Style}>API Reference</h2>
       <p style={pStyle}>
-        The Cane API provides programmatic access to agents, document search, evaluation suites, and the agent network. All endpoints are REST-based and return JSON.
+        The Sparse Intelligence API provides programmatic access to agents, document search, evaluation suites, and the agent network. All endpoints are REST-based and return JSON.
       </p>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 24 }}>
         <div style={{
@@ -307,7 +307,7 @@ function ApiOverviewSection() {
             REST API
           </div>
           <div style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-            13 endpoints covering agents, search, eval, and observability. Base URL: https://cane.fyi/v1/
+            13 endpoints covering agents, search, eval, and observability. Base URL: https://sparseintelligence.ai/v1/
           </div>
         </div>
         <div style={{
@@ -318,14 +318,14 @@ function ApiOverviewSection() {
             Python SDK
           </div>
           <div style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-            11 methods wrapping the REST API. Install with pip install cane. Supports context managers.
+            11 methods wrapping the REST API. Install with pip install sparse-intelligence. Supports context managers.
           </div>
         </div>
       </div>
       <QA
         q="Base URL"
-        a="All API endpoints are available at https://cane.fyi/v1/. All requests must include an API key in the Authorization header."
-        code={`curl -H "Authorization: Bearer cane_xxx" https://cane.fyi/v1/health`}
+        a="All API endpoints are available at https://sparseintelligence.ai/v1/. All requests must include an API key in the Authorization header."
+        code={`curl -H "Authorization: Bearer sparse_xxx" https://sparseintelligence.ai/v1/health`}
       />
     </div>
   )
@@ -338,7 +338,7 @@ function ApiAuthSection() {
       <p style={pStyle}>
         All API endpoints require authentication via API key. Include your key in the Authorization header as a Bearer token.
       </p>
-      <CodeBlock code={`Authorization: Bearer cane_your_key_here`} />
+      <CodeBlock code={`Authorization: Bearer sparse_your_key_here`} />
       <QA
         q="Getting an API key"
         a='Go to Settings in the dashboard (owner access required). Click "Generate new key," give it a name, and optionally scope it to a specific agent. The full key is shown once. Copy it immediately.'
@@ -372,8 +372,8 @@ function ApiAskSection() {
         { name: 'max_chunks', type: 'integer', required: false, desc: 'Max document chunks to include (1-20, default 5)' },
         { name: 'history', type: 'array', required: false, desc: 'Conversation history as [{role, content}, ...]' },
       ]}
-      request={`curl -X POST https://cane.fyi/v1/ask \\
-  -H "Authorization: Bearer cane_xxx" \\
+      request={`curl -X POST https://sparseintelligence.ai/v1/ask \\
+  -H "Authorization: Bearer sparse_xxx" \\
   -H "Content-Type: application/json" \\
   -d '{
     "query": "What is our refund policy?",
@@ -402,8 +402,8 @@ function ApiSearchSection() {
         { name: 'workspace_id', type: 'string', required: false, desc: 'Agent/workspace to search. Uses API key scope if omitted.' },
         { name: 'max_results', type: 'integer', required: false, desc: 'Max results to return (1-50, default 10)' },
       ]}
-      request={`curl -X POST https://cane.fyi/v1/search \\
-  -H "Authorization: Bearer cane_xxx" \\
+      request={`curl -X POST https://sparseintelligence.ai/v1/search \\
+  -H "Authorization: Bearer sparse_xxx" \\
   -H "Content-Type: application/json" \\
   -d '{"query": "onboarding procedures", "max_results": 5}'`}
       response={`{
@@ -429,10 +429,10 @@ function ApiHealthSection() {
       path="/v1/health"
       desc="Check API health. Returns service status and API version."
       auth="None required"
-      request={`curl https://cane.fyi/v1/health`}
+      request={`curl https://sparseintelligence.ai/v1/health`}
       response={`{
   "status": "ok",
-  "service": "cane",
+  "service": "sparse-intelligence",
   "api_version": "v1"
 }`}
     />
@@ -444,7 +444,7 @@ function ApiRegisterSection() {
     <EndpointBlock
       method="POST"
       path="/v1/agents/register"
-      desc="Register an external agent into the Cane network. The agent gets a workspace ID and appears in the network graph. When a native agent delegates to it, Cane POSTs to the endpoint."
+      desc="Register an external agent into the Sparse Intelligence network. The agent gets a workspace ID and appears in the network graph. When a native agent delegates to it, Sparse Intelligence POSTs to the endpoint."
       auth="Bearer token (API key)"
       params={[
         { name: 'name', type: 'string', required: true, desc: 'Agent name' },
@@ -454,8 +454,8 @@ function ApiRegisterSection() {
         { name: 'auth_token', type: 'string', required: false, desc: 'Auth token (encrypted at rest)' },
         { name: 'icon', type: 'string', required: false, desc: 'Emoji or short icon string' },
       ]}
-      request={`curl -X POST https://cane.fyi/v1/agents/register \\
-  -H "Authorization: Bearer cane_xxx" \\
+      request={`curl -X POST https://sparseintelligence.ai/v1/agents/register \\
+  -H "Authorization: Bearer sparse_xxx" \\
   -H "Content-Type: application/json" \\
   -d '{
     "name": "Compliance Check",
@@ -480,8 +480,8 @@ function ApiAgentsSection() {
       path="/v1/agents"
       desc="List all agents (native and external) in your tenant. Returns agent metadata, linked sub-agents, and orchestrator mode status."
       auth="Bearer token (API key)"
-      request={`curl https://cane.fyi/v1/agents \\
-  -H "Authorization: Bearer cane_xxx"`}
+      request={`curl https://sparseintelligence.ai/v1/agents \\
+  -H "Authorization: Bearer sparse_xxx"`}
       response={`{
   "agents": [
     {
@@ -514,8 +514,8 @@ function ApiLinkSection() {
         { name: 'tool_name', type: 'string', required: true, desc: 'Name Claude sees for this tool (e.g. "compliance_check")' },
         { name: 'tool_description', type: 'string', required: true, desc: 'When to delegate (e.g. "Check regulatory compliance")' },
       ]}
-      request={`curl -X POST https://cane.fyi/v1/agents/ws_def456/link \\
-  -H "Authorization: Bearer cane_xxx" \\
+      request={`curl -X POST https://sparseintelligence.ai/v1/agents/ws_def456/link \\
+  -H "Authorization: Bearer sparse_xxx" \\
   -H "Content-Type: application/json" \\
   -d '{
     "parent_agent_id": "ws_abc123",
@@ -538,8 +538,8 @@ function ApiDeleteSection() {
       path="/v1/agents/{agent_id}"
       desc="Remove an external agent and its workspace. Deletes the agent config, all delegation links, and the workspace. Only external agents can be deleted via API."
       auth="Bearer token (API key)"
-      request={`curl -X DELETE https://cane.fyi/v1/agents/ws_def456 \\
-  -H "Authorization: Bearer cane_xxx"`}
+      request={`curl -X DELETE https://sparseintelligence.ai/v1/agents/ws_def456 \\
+  -H "Authorization: Bearer sparse_xxx"`}
       response={`{
   "deleted": "ws_def456"
 }`}
@@ -554,8 +554,8 @@ function ApiNetworkSection() {
       path="/v1/network"
       desc="Get the full agent network graph: nodes (agents), edges (delegation links), and communication statistics. Includes auto-discovered edges from communication logs."
       auth="Bearer token (API key)"
-      request={`curl https://cane.fyi/v1/network \\
-  -H "Authorization: Bearer cane_xxx"`}
+      request={`curl https://sparseintelligence.ai/v1/network \\
+  -H "Authorization: Bearer sparse_xxx"`}
       response={`{
   "nodes": [
     {"id": "ws_abc", "name": "Support", "type": "native", "orchestrator_mode": false}
@@ -587,8 +587,8 @@ function ApiLogSection() {
         { name: 'duration_ms', type: 'integer', required: false, desc: 'How long the call took' },
         { name: 'status', type: 'string', required: false, desc: '"ok" or "error" (default: "ok")' },
       ]}
-      request={`curl -X POST https://cane.fyi/v1/log \\
-  -H "Authorization: Bearer cane_xxx" \\
+      request={`curl -X POST https://sparseintelligence.ai/v1/log \\
+  -H "Authorization: Bearer sparse_xxx" \\
   -H "Content-Type: application/json" \\
   -d '{
     "caller_id": "ws_abc",
@@ -613,8 +613,8 @@ function ApiEvalSuitesSection() {
       path="/v1/eval/suites"
       desc="List all public evaluation suites available for testing your agent against."
       auth="Bearer token (API key)"
-      request={`curl https://cane.fyi/v1/eval/suites \\
-  -H "Authorization: Bearer cane_xxx"`}
+      request={`curl https://sparseintelligence.ai/v1/eval/suites \\
+  -H "Authorization: Bearer sparse_xxx"`}
       response={`{
   "suites": [
     {
@@ -649,8 +649,8 @@ function ApiEvalRunSection() {
         { name: 'target_payload_template', type: 'string', required: false, desc: 'Payload template with {{question}} placeholder' },
         { name: 'target_response_path', type: 'string', required: false, desc: 'JSON path to extract the answer (default: "response")' },
       ]}
-      request={`curl -X POST -H "Authorization: Bearer cane_xxx" \\
-  "https://cane.fyi/v1/eval/run\\
+      request={`curl -X POST -H "Authorization: Bearer sparse_xxx" \\
+  "https://sparseintelligence.ai/v1/eval/run\\
   ?environment_id=env_abc\\
   &target_url=https://your-agent.com/ask"`}
       response={`{
@@ -671,8 +671,8 @@ function ApiEvalResultsSection() {
       path="/v1/eval/run/{run_id}"
       desc="Get evaluation run results. Only accessible to the API key that triggered the run or keys belonging to the same tenant."
       auth="Bearer token (API key)"
-      request={`curl https://cane.fyi/v1/eval/run/run_456 \\
-  -H "Authorization: Bearer cane_xxx"`}
+      request={`curl https://sparseintelligence.ai/v1/eval/run/run_456 \\
+  -H "Authorization: Bearer sparse_xxx"`}
       response={`{
   "run_id": "run_456",
   "status": "completed",
@@ -716,8 +716,8 @@ function ApiMineSection() {
         { name: 'strategy', type: 'string', required: false, desc: 'Rewrite strategy. Currently "llm_rewrite" (default).' },
         { name: 'max_examples', type: 'integer', required: false, desc: 'Maximum failures to process (1-500, default 100)' },
       ]}
-      request={`curl -X POST "https://cane.fyi/v1/eval/mine?environment_id=env_abc&max_score=60" \\
-  -H "Authorization: Bearer cane_xxx"`}
+      request={`curl -X POST "https://sparseintelligence.ai/v1/eval/mine?environment_id=env_abc&max_score=60" \\
+  -H "Authorization: Bearer sparse_xxx"`}
       response={`{
   "job_id": "job_abc123",
   "status": "pending",
@@ -734,8 +734,8 @@ function ApiMineStatusSection() {
       path="/v1/eval/mine/{job_id}"
       desc="Get mining job status, failure type distribution, and mined examples with before/after comparisons."
       auth="Bearer token (API key)"
-      request={`curl "https://cane.fyi/v1/eval/mine/job_abc123" \\
-  -H "Authorization: Bearer cane_xxx"`}
+      request={`curl "https://sparseintelligence.ai/v1/eval/mine/job_abc123" \\
+  -H "Authorization: Bearer sparse_xxx"`}
       response={`{
   "job_id": "job_abc123",
   "status": "completed",
@@ -772,8 +772,8 @@ function ApiMineExportSection() {
       params={[
         { name: 'format', type: 'string', required: false, desc: '"dpo" (default) or "sft"' },
       ]}
-      request={`curl "https://cane.fyi/v1/eval/mine/job_abc123/export?format=dpo" \\
-  -H "Authorization: Bearer cane_xxx"`}
+      request={`curl "https://sparseintelligence.ai/v1/eval/mine/job_abc123/export?format=dpo" \\
+  -H "Authorization: Bearer sparse_xxx"`}
       response={`{"prompt":"What is our refund policy?","chosen":"Our refund policy allows returns within 30 days...","rejected":"Refunds are not allowed.","chosen_score":88.0,"rejected_score":25.0,"failure_type":"hallucination"}
 {"prompt":"How do I reset my password?","chosen":"To reset your password, go to Settings > Security...","rejected":"Contact support.","chosen_score":92.0,"rejected_score":35.0,"failure_type":"incomplete"}`}
     />
@@ -786,34 +786,34 @@ function SdkInstallSection() {
   return (
     <div>
       <h2 style={h2Style}>SDK Installation</h2>
-      <p style={pStyle}>Install the Cane Python SDK from PyPI. Requires Python 3.8+.</p>
-      <CodeBlock code="pip install cane" />
+      <p style={pStyle}>Install the Sparse Intelligence Python SDK from PyPI. Requires Python 3.8+.</p>
+      <CodeBlock code="pip install sparse-intelligence" />
       <p style={pStyle}>Import and initialize:</p>
-      <CodeBlock code={`from cane import Cane
+      <CodeBlock code={`from sparse_intelligence import SparseClient
 
-client = Cane(api_key="cane_xxx")`} />
+client = SparseClient(api_key="sparse_xxx")`} />
     </div>
   )
 }
 
-function SdkCaneSection() {
+function SdkSparseSection() {
   return (
     <SdkMethod
-      signature="Cane(api_key, base_url='https://cane.fyi', timeout=30.0)"
-      desc={"Initialize the Cane client. API key must start with 'cane_'."}
+      signature="SparseClient(api_key, base_url='https://sparseintelligence.ai', timeout=30.0)"
+      desc={"Initialize the Sparse Intelligence client. API key must start with 'sparse_'."}
       params={[
-        { name: 'api_key', type: 'str', required: true, desc: 'Your Cane API key (starts with "cane_")' },
-        { name: 'base_url', type: 'str', required: false, desc: 'Base URL of your Cane instance (default: https://cane.fyi)' },
+        { name: 'api_key', type: 'str', required: true, desc: 'Your Sparse Intelligence API key (starts with "sparse_")' },
+        { name: 'base_url', type: 'str', required: false, desc: 'Base URL of your Sparse Intelligence instance (default: https://sparseintelligence.ai)' },
         { name: 'timeout', type: 'float', required: false, desc: 'Request timeout in seconds (default: 30.0)' },
       ]}
-      returns="Cane client instance. Supports context manager (with statement)."
-      example={`from cane import Cane
+      returns="Sparse Intelligence client instance. Supports context manager (with statement)."
+      example={`from sparse_intelligence import SparseClient
 
 # Basic usage
-client = Cane(api_key="cane_xxx")
+client = SparseClient(api_key="sparse_xxx")
 
 # With context manager
-with Cane(api_key="cane_xxx") as client:
+with SparseClient(api_key="sparse_xxx") as client:
     result = client.ask("Hello")`}
     />
   )
@@ -875,7 +875,7 @@ function SdkRegisterSection() {
   return (
     <SdkMethod
       signature="client.register_agent(name, description, endpoint, auth_type='none', auth_token='', icon='', parameters=None)"
-      desc="Register an external agent into the Cane network. The agent gets a workspace ID and appears in the network graph."
+      desc="Register an external agent into the Sparse Intelligence network. The agent gets a workspace ID and appears in the network graph."
       params={[
         { name: 'name', type: 'str', required: true, desc: 'Agent name' },
         { name: 'description', type: 'str', required: true, desc: 'What this agent does (used for routing)' },

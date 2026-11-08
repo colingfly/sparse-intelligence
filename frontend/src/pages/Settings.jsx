@@ -99,7 +99,7 @@ export default function SettingsPage() {
               justifyContent: 'space-between',
               alignItems: 'center',
               padding: '10px 14px',
-              background: 'var(--cane-50)',
+              background: 'var(--sparse-50)',
               borderRadius: 'var(--radius-sm)',
             }}>
               {editingWs === w.id ? (
@@ -219,7 +219,7 @@ export default function SettingsPage() {
             <h3><Key size={16} style={{ verticalAlign: 'middle', marginRight: 6 }} /> API Keys</h3>
           </div>
           <div style={{ padding: '20px 24px', fontSize: '0.8125rem', color: 'var(--text-muted)' }}>
-            API access is available on the Pro plan. <a href="mailto:hello@cane.fyi" style={{ color: 'var(--accent)' }}>Contact us</a> to upgrade.
+            API access is available on the Pro plan. <a href="mailto:hello@sparseintelligence.ai" style={{ color: 'var(--accent)' }}>Contact us</a> to upgrade.
           </div>
         </div>
       )}
@@ -247,7 +247,7 @@ export default function SettingsPage() {
                 justifyContent: 'space-between',
                 alignItems: 'center',
                 padding: '10px 14px',
-                background: 'var(--cane-50)',
+                background: 'var(--sparse-50)',
                 borderRadius: 'var(--radius-sm)',
               }}>
                 <div>
@@ -488,7 +488,7 @@ function ApiKeysSection({ workspaces }) {
 
       {/* Create form */}
       {showCreate ? (
-        <form onSubmit={handleCreate} style={{ marginBottom: 16, padding: 12, background: 'var(--cane-50)', borderRadius: 'var(--radius-sm)' }}>
+        <form onSubmit={handleCreate} style={{ marginBottom: 16, padding: 12, background: 'var(--sparse-50)', borderRadius: 'var(--radius-sm)' }}>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 12 }}>
             <div className="form-group">
               <label>Key name</label>
@@ -524,7 +524,7 @@ function ApiKeysSection({ workspaces }) {
           {keys.map(k => (
             <div key={k.id} style={{
               display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-              padding: '10px 14px', background: 'var(--cane-50)', borderRadius: 'var(--radius-sm)',
+              padding: '10px 14px', background: 'var(--sparse-50)', borderRadius: 'var(--radius-sm)',
             }}>
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>

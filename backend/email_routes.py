@@ -32,7 +32,7 @@ def _gmail_config():
         "client_secret": os.getenv("GMAIL_CLIENT_SECRET", ""),
         "refresh_token": os.getenv("GMAIL_REFRESH_TOKEN", ""),
         "from_email": os.getenv("GMAIL_FROM_EMAIL", ""),
-        "from_name": os.getenv("GMAIL_FROM_NAME", "Cane"),
+        "from_name": os.getenv("GMAIL_FROM_NAME", "Sparse Intelligence"),
     }
 
 # Cache the access token in memory
@@ -221,7 +221,7 @@ async def send_email(request: Request):
     Body:
       {
         "to": "visitor@example.com",
-        "subject": "Welcome to Cane!",
+        "subject": "Welcome to Sparse Intelligence!",
         "body": "Thanks for your interest...",
         "html": false  (optional, default false)
       }
@@ -239,7 +239,7 @@ async def send_email(request: Request):
     if not to:
         raise HTTPException(400, "Missing required field: to")
     if not subject:
-        subject = "Info from Cane"  # Default subject if none provided
+        subject = "Info from Sparse Intelligence"  # Default subject if none provided
     if not body:
         raise HTTPException(400, "Missing required field: body (or answer)")
 

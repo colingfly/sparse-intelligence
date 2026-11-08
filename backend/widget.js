@@ -1,10 +1,10 @@
 /**
- * Cane Chat Widget — Embeddable agent chat for any website.
+ * Sparse Intelligence Chat Widget — Embeddable agent chat for any website.
  *
  * Usage:
  *   <script
- *     src="https://YOUR_CANE_URL/widget.js"
- *     data-api-key="cane_xxxxxxxxxxxx"
+ *     src="https://YOUR_SPARSE_URL/widget.js"
+ *     data-api-key="sparse_xxxxxxxxxxxx"
  *     data-agent-name="My Agent"
  *     data-color="#8B7355"
  *     data-position="right"
@@ -24,7 +24,7 @@
   var POSITION = (scriptTag && scriptTag.getAttribute('data-position')) || 'right';
   var GREETING = (scriptTag && scriptTag.getAttribute('data-greeting')) || ('Hi! I\'m ' + AGENT_NAME + '. Ask me anything.');
   var WORKSPACE_ID = (scriptTag && scriptTag.getAttribute('data-workspace-id')) || '';
-  var SUBTITLE = (scriptTag && scriptTag.getAttribute('data-subtitle')) || 'Powered by Cane';
+  var SUBTITLE = (scriptTag && scriptTag.getAttribute('data-subtitle')) || 'Powered by Sparse Intelligence';
   var PLACEHOLDER = (scriptTag && scriptTag.getAttribute('data-placeholder')) || 'Type a message...';
   var BORDER_RADIUS = (scriptTag && scriptTag.getAttribute('data-border-radius')) || '16';
   var LOGO_URL = (scriptTag && scriptTag.getAttribute('data-logo-url')) || '';
@@ -38,11 +38,11 @@
   }
 
   if (!API_KEY) {
-    console.error('[Cane Widget] Missing data-api-key attribute');
+    console.error('[Sparse Intelligence Widget] Missing data-api-key attribute');
     return;
   }
   if (!API_BASE) {
-    console.error('[Cane Widget] Could not determine API base URL');
+    console.error('[Sparse Intelligence Widget] Could not determine API base URL');
     return;
   }
 
@@ -247,7 +247,7 @@
 
   // ── HTML ──
   var wrapper = document.createElement('div');
-  wrapper.id = 'cane-widget-host';
+  wrapper.id = 'sparse-widget-host';
   wrapper.innerHTML = '\
     <button id="cw-bubble" aria-label="Open chat">\
       <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>\
@@ -271,7 +271,7 @@
           <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>\
         </button>\
       </div>\
-      <div id="cw-footer">Powered by <a href="https://cane.dev" target="_blank" rel="noopener">Cane</a></div>\
+      <div id="cw-footer">Powered by <a href="https://sparseintelligence.ai" target="_blank" rel="noopener">Sparse Intelligence</a></div>\
     </div>\
   ';
   document.body.appendChild(wrapper);
@@ -396,7 +396,7 @@
     .catch(function(err) {
       removeTyping();
       addMessage('Sorry, something went wrong. Please try again.', 'bot');
-      console.error('[Cane Widget]', err);
+      console.error('[Sparse Intelligence Widget]', err);
     })
     .finally(function() {
       isLoading = false;
@@ -418,7 +418,7 @@
     if (e.key === 'Escape' && isOpen) toggle();
   });
 
-  console.log('[Cane Widget] Loaded — Agent: ' + AGENT_NAME + ', API: ' + API_BASE);
+  console.log('[Sparse Intelligence Widget] Loaded — Agent: ' + AGENT_NAME + ', API: ' + API_BASE);
 
   // Auto-open after delay if configured
   if (AUTO_OPEN > 0) {
@@ -426,7 +426,7 @@
   }
 
   } catch(err) {
-    console.error('[Cane Widget] Init error:', err);
+    console.error('[Sparse Intelligence Widget] Init error:', err);
   }
 
 })();

@@ -1,6 +1,6 @@
 # Colin Gibbons-Fly
 
-M.S. Data Science candidate at University of Miami (graduating May 2026). Building Cane, an agentic RAG platform, as a research spinout from the Frost Institute of Data Science and Computing. Advisor is Rajesh.
+M.S. Data Science candidate at University of Miami (graduating May 2026). Building Sparse Intelligence, an agentic RAG platform, as a research spinout from the Frost Institute of Data Science and Computing. Advisor is Rajesh.
 
 ## Communication style
 
@@ -8,11 +8,11 @@ Never use emojis. Never use horizontal rules (no --- or === or *** or any varian
 
 When writing docs, papers, or user-facing text: same rules apply. No punchlines, no editorial voice. Just the data and what it shows.
 
-## Primary project: Cane
+## Primary project: Sparse Intelligence
 
 Agentic RAG platform with hybrid dense + sparse retrieval, multi-stage reranking, and evaluation pipelines. Started as a university lecture search system (IDSC UIMM), now productized as a multi-tenant SaaS.
 
-Website: cane.fyi
+Website: sparseintelligence.ai
 
 ### Architecture
 
@@ -23,7 +23,7 @@ Vector store: ChromaDB (BGE-base-en-v1.5 for text, CLIP ViT-B/32 for images)
 LLM: Claude API (Anthropic) via Haiku for cost, Sonnet for quality
 Auth: JWT with role-based access (admin / owner / member)
 Deployment: Railway with Docker (multi-stage build)
-Domain/email: cane.fyi, hello@cane.fyi via Google Workspace
+Domain/email: sparseintelligence.ai, hello@sparseintelligence.ai via Google Workspace
 
 ### Key backend files
 
@@ -64,7 +64,7 @@ Local OS: Windows 11, PowerShell terminal
 Deployment target: Linux (Ubuntu via Railway/Docker)
 Python version: 3.10+
 Node version: 20+
-Local paths default to C:\Users\Owner\Desktop\ (set CANE_BASE_DIR env var)
+Local paths default to C:\Users\Owner\Desktop\ (set SPARSE_BASE_DIR env var)
 Production paths use /data/cane/
 Always use platform-agnostic paths in code (pathlib.Path, os.getenv)
 

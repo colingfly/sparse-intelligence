@@ -1,9 +1,9 @@
 """
 game_models.py — SQLAlchemy models for Softmax Gulch game layer.
 
-These tables sit ALONGSIDE Cane's existing tables.
+These tables sit ALONGSIDE Sparse Intelligence's existing tables.
 They reference workspaces (agents) via workspace_id FK.
-DO NOT modify existing Cane tables.
+DO NOT modify existing Sparse Intelligence tables.
 """
 from datetime import datetime
 
@@ -22,7 +22,7 @@ def _game_id():
 
 
 class AgentGameState(Base):
-    """Game-world state for each Cane workspace/agent."""
+    """Game-world state for each Sparse Intelligence workspace/agent."""
     __tablename__ = 'agent_game_states'
 
     id = Column(String(36), primary_key=True, default=_game_id)

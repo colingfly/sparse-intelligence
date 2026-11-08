@@ -1,5 +1,5 @@
 """
-security.py — Security middleware and utilities for Cane.
+security.py — Security middleware and utilities for Sparse Intelligence.
 
 Covers:
   - Login rate limiting (brute force protection)

@@ -160,7 +160,7 @@ export default function AgentDetail() {
   // Widget config
   const [widgetConfig, setWidgetConfig] = useState({
     color: '#ffffff', greeting: 'Hi! Ask me anything.', position: 'right',
-    subtitle: 'Powered by Cane', placeholder: 'Type a message...',
+    subtitle: 'Powered by Sparse Intelligence', placeholder: 'Type a message...',
     border_radius: '16', logo_url: '', auto_open: '0',
   })
   const [widgetDirty, setWidgetDirty] = useState(false)
@@ -1242,7 +1242,7 @@ export default function AgentDetail() {
             <div>
               <label style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-muted)', display: 'block', marginBottom: 4 }}>Role / What they do</label>
               <input
-                type="text" placeholder="CEO at Cane, builds AI products"
+                type="text" placeholder="CEO at Sparse Intelligence, builds AI products"
                 value={replicaProfile.role}
                 onChange={e => setReplicaProfile(p => ({ ...p, role: e.target.value }))}
                 style={{
@@ -1385,8 +1385,8 @@ export default function AgentDetail() {
             <Wrench size={16} /> Tools
             {tools.length > 0 && (
               <span style={{
-                fontSize: '0.65rem', fontWeight: 700, background: 'var(--cane-100)',
-                color: 'var(--cane-700)', padding: '2px 8px', borderRadius: 10,
+                fontSize: '0.65rem', fontWeight: 700, background: 'var(--sparse-100)',
+                color: 'var(--sparse-700)', padding: '2px 8px', borderRadius: 10,
               }}>{tools.length}</span>
             )}
           </h3>
@@ -1407,14 +1407,14 @@ export default function AgentDetail() {
             background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)',
             marginBottom: 16, display: 'flex', alignItems: 'flex-start', gap: 12,
           }}>
-            <Wrench size={18} style={{ color: 'var(--cane-600)', flexShrink: 0, marginTop: 2 }} />
+            <Wrench size={18} style={{ color: 'var(--sparse-600)', flexShrink: 0, marginTop: 2 }} />
             <div>
               <div style={{ fontWeight: 700, fontSize: '0.84rem', marginBottom: 4 }}>
                 {tools.filter(t => !t.url).length} tool{tools.filter(t => !t.url).length > 1 ? 's need' : ' needs'} setup
               </div>
               <div style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
                 These tools were cloned without credentials. Click the edit icon on each to configure the webhook URL and auth.
-                {' '}For Cane platform tools (email, calendar, sheets), use <code style={{ fontSize: '0.72rem', background: 'var(--cane-100)', padding: '1px 4px', borderRadius: 3 }}>https://cane.fyi/api/...</code>
+                {' '}For Sparse Intelligence platform tools (email, calendar, sheets), use <code style={{ fontSize: '0.72rem', background: 'var(--sparse-100)', padding: '1px 4px', borderRadius: 3 }}>https://sparseintelligence.ai/api/...</code>
               </div>
             </div>
           </div>
@@ -1424,7 +1424,7 @@ export default function AgentDetail() {
         {showCopyTools && (
           <div style={{
             padding: 16, borderRadius: 'var(--radius-sm)',
-            border: '1px solid var(--cane-200)', background: 'var(--cane-50)',
+            border: '1px solid var(--sparse-200)', background: 'var(--sparse-50)',
             marginBottom: 16,
           }}>
             <div style={{ fontWeight: 700, fontSize: '0.88rem', marginBottom: 10 }}>Copy tools from:</div>
@@ -1453,7 +1453,7 @@ export default function AgentDetail() {
         {showAddTool && (
           <div style={{
             padding: 16, borderRadius: 'var(--radius-sm)',
-            border: '1px solid var(--cane-200)', background: 'var(--cane-50)',
+            border: '1px solid var(--sparse-200)', background: 'var(--sparse-50)',
             marginBottom: 16,
           }}>
             <div style={{ fontWeight: 700, fontSize: '0.88rem', marginBottom: 14 }}>New Webhook Tool</div>
@@ -1655,8 +1655,8 @@ export default function AgentDetail() {
             {tools.map(tool => (
               <div key={tool.id} style={{
                 padding: '12px 16px', borderRadius: 'var(--radius-sm)',
-                border: `1px solid ${editingTool === tool.id ? 'var(--cane-400)' : tool.is_enabled ? 'var(--cane-200)' : 'var(--border)'}`,
-                background: editingTool === tool.id ? 'var(--cane-50, #fdf8f0)' : tool.is_enabled ? 'var(--bg-card)' : 'var(--bg)',
+                border: `1px solid ${editingTool === tool.id ? 'var(--sparse-400)' : tool.is_enabled ? 'var(--sparse-200)' : 'var(--border)'}`,
+                background: editingTool === tool.id ? 'var(--sparse-50, #fdf8f0)' : tool.is_enabled ? 'var(--bg-card)' : 'var(--bg)',
                 opacity: tool.is_enabled ? 1 : 0.6,
               }}>
                 {editingTool === tool.id && editTool ? (
@@ -1745,7 +1745,7 @@ export default function AgentDetail() {
                   <>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 10, flex: 1 }}>
-                        <Zap size={15} style={{ color: tool.is_enabled ? 'var(--cane-600)' : 'var(--text-muted)', flexShrink: 0 }} />
+                        <Zap size={15} style={{ color: tool.is_enabled ? 'var(--sparse-600)' : 'var(--text-muted)', flexShrink: 0 }} />
                         <div style={{ flex: 1 }}>
                           <div style={{ fontWeight: 600, fontSize: '0.88rem' }}>{tool.name}</div>
                           <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: 2 }}>
@@ -1767,7 +1767,7 @@ export default function AgentDetail() {
                           <Pencil size={13} />
                         </button>
                         <button className="btn btn-ghost" onClick={() => handleToggleTool(tool)} style={{ padding: '4px 8px' }} title={tool.is_enabled ? 'Disable' : 'Enable'}>
-                          {tool.is_enabled ? <ToggleRight size={16} style={{ color: 'var(--cane-600)' }} /> : <ToggleLeft size={16} />}
+                          {tool.is_enabled ? <ToggleRight size={16} style={{ color: 'var(--sparse-600)' }} /> : <ToggleLeft size={16} />}
                         </button>
                         <button className="btn btn-ghost" onClick={() => handleDeleteTool(tool.id)} style={{ padding: '4px 8px' }}>
                           <Trash2 size={13} />
@@ -2351,8 +2351,8 @@ export default function AgentDetail() {
             <Globe size={16} /> Connections
             {mcpServers.length > 0 && (
               <span style={{
-                fontSize: '0.65rem', fontWeight: 700, background: 'var(--cane-100)',
-                color: 'var(--cane-700)', padding: '2px 8px', borderRadius: 10,
+                fontSize: '0.65rem', fontWeight: 700, background: 'var(--sparse-100)',
+                color: 'var(--sparse-700)', padding: '2px 8px', borderRadius: 10,
               }}>{mcpServers.reduce((sum, s) => sum + (s.tool_count || 0), 0)} tools</span>
             )}
           </h3>
@@ -2370,7 +2370,7 @@ export default function AgentDetail() {
         {showMcpCatalog && (
           <div style={{
             padding: 16, borderRadius: 'var(--radius-sm)',
-            border: '1px solid var(--cane-200)', background: 'var(--cane-50)',
+            border: '1px solid var(--sparse-200)', background: 'var(--sparse-50)',
             marginBottom: 16,
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
@@ -2386,7 +2386,7 @@ export default function AgentDetail() {
             {mcpConnectForm && (
               <div style={{
                 padding: 16, borderRadius: 'var(--radius-sm)',
-                border: '1px solid var(--cane-200)', background: 'var(--bg-card)',
+                border: '1px solid var(--sparse-200)', background: 'var(--bg-card)',
                 marginBottom: 14,
               }}>
                 <div style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', marginBottom: 14, lineHeight: 1.5 }}>
@@ -2452,7 +2452,7 @@ export default function AgentDetail() {
                     }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
                         <div style={{
-                          width: 28, height: 28, borderRadius: 6, background: 'var(--cane-200)', color: 'var(--cane-700)',
+                          width: 28, height: 28, borderRadius: 6, background: 'var(--sparse-200)', color: 'var(--sparse-700)',
                           display: 'flex', alignItems: 'center', justifyContent: 'center',
                           fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '0.6rem', letterSpacing: '0.02em', flexShrink: 0,
                         }}>{c.icon}</div>
@@ -2498,7 +2498,7 @@ export default function AgentDetail() {
         {showMcpCustom && (
           <div style={{
             padding: 16, borderRadius: 'var(--radius-sm)',
-            border: '1px solid var(--cane-200)', background: 'var(--cane-50)',
+            border: '1px solid var(--sparse-200)', background: 'var(--sparse-50)',
             marginBottom: 16,
           }}>
             <div style={{ fontWeight: 700, fontSize: '0.88rem', marginBottom: 14 }}>Connect Custom MCP Server</div>
@@ -2585,14 +2585,14 @@ export default function AgentDetail() {
             {mcpServers.map(server => (
               <div key={server.id} style={{
                 padding: '12px 16px', borderRadius: 'var(--radius-sm)',
-                border: `1px solid ${server.status === 'connected' ? 'var(--cane-200)' : server.status === 'error' ? 'rgba(248,113,113,0.3)' : 'var(--border)'}`,
+                border: `1px solid ${server.status === 'connected' ? 'var(--sparse-200)' : server.status === 'error' ? 'rgba(248,113,113,0.3)' : 'var(--border)'}`,
                 background: server.is_enabled ? 'var(--bg-card)' : 'var(--bg)',
                 opacity: server.is_enabled ? 1 : 0.6,
               }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10, flex: 1 }}>
                     <div style={{
-                      width: 30, height: 30, borderRadius: 7, background: 'var(--cane-200)', color: 'var(--cane-700)',
+                      width: 30, height: 30, borderRadius: 7, background: 'var(--sparse-200)', color: 'var(--sparse-700)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                       fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '0.65rem', letterSpacing: '0.02em', flexShrink: 0,
                     }}>{server.icon}</div>
@@ -2601,8 +2601,8 @@ export default function AgentDetail() {
                         <span style={{ fontWeight: 600, fontSize: '0.88rem' }}>{server.name}</span>
                         <span style={{
                           fontSize: '0.6rem', fontWeight: 700, padding: '1px 6px', borderRadius: 8,
-                          background: server.status === 'connected' ? 'rgba(74,222,128,0.08)' : server.status === 'error' ? 'rgba(248,113,113,0.08)' : 'var(--cane-100)',
-                          color: server.status === 'connected' ? '#4ade80' : server.status === 'error' ? '#f87171' : 'var(--cane-700)',
+                          background: server.status === 'connected' ? 'rgba(74,222,128,0.08)' : server.status === 'error' ? 'rgba(248,113,113,0.08)' : 'var(--sparse-100)',
+                          color: server.status === 'connected' ? '#4ade80' : server.status === 'error' ? '#f87171' : 'var(--sparse-700)',
                         }}>
                           {server.status === 'connected' ? `${server.tool_count} tools` : server.status}
                         </span>
@@ -2636,7 +2636,7 @@ export default function AgentDetail() {
                       style={{ padding: '4px 8px' }}
                       title={server.is_enabled ? 'Disable' : 'Enable'}
                     >
-                      {server.is_enabled ? <ToggleRight size={16} style={{ color: 'var(--cane-600)' }} /> : <ToggleLeft size={16} />}
+                      {server.is_enabled ? <ToggleRight size={16} style={{ color: 'var(--sparse-600)' }} /> : <ToggleLeft size={16} />}
                     </button>
                     <button
                       className="btn btn-ghost"
@@ -2714,8 +2714,8 @@ export default function AgentDetail() {
             <Zap size={16} /> Sub-Agents
             {agentLinks.length > 0 && (
               <span style={{
-                fontSize: '0.65rem', fontWeight: 700, background: 'var(--cane-100)',
-                color: 'var(--cane-700)', padding: '2px 8px', borderRadius: 10,
+                fontSize: '0.65rem', fontWeight: 700, background: 'var(--sparse-100)',
+                color: 'var(--sparse-700)', padding: '2px 8px', borderRadius: 10,
               }}>{agentLinks.length}</span>
             )}
           </h3>
@@ -2851,7 +2851,7 @@ export default function AgentDetail() {
 
         {/* Add schedule form */}
         {showAddSchedule && !schedule && (
-          <div style={{ marginBottom: 16, padding: 16, background: 'var(--cane-50)', borderRadius: 8, border: '1px solid var(--rule)' }}>
+          <div style={{ marginBottom: 16, padding: 16, background: 'var(--sparse-50)', borderRadius: 8, border: '1px solid var(--rule)' }}>
             <label style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-secondary)', display: 'block', marginBottom: 4 }}>
               Prompt (what the agent should do each run)
             </label>
@@ -2933,7 +2933,7 @@ export default function AgentDetail() {
         {/* Schedule display */}
         {schedule && (
           <div>
-            <div style={{ padding: 14, background: 'var(--cane-50)', borderRadius: 8, border: '1px solid var(--rule)', marginBottom: 12 }}>
+            <div style={{ padding: 14, background: 'var(--sparse-50)', borderRadius: 8, border: '1px solid var(--rule)', marginBottom: 12 }}>
               <div style={{ fontSize: '0.82rem', color: 'var(--text)', marginBottom: 8, lineHeight: 1.6 }}>
                 {schedule.prompt.length > 120 ? schedule.prompt.slice(0, 120) + '...' : schedule.prompt}
               </div>
@@ -3103,7 +3103,7 @@ export default function AgentDetail() {
                           <pre style={{
                             fontSize: '0.78rem', color: 'var(--text-secondary)', lineHeight: 1.6,
                             whiteSpace: 'pre-wrap', wordBreak: 'break-word',
-                            background: 'var(--cane-50)', padding: 12, borderRadius: 6,
+                            background: 'var(--sparse-50)', padding: 12, borderRadius: 6,
                             maxHeight: 300, overflow: 'auto', margin: 0,
                           }}>
                             {run.response}
@@ -3996,7 +3996,7 @@ export default function AgentDetail() {
                     <label key={p.id} style={{
                       display: 'flex', alignItems: 'flex-start', gap: 10,
                       padding: '10px 14px', borderRadius: 'var(--radius-sm)',
-                      border: `1px solid ${pubPackType === p.id ? 'var(--cane-500)' : 'var(--rule)'}`,
+                      border: `1px solid ${pubPackType === p.id ? 'var(--sparse-500)' : 'var(--rule)'}`,
                       cursor: 'pointer', background: pubPackType === p.id ? 'var(--paper)' : 'var(--bg-card)',
                       transition: 'border-color 0.15s',
                     }}>

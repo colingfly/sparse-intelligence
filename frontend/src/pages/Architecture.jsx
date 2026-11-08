@@ -22,7 +22,7 @@ export default function Architecture() {
 
       {/* Nav */}
       <nav className="arch-nav">
-        <Link to="/" className="arch-logo">Cane</Link>
+        <Link to="/" className="arch-logo">Sparse Intelligence</Link>
         <div className="arch-nav-links">
           <Link to="/">Home</Link>
           <Link to="/demo">Demo</Link>
@@ -39,7 +39,7 @@ export default function Architecture() {
             How it works,<br />layer by layer
           </h1>
           <p className="arch-hero-sub arch-reveal">
-            A deep dive into the system that powers Cane. Every layer was built from scratch:
+            A deep dive into the system that powers Sparse Intelligence. Every layer was built from scratch:
             ingestion, retrieval, agent orchestration, tool execution, memory and scheduling, evaluation, and deployment.
           </p>
         </div>
@@ -502,7 +502,7 @@ export default function Architecture() {
       {/* Footer */}
       <footer className="arch-footer">
         <div className="arch-footer-left">
-          <span className="arch-footer-brand">Cane</span>
+          <span className="arch-footer-brand">Sparse Intelligence</span>
           <span className="arch-footer-copy">Built by Colin</span>
         </div>
         <div className="arch-footer-links">
@@ -510,7 +510,7 @@ export default function Architecture() {
           <Link to="/demo">Demo</Link>
           <Link to="/guide">Docs</Link>
           <Link to="/marketplace">Marketplace</Link>
-          <a href="mailto:hello@cane.fyi">Contact</a>
+          <a href="mailto:hello@sparseintelligence.ai">Contact</a>
         </div>
       </footer>
     </div>

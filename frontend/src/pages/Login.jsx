@@ -35,7 +35,7 @@ export default function Login() {
           borderRadius: 16, padding: 40,
         }}>
           <div className="login-brand">
-            <h1>Cane</h1>
+            <h1>Sparse Intelligence</h1>
             <p>Agentic AI Platform</p>
           </div>
 

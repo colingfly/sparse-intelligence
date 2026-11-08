@@ -1,5 +1,5 @@
 """
-db_models.py — SQLAlchemy ORM models for Cane multi-tenant system.
+db_models.py — SQLAlchemy ORM models for Sparse Intelligence multi-tenant system.
 
 Tenant  →  the company
 User    →  belongs to a tenant, has a role
@@ -170,7 +170,7 @@ class ApiKey(Base):
     tenant_id = Column(String(36), ForeignKey("tenants.id"), nullable=False)
     name = Column(String(255), nullable=False)                   # "Production", "Slack Bot"
     key_hash = Column(String(255), nullable=False)               # bcrypt hash of full key
-    key_prefix = Column(String(12), nullable=False)              # "cane_a1b2c3d4" for display
+    key_prefix = Column(String(12), nullable=False)              # "sparse_a1b2c3d4" for display
     workspace_id = Column(String(36), nullable=True)             # Scope to workspace/agent (null = all)
     is_active = Column(Boolean, default=True)
     requests_today = Column(Integer, default=0)

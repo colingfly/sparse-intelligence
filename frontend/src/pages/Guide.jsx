@@ -182,7 +182,7 @@ function OverviewSection() {
     <div>
       <h2 style={h2Style}>Overview</h2>
       <p style={pStyle}>
-        Cane is an AI infrastructure platform for building, evaluating, and improving production AI agents. It covers three pillars:
+        Sparse Intelligence is an AI infrastructure platform for building, evaluating, and improving production AI agents. It covers three pillars:
       </p>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12, marginBottom: 24 }}>
         {[
@@ -205,11 +205,11 @@ function OverviewSection() {
       </div>
       <QA
         q="How does the AI search work?"
-        a="Cane uses hybrid search, combining dense vector embeddings (BAAI/bge-base-en-v1.5) with sparse keyword matching (BM25). Results are fused using Reciprocal Rank Fusion, then re-ranked by a cross-encoder (ms-marco-MiniLM-L-6-v2). The top chunks are sent to Claude as context for the final answer."
+        a="Sparse Intelligence uses hybrid search, combining dense vector embeddings (BAAI/bge-base-en-v1.5) with sparse keyword matching (BM25). Results are fused using Reciprocal Rank Fusion, then re-ranked by a cross-encoder (ms-marco-MiniLM-L-6-v2). The top chunks are sent to Claude as context for the final answer."
       />
       <QA
         q="What AI model powers the responses?"
-        a="Cane uses Anthropic's Claude via the official SDK. Streaming responses are supported. The model sees your system prompt, retrieved document chunks, and tool definitions, then generates a grounded response with source citations."
+        a="Sparse Intelligence uses Anthropic's Claude via the official SDK. Streaming responses are supported. The model sees your system prompt, retrieved document chunks, and tool definitions, then generates a grounded response with source citations."
       />
     </div>
   )
@@ -223,35 +223,35 @@ function QuickStartSection() {
       {[
         {
           step: '1. Install the SDK',
-          desc: 'Install the Cane Python SDK from PyPI.',
-          code: 'pip install cane',
+          desc: 'Install the Sparse Intelligence Python SDK from PyPI.',
+          code: 'pip install sparse-intelligence',
         },
         {
           step: '2. Get your API key',
-          desc: 'Go to Settings in the Cane dashboard. Generate an API key and scope it to your agent.',
+          desc: 'Go to Settings in the Sparse Intelligence dashboard. Generate an API key and scope it to your agent.',
           code: null,
         },
         {
           step: '3. Query your agent',
           desc: 'Use the SDK to send a question to your agent.',
-          code: `from cane import Cane
+          code: `from sparse_intelligence import SparseClient
 
-client = Cane(api_key="cane_xxx")
+client = SparseClient(api_key="sparse_xxx")
 result = client.ask("What is our refund policy?")
 print(result["answer"])`,
         },
         {
           step: '4. Run an eval',
           desc: 'Create an eval suite in the dashboard with test cases and scoring criteria, then trigger a run via the API.',
-          code: `curl -X POST -H "Authorization: Bearer cane_xxx" \\
-  "https://cane.fyi/v1/eval/run?environment_id=suite_123\\
+          code: `curl -X POST -H "Authorization: Bearer sparse_xxx" \\
+  "https://sparseintelligence.ai/v1/eval/run?environment_id=suite_123\\
   &target_url=https://your-agent.com/ask"`,
         },
         {
           step: '5. Export training data',
           desc: 'Export high-scoring eval results as training data for fine-tuning.',
-          code: `curl -H "Authorization: Bearer cane_xxx" \\
-  "https://cane.fyi/v1/eval/export/run_456?format=openai&min_score=80"`,
+          code: `curl -H "Authorization: Bearer sparse_xxx" \\
+  "https://sparseintelligence.ai/v1/eval/export/run_456?format=openai&min_score=80"`,
         },
       ].map((item, i) => (
         <div key={i} style={{ marginBottom: 28 }}>
@@ -278,20 +278,20 @@ function InstallationSection() {
       <QA
         q="Python SDK"
         a="Install via pip. Requires Python 3.8+."
-        code="pip install cane"
+        code="pip install sparse-intelligence"
       />
       <QA
         q="REST API"
-        a="No installation needed. All API endpoints are available at https://cane.fyi/v1/. Authenticate with your API key in the Authorization header."
-        code={`curl -H "Authorization: Bearer cane_xxx" \\
-  https://cane.fyi/v1/health`}
+        a="No installation needed. All API endpoints are available at https://sparseintelligence.ai/v1/. Authenticate with your API key in the Authorization header."
+        code={`curl -H "Authorization: Bearer sparse_xxx" \\
+  https://sparseintelligence.ai/v1/health`}
       />
       <QA
         q="Embeddable Widget"
         a="Add one script tag to your website. No build step required."
         code={`<script
-  src="https://cane.fyi/widget.js"
-  data-api-key="cane_xxx"
+  src="https://sparseintelligence.ai/widget.js"
+  data-api-key="sparse_xxx"
   data-agent-name="Support"
   data-workspace-id="your-agent-id"
 ></script>`}
@@ -372,7 +372,7 @@ function ExternalAgentsSection() {
       <h2 style={h2Style}>External Agents</h2>
       <QA
         q="What are external agents?"
-        a="External agents are HTTP endpoints registered into the Cane network. They appear as nodes in the network graph and can be delegated to by any native agent. When a native agent delegates to an external agent, Cane POSTs to the registered endpoint."
+        a="External agents are HTTP endpoints registered into the Sparse Intelligence network. They appear as nodes in the network graph and can be delegated to by any native agent. When a native agent delegates to an external agent, Sparse Intelligence POSTs to the registered endpoint."
       />
       <QA
         q="How do I register one?"
@@ -419,7 +419,7 @@ function WebToolsSection() {
       <h2 style={h2Style}>Web Tools</h2>
       <QA
         q="What web tools are available?"
-        a="Two self-hosted tools: Search (powered by DuckDuckGo HTML lite) and Scrape (powered by Jina Reader with direct HTML fallback). Both run on your Cane instance with no external API keys required."
+        a="Two self-hosted tools: Search (powered by DuckDuckGo HTML lite) and Scrape (powered by Jina Reader with direct HTML fallback). Both run on your Sparse Intelligence instance with no external API keys required."
       />
       <QA
         q="How do I add the search tool?"
@@ -445,7 +445,7 @@ function CreatingSuitesSection() {
       <h2 style={h2Style}>Creating Eval Suites</h2>
       <QA
         q="What is an evaluation?"
-        a="An evaluation is an automated test suite for your AI agent. You write questions with expected answers, define scoring criteria, and Cane runs every question through your agent, then uses an LLM judge to score each response."
+        a="An evaluation is an automated test suite for your AI agent. You write questions with expected answers, define scoring criteria, and Sparse Intelligence runs every question through your agent, then uses an LLM judge to score each response."
       />
       <QA
         q="How do I create one?"
@@ -485,7 +485,7 @@ function RunningEvalsSection() {
       <h2 style={h2Style}>Running Evals</h2>
       <QA
         q="How do I run an evaluation?"
-        a='Click "Run Evaluation" in any environment. Cane sends each test case question through the agent, captures the response, and uses the LLM judge to score it against the expected answer and your criteria.'
+        a='Click "Run Evaluation" in any environment. Sparse Intelligence sends each test case question through the agent, captures the response, and uses the LLM judge to score it against the expected answer and your criteria.'
       />
       <QA
         q="What do the statuses mean?"
@@ -521,7 +521,7 @@ function RegressionsSection() {
       <h2 style={h2Style}>Regression Detection</h2>
       <QA
         q="How does regression detection work?"
-        a="Cane compares scores across runs question-by-question. If a question scored 90 in run A but dropped to 65 in run B, that is flagged as a regression with a delta of -25. You can set a threshold (default 10 points) to control sensitivity."
+        a="Sparse Intelligence compares scores across runs question-by-question. If a question scored 90 in run A but dropped to 65 in run B, that is flagged as a regression with a delta of -25. You can set a threshold (default 10 points) to control sensitivity."
       />
       <QA
         q="What metrics are shown?"
@@ -600,7 +600,7 @@ function ModelComparisonSection() {
       <h2 style={h2Style}>Model Comparison</h2>
       <QA
         q="How do I compare models?"
-        a="Send the same question to both a base model and a fine-tuned model. Cane returns both responses side by side so you can evaluate the improvement qualitatively."
+        a="Send the same question to both a base model and a fine-tuned model. Sparse Intelligence returns both responses side by side so you can evaluate the improvement qualitatively."
       />
     </div>
   )
@@ -643,7 +643,7 @@ function AgentsSection() {
       />
       <QA
         q="Digital Replicas"
-        a={"A Digital Replica is an AI clone of a specific person. Upload writing samples (emails, social posts, messages, documents), fill in a personality profile, and Cane generates a system prompt that captures the person's voice. 10+ writing samples is a good starting point."}
+        a={"A Digital Replica is an AI clone of a specific person. Upload writing samples (emails, social posts, messages, documents), fill in a personality profile, and Sparse Intelligence generates a system prompt that captures the person's voice. 10+ writing samples is a good starting point."}
       />
     </div>
   )
@@ -663,7 +663,7 @@ function DocumentsSection() {
       />
       <QA
         q="What happens during processing?"
-        a="Cane extracts text, splits it into searchable chunks, and creates embeddings for semantic search. For images, it runs OCR. For audio and video, it generates a transcript."
+        a="Sparse Intelligence extracts text, splits it into searchable chunks, and creates embeddings for semantic search. For images, it runs OCR. For audio and video, it generates a transcript."
       />
     </div>
   )
@@ -675,7 +675,7 @@ function ConnectorsSection() {
       <h2 style={h2Style}>Live Connectors</h2>
       <QA
         q="What are live connectors?"
-        a="Live connectors sync external data sources directly into your agent's knowledge base. Connect Google Drive, pick a folder, and Cane automatically downloads, processes, and indexes every file. When files change in the source, your agent's knowledge base updates automatically."
+        a="Live connectors sync external data sources directly into your agent's knowledge base. Connect Google Drive, pick a folder, and Sparse Intelligence automatically downloads, processes, and indexes every file. When files change in the source, your agent's knowledge base updates automatically."
       />
       <QA
         q="How do I connect Google Drive?"
@@ -683,7 +683,7 @@ function ConnectorsSection() {
       />
       <QA
         q="How does incremental sync work?"
-        a="After the initial sync, Cane uses the Google Drive Changes API to detect new, modified, and deleted files. Syncs run automatically on a schedule (default: every 60 minutes). You can also trigger a sync manually."
+        a="After the initial sync, Sparse Intelligence uses the Google Drive Changes API to detect new, modified, and deleted files. Syncs run automatically on a schedule (default: every 60 minutes). You can also trigger a sync manually."
       />
     </div>
   )
@@ -695,7 +695,7 @@ function ToolsSection() {
       <h2 style={h2Style}>Tools & MCP</h2>
       <QA
         q="What are agent tools?"
-        a="Tools let your agents take actions, not just answer questions. When a tool is configured, the AI decides when to use it based on the description you provide. Cane uses Claude's native tool_use capability."
+        a="Tools let your agents take actions, not just answer questions. When a tool is configured, the AI decides when to use it based on the description you provide. Sparse Intelligence uses Claude's native tool_use capability."
       />
       <QA
         q="Webhook tools"
@@ -721,8 +721,8 @@ function WidgetSection() {
         q="How do I embed the widget?"
         a='Copy the embed snippet from the agent detail page and paste it before the closing </body> tag on your website. The snippet includes all your customization settings as data attributes.'
         code={`<script
-  src="https://cane.fyi/widget.js"
-  data-api-key="cane_xxx"
+  src="https://sparseintelligence.ai/widget.js"
+  data-api-key="sparse_xxx"
   data-agent-name="Support Agent"
   data-workspace-id="your-agent-id"
   data-color="#2563eb"
@@ -752,7 +752,7 @@ function MarketplaceSection() {
       />
       <QA
         q="How do I clone?"
-        a='Find an agent on the marketplace and click "Clone Agent." Cane creates a copy with the system prompt, documents (for full packs), and the complete eval suite. You can re-run the evaluation to independently verify the score.'
+        a='Find an agent on the marketplace and click "Clone Agent." Sparse Intelligence creates a copy with the system prompt, documents (for full packs), and the complete eval suite. You can re-run the evaluation to independently verify the score.'
       />
     </div>
   )
@@ -844,7 +844,7 @@ export default function Guide() {
             Docs
           </div>
           <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
-            Cane AI Infrastructure
+            Sparse Intelligence AI Infrastructure
           </div>
         </div>
 
@@ -892,7 +892,7 @@ export default function Guide() {
             fontSize: '0.82rem', color: 'var(--text-secondary)', lineHeight: 1.6,
           }}>
             <strong style={{ color: 'var(--text)' }}>Need help?</strong> Reach out to your team admin or email us
-            at <a href="mailto:hello@cane.fyi" style={{ color: 'var(--accent)', textDecoration: 'none', fontWeight: 600 }}>hello@cane.fyi</a>.
+            at <a href="mailto:hello@sparseintelligence.ai" style={{ color: 'var(--accent)', textDecoration: 'none', fontWeight: 600 }}>hello@sparseintelligence.ai</a>.
           </div>
         ) : (
           <div style={{

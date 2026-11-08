@@ -1,4 +1,4 @@
-# Cane Backend Dependencies
+# Sparse Intelligence Backend Dependencies
 
 # API
 fastapi>=0.104.0

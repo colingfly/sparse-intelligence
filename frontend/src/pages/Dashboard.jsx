@@ -52,7 +52,7 @@ export default function Dashboard() {
             {stats.workspaces.map(w => (
               <div key={w.id} style={{
                 padding: '12px 16px',
-                background: 'var(--cane-50)',
+                background: 'var(--sparse-50)',
                 borderRadius: 'var(--radius-sm)',
                 fontSize: '0.875rem',
               }}>
@@ -79,7 +79,7 @@ export default function Dashboard() {
                 justifyContent: 'space-between',
                 alignItems: 'center',
                 padding: '8px 0',
-                borderBottom: i < stats.recent_searches.length - 1 ? '1px solid var(--cane-100)' : 'none',
+                borderBottom: i < stats.recent_searches.length - 1 ? '1px solid var(--sparse-100)' : 'none',
               }}>
                 <div>
                   <span style={{ fontSize: '0.875rem' }}>{s.query}</span>

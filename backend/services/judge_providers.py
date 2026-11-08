@@ -5,7 +5,7 @@ Abstracts the LLM call so the judge can use any supported model provider:
 Anthropic, OpenAI, Google Gemini, or any OpenAI-compatible endpoint
 (Ollama, Mistral, vLLM, LiteLLM, Together, Groq).
 
-Ported from cane-eval's providers.py for platform-side multi-model judging.
+Ported from sparse-eval's providers.py for platform-side multi-model judging.
 
 Usage:
     from services.judge_providers import get_provider

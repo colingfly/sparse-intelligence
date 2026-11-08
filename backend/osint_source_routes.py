@@ -49,7 +49,7 @@ def _set_cache(key: str, val: str):
 def _fetch(url: str, headers: dict | None = None, timeout: int = 15) -> str:
     """Fetch URL and return decoded text."""
     hdrs = {
-        "User-Agent": "Mozilla/5.0 (compatible; CaneOSINT/1.0)",
+        "User-Agent": "Mozilla/5.0 (compatible; SparseOSINT/1.0)",
         "Accept": "application/json",
     }
     if headers:
@@ -150,7 +150,7 @@ def fetch_reddit(
     try:
         url = f"https://www.reddit.com/r/{subreddit}/hot.rss?limit={min(limit, 25)}"
         raw = _fetch(url, headers={
-            "User-Agent": "python:CaneOSINT:v1.0 (OSINT monitoring)",
+            "User-Agent": "python:SparseOSINT:v1.0 (OSINT monitoring)",
         })
 
         root = ET.fromstring(raw)
@@ -316,7 +316,7 @@ def _fetch_abusech() -> str:
     """Fetch recent malware URLs from abuse.ch URLhaus CSV feed."""
     # Use the CSV export which doesn't require auth
     url = "https://urlhaus.abuse.ch/downloads/csv_recent/"
-    raw = _fetch(url, headers={"User-Agent": "CaneOSINT/1.0"}, timeout=20)
+    raw = _fetch(url, headers={"User-Agent": "SparseOSINT/1.0"}, timeout=20)
 
     lines_out = ["ABUSE.CH URLHAUS -- recent malicious URLs\n"]
     count = 0

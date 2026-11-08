@@ -1,5 +1,5 @@
 """
-eval_models.py — SQLAlchemy ORM models for Cane Environments system.
+eval_models.py — SQLAlchemy ORM models for Sparse Intelligence Environments system.
 
 Environment  →  evaluation pipeline for an agent
 TestCase     →  question + expected answer
