@@ -12,7 +12,6 @@ const AREAS = [
     body: 'Enterprises are starting to run many agents against the same work. We build evaluations that measure what a group of agents actually gets done, where they disagree, and how that changes once they reach production.',
     questions: [
       'How do you score a result that no single agent produced?',
-      'Which disagreements between agents carry signal and which are noise?',
       'What is the smallest eval set that still predicts behavior in production?',
     ],
     glyph: {
@@ -28,7 +27,6 @@ const AREAS = [
     questions: [
       'How much of a scene can be skipped before a robot acts differently?',
       'Can event cameras and LiDAR share one sparse representation?',
-      'How should perception be evaluated outside the lab?',
     ],
     glyph: {
       edges: [[8, 28, 40, 10], [8, 28, 40, 28], [8, 28, 40, 46]],
@@ -43,7 +41,6 @@ const AREAS = [
     questions: [
       'Where does sparsity pay off on current hardware, and where does it not?',
       'What should a performance regression alert on?',
-      'How do you attribute cost to a single agent inside a swarm?',
     ],
     glyph: {
       edges: [],
