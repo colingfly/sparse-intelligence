@@ -111,10 +111,6 @@ export default function Landing() {
           Sparse Intelligence is a research lab working on evaluations for enterprise
           agent swarms, robotic perception, and the GPU performance underneath both.
         </p>
-        <div className="landing-hero-actions">
-          <a className="landing-btn landing-btn--fill" href="#research">Read the research areas</a>
-          <a className="landing-btn landing-btn--line" href={`mailto:${CONTACT}?subject=Working%20together`}>Work with us</a>
-        </div>
         <SparseField />
       </header>
 
