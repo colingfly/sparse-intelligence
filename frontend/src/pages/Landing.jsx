@@ -146,7 +146,11 @@ export default function Landing() {
             </p>
           </div>
           <div className="lp-hero-mark lp-reveal">
-            <Mark size={430} animate />
+            <Mark size={400} animate />
+            <pre className="lp-ascii" aria-hidden="true">{`$ sparse --inspect
+  nodes ········ 3
+  edges ········ 3
+  density ······ low`}</pre>
           </div>
         </div>
       </section>
@@ -158,7 +162,7 @@ export default function Landing() {
       <section className="lp-section" id="services">
         <div className="lp-section-inner">
           <div className="lp-section-head lp-reveal">
-            <span className="lp-index">01</span>
+            <span className="lp-index">[01]</span>
             <h2>Services</h2>
           </div>
           <p className="lp-section-sub lp-reveal">
@@ -179,7 +183,7 @@ export default function Landing() {
       <section className="lp-section lp-dark" id="process">
         <div className="lp-section-inner">
           <div className="lp-section-head lp-reveal">
-            <span className="lp-index lp-index-dark">02</span>
+            <span className="lp-index lp-index-dark">[02]</span>
             <h2>How an engagement works</h2>
           </div>
           <div className="lp-timeline lp-reveal" aria-hidden="true">
@@ -187,15 +191,15 @@ export default function Landing() {
           </div>
           <div className="lp-steps">
             <div className="lp-step lp-reveal">
-              <h3><span className="lp-step-k">Initial conversation</span></h3>
+              <h3><span className="lp-step-i">01 ·</span> <span className="lp-step-k">Initial conversation</span></h3>
               <p>A call of about thirty minutes, at no cost. We ask how the business runs, where the hours go, and what you have already tried. If the problem is not a good fit for AI, we tell you that on the call.</p>
             </div>
             <div className="lp-step lp-reveal">
-              <h3><span className="lp-step-k">Pilot project</span></h3>
+              <h3><span className="lp-step-i">02 ·</span> <span className="lp-step-k">Pilot project</span></h3>
               <p>A fixed-price build of one system, usually over two to four weeks. We agree on what success looks like in numbers before starting, build against your historical cases, and present the measured results at the end.</p>
             </div>
             <div className="lp-step lp-reveal">
-              <h3><span className="lp-step-k">Rollout and support</span></h3>
+              <h3><span className="lp-step-i">03 ·</span> <span className="lp-step-k">Rollout and support</span></h3>
               <p>Systems that meet their targets go into daily use. We handle hosting, monitoring, and changes as your business changes, and your data remains yours throughout.</p>
             </div>
           </div>
@@ -208,7 +212,7 @@ export default function Landing() {
       <section className="lp-section" id="about">
         <div className="lp-section-inner">
           <div className="lp-section-head lp-reveal">
-            <span className="lp-index">03</span>
+            <span className="lp-index">[03]</span>
             <h2>About Sparse Intelligence</h2>
           </div>
           <div className="lp-about-grid">
@@ -264,7 +268,7 @@ export default function Landing() {
             <a href="#contact">Contact</a>
             <Link to="/login">Client sign in</Link>
           </div>
-          <p>&copy; 2026 Sparse Intelligence LLC</p>
+          <p className="lp-footer-mono">(c) 2026 sparse intelligence llc</p>
         </div>
       </footer>
     </div>
@@ -303,7 +307,7 @@ const landingStyles = `
   .lp-nav-links { display: flex; align-items: center; gap: 30px; }
   .lp-nav-links a {
     color: var(--ink-soft); text-decoration: none;
-    font-family: 'Outfit', sans-serif; font-weight: 500; font-size: 0.98rem;
+    font-family: 'JetBrains Mono', monospace; font-weight: 500; font-size: 0.88rem;
   }
   .lp-nav-links a:hover { color: var(--ink); }
   .lp-nav-cta {
@@ -322,12 +326,12 @@ const landingStyles = `
   }
   .lp-kicker {
     display: inline-flex; align-items: center; gap: 10px;
-    font-family: 'Outfit', sans-serif; font-weight: 600;
-    font-size: 0.85rem; letter-spacing: 0.22em;
+    font-family: 'JetBrains Mono', monospace; font-weight: 500;
+    font-size: 0.82rem; letter-spacing: 0.08em;
     color: var(--ink-soft);
-    border: 1px solid var(--cream-deep); border-radius: 999px;
+    border: 1px dashed var(--dot); border-radius: 6px;
     background: var(--card);
-    padding: 8px 18px; margin-bottom: 28px;
+    padding: 8px 16px; margin-bottom: 28px;
   }
   .lp-hero h1 {
     font-size: clamp(2.6rem, 5.2vw, 4.3rem);
@@ -339,8 +343,20 @@ const landingStyles = `
     max-width: 540px; margin: 0 0 34px;
   }
   .lp-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
-  .lp-hero-note { margin-top: 20px; font-size: 0.92rem; color: var(--ink-soft); }
-  .lp-hero-mark { display: flex; justify-content: center; }
+  .lp-hero-note {
+    margin-top: 20px; font-size: 0.82rem; color: var(--ink-soft);
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .lp-hero-note::before { content: '// '; color: var(--dot); }
+  .lp-hero-mark { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+  .lp-ascii {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem; line-height: 1.7;
+    color: var(--ink-soft);
+    background: var(--card);
+    border: 1px dashed var(--dot); border-radius: 6px;
+    padding: 12px 20px; margin: 0;
+  }
 
   .si-mark-animate .si-mark-edges path {
     stroke-dasharray: 400; stroke-dashoffset: 400;
@@ -366,10 +382,13 @@ const landingStyles = `
   .lp-btn-big { font-size: 1.15rem; padding: 17px 38px; }
   .lp-btn-ghost {
     color: var(--ink); text-decoration: none;
-    font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 1.02rem;
-    padding: 14px 30px; border-radius: 999px; border: 1.5px solid var(--ink);
+    font-family: 'JetBrains Mono', monospace; font-weight: 500; font-size: 0.95rem;
+    padding: 14px 26px; border-radius: 8px; border: 1px dashed var(--ink);
     transition: background 0.15s, color 0.15s;
   }
+  .lp-btn-ghost::before { content: '[ '; color: var(--ink-soft); }
+  .lp-btn-ghost::after { content: ' ]'; color: var(--ink-soft); }
+  .lp-btn-ghost:hover::before, .lp-btn-ghost:hover::after { color: var(--cream); }
   .lp-btn-ghost:hover { background: var(--ink); color: var(--cream); }
 
   .lp-node {
@@ -403,15 +422,23 @@ const landingStyles = `
   }
   .lp-card {
     background: var(--card);
-    border: 1px solid var(--cream-deep); border-radius: 18px;
+    border: 1px dashed var(--dot); border-radius: 10px;
     padding: 30px 28px;
+    position: relative;
     transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   }
+  .lp-card::before, .lp-card::after {
+    content: ''; position: absolute; width: 11px; height: 11px;
+    border-color: var(--ink); border-style: solid;
+  }
+  .lp-card::before { top: -1px; left: -1px; border-width: 1.5px 0 0 1.5px; }
+  .lp-card::after { bottom: -1px; right: -1px; border-width: 0 1.5px 1.5px 0; }
   .lp-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 14px 34px rgba(20, 20, 20, 0.08);
-    border-color: var(--dot);
+    border-color: var(--ink-soft); border-style: solid;
   }
+  .lp-card:hover::before, .lp-card:hover::after { border-color: var(--blue); }
   .lp-glyph { width: 48px; height: 48px; margin-bottom: 18px; }
   .lp-glyph svg { width: 100%; height: 100%; }
   .lp-card h3 { font-size: 1.14rem; font-weight: 600; margin: 0 0 10px; }
@@ -432,6 +459,10 @@ const landingStyles = `
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px;
   }
   .lp-step h3 { margin: 0 0 10px; }
+  .lp-step-i {
+    font-family: 'JetBrains Mono', monospace; font-weight: 500; font-size: 0.95rem;
+    color: #7a95ff;
+  }
   .lp-step-k {
     font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.3rem;
     letter-spacing: 0.01em; color: var(--cream);
@@ -475,10 +506,12 @@ const landingStyles = `
   .lp-footer-links { display: flex; gap: 26px; flex-wrap: wrap; }
   .lp-footer-links a {
     color: #b9b7ae; text-decoration: none;
-    font-family: 'Outfit', sans-serif; font-size: 0.95rem;
+    font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;
   }
   .lp-footer-links a:hover { color: var(--cream); }
   .lp-footer p { color: #8a887f; font-size: 0.85rem; margin: 0; }
+  .lp-footer-mono { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; }
+  .lp ::selection { background: var(--blue); color: #fff; }
 
   .lp-reveal {
     opacity: 0; transform: translateY(18px);
