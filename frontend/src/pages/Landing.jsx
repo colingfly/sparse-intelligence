@@ -307,11 +307,11 @@ const styles = `
 
   .rl-btn-fill, .rl-btn-line, .rl-btn-blue {
     font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.92rem;
-    text-decoration: none; padding: 11px 20px; border-radius: 3px;
+    text-decoration: none; padding: 11px 20px; border-radius: 0;
     transition: background 0.15s, color 0.15s, border-color 0.15s;
   }
   .rl-btn-fill { background: var(--ink); color: var(--paper); border: 1px solid var(--ink); }
-  .rl-btn-fill:hover { background: var(--blue); border-color: var(--blue); color: #fff; }
+  .rl-btn-fill:hover { background: #2a2b2e; }
   .rl-btn-line { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
   .rl-btn-line:hover { background: var(--ink); color: var(--paper); }
   .rl-btn-blue { background: var(--blue); color: #fff; border: 1px solid var(--blue); white-space: nowrap; }
@@ -329,7 +329,7 @@ const styles = `
   .rl-field-bar button {
     font-family: 'JetBrains Mono', monospace; font-size: 0.78rem;
     color: var(--ink); background: var(--paper);
-    border: 1px solid var(--ink); border-radius: 3px;
+    border: 1px solid var(--ink); border-radius: 0;
     padding: 6px 14px; cursor: pointer;
   }
   .rl-field-bar button:hover { background: var(--ink); color: var(--paper); }
