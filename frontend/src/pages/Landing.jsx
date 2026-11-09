@@ -99,7 +99,7 @@ export default function Landing() {
     <div className="landing">
       <nav className="landing-nav">
         <Link to="/" aria-label="Sparse Intelligence home">
-          <Lockup />
+          <Lockup height={58} />
         </Link>
         <a className="landing-nav-contact" href={`mailto:${CONTACT}`}>{CONTACT}</a>
       </nav>
