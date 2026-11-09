@@ -1,6 +1,6 @@
 const GRID = [0, 1, 2, 3]
 
-export default function Lockup({ height = 36, ink = '#0E0F11', sub = '#55554F', dot = '#CFCDC4', accent = '#2D5BFF' }) {
+export default function Lockup({ height = 36, ink = '#111111', sub = '#5F5F58', dot = '#DCDCD5', accent = '#2F5BFF' }) {
   return (
     <svg height={height} viewBox="0 0 430 120" aria-label="Sparse Intelligence">
       <g fill={dot}>

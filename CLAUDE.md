@@ -77,6 +77,10 @@ JavaScript: React, Vite, Tailwind, Lucide icons
 Infrastructure: Docker, Railway, AWS Bedrock, Git, MySQL
 AI/ML: RAG pipelines, embedding models (BGE, CLIP), cross-encoder reranking, LLM-as-a-Judge evaluation, hybrid search (dense + BM25 + RRF)
 
+## Design
+
+Site design rules live in DESIGN.md at the repo root. They are strict: fixed token set, fixed type scale, one accent use per screen, no cards, no rounded corners, lowercase mono labels. Follow them for any frontend or marketing-page work.
+
 ## Code style
 
 Keep comments minimal. No decorative comment banners.

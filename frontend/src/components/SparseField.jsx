@@ -36,7 +36,7 @@ export default function SparseField() {
         <circle key={i} cx={x} cy={y} r="4.5" fill={i === field.highlight ? 'var(--landing-accent)' : 'var(--landing-ink)'} />
       )
     } else {
-      dots.push(<circle key={i} cx={x} cy={y} r="1.6" fill="var(--landing-dot)" />)
+      dots.push(<circle key={i} cx={x} cy={y} r="1.6" fill="var(--landing-hair)" />)
     }
   }
 
