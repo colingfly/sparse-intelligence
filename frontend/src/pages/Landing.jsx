@@ -128,7 +128,6 @@ export default function Landing() {
           <a href="#research">§ research</a>
           <a href="#axioms">§ axioms</a>
           <a href="#notes">§ notes</a>
-          <a href="#join">§ join</a>
         </div>
       </nav>
 
@@ -201,26 +200,14 @@ export default function Landing() {
         </div>
       </section>
 
-      <section className="landing-section" id="join">
-        <div className="landing-join">
-          <p className="landing-tag">§ join</p>
-          <h2>We hire a small number of people and give them hard, specific problems.</h2>
-          <div className="landing-join-row">
-            <p>
-              Researchers and engineers in evaluation, robot perception and GPU systems.
-              Partners with workloads worth measuring are welcome too.
-            </p>
-            <a className="landing-btn landing-btn--accent" href={`mailto:${CONTACT}?subject=Join`}>{CONTACT}</a>
-          </div>
-        </div>
-      </section>
-
       <footer className="landing-footer">
         <Lockup height={34} ink="#F5F4EF" sub="#8a8a84" dot="#3a3a37" />
         <div className="landing-footer-right">
           <span>&copy; 2026 Sparse Intelligence</span>
           <span className="landing-footer-sep">&middot;</span>
           <span>compute less, measure more</span>
+          <span className="landing-footer-sep">&middot;</span>
+          <a href={`mailto:${CONTACT}`}>{CONTACT}</a>
           <span className="landing-footer-sep">&middot;</span>
           <Link to="/login">sign in</Link>
         </div>
