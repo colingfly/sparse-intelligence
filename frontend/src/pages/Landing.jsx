@@ -22,7 +22,7 @@ const AREAS = [
   },
   {
     tag: '§02',
-    title: 'Perception for robots',
+    title: 'Robotic perception',
     body: 'A robot sees the world as a few strong signals inside a lot of empty space: point clouds, event cameras, depth returns. We work on perception models that treat that sparsity as structure instead of something to fill in.',
     questions: [
       'How much of a scene can be skipped before a robot acts differently?',
@@ -47,29 +47,6 @@ const AREAS = [
       nodes: [[8, 8], [20, 20], [32, 20], [20, 32]],
       accent: [44, 44],
     },
-  },
-]
-
-const AXIOMS = [
-  {
-    numeral: 'I',
-    title: 'Most of the matrix is zero.',
-    body: 'The useful part of a problem is usually small. Finding it is most of the work.',
-  },
-  {
-    numeral: 'II',
-    title: 'Measure before you optimize.',
-    body: 'An optimization without a trace is a guess.',
-  },
-  {
-    numeral: 'III',
-    title: 'The field is the lab.',
-    body: 'Results count once they hold up on real robots, real clusters and real enterprise workloads.',
-  },
-  {
-    numeral: 'IV',
-    title: 'Publish the method.',
-    body: 'Evals, kernels and tools leave the lab with enough detail for someone else to rerun them.',
   },
 ]
 
@@ -132,7 +109,7 @@ export default function Landing() {
         <h1>Most of the signal lives<br />in very few places.</h1>
         <p className="landing-hero-sub">
           Sparse Intelligence is a research lab working on evaluations for enterprise
-          agent swarms, perception for robots, and the GPU performance underneath both.
+          agent swarms, robotic perception, and the GPU performance underneath both.
         </p>
         <div className="landing-hero-actions">
           <a className="landing-btn landing-btn--fill" href="#research">Read the research areas</a>
@@ -160,22 +137,6 @@ export default function Landing() {
                 {area.questions.map(q => <li key={q}>{q}</li>)}
               </ul>
             </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="landing-section landing-dark" id="axioms">
-        <div className="landing-section-head">
-          <h2>Axioms</h2>
-          <span className="landing-section-note">how the lab works</span>
-        </div>
-        <div className="landing-axioms">
-          {AXIOMS.map(axiom => (
-            <div className="landing-axiom" key={axiom.numeral}>
-              <span className="landing-tag">{axiom.numeral}</span>
-              <h3>{axiom.title}</h3>
-              <p>{axiom.body}</p>
-            </div>
           ))}
         </div>
       </section>

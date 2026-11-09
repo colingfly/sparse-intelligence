@@ -266,47 +266,6 @@
   border-top: 1px solid var(--landing-hair);
 }
 
-/* axioms */
-
-.landing-dark {
-  background: var(--landing-ink);
-  color: var(--landing-paper);
-}
-
-.landing-dark .landing-section-head {
-  border-bottom-color: var(--landing-dark-hair);
-}
-
-.landing-dark .landing-tag {
-  color: var(--landing-dark-muted);
-}
-
-.landing-axioms {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
-  padding-top: 34px;
-}
-
-.landing-axiom {
-  border-top: 1px solid var(--landing-dark-hair);
-  padding-top: 14px;
-}
-
-.landing-axiom h3 {
-  font-size: 1.12rem;
-  font-weight: 700;
-  margin: 10px 0;
-  color: var(--landing-paper);
-}
-
-.landing-axiom p {
-  color: var(--landing-dark-text);
-  line-height: 1.6;
-  font-size: 0.9rem;
-  margin: 0;
-}
-
 /* notes */
 
 .landing-notes {
@@ -375,9 +334,6 @@
     gap: 36px;
   }
 
-  .landing-axioms {
-    grid-template-columns: repeat(2, 1fr);
-  }
 }
 
 @media (max-width: 640px) {
@@ -394,9 +350,6 @@
     padding: 60px 18px 44px;
   }
 
-  .landing-axioms {
-    grid-template-columns: 1fr;
-  }
 
   .landing-note {
     grid-template-columns: 64px 1fr;
