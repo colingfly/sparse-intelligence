@@ -124,11 +124,7 @@ export default function Landing() {
         <Link to="/" aria-label="Sparse Intelligence home">
           <Lockup />
         </Link>
-        <div className="landing-nav-links">
-          <a href="#research">§ research</a>
-          <a href="#axioms">§ axioms</a>
-          <a href="#notes">§ notes</a>
-        </div>
+        <a className="landing-nav-contact" href={`mailto:${CONTACT}`}>{CONTACT}</a>
       </nav>
 
       <header className="landing-hero">

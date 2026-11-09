@@ -43,20 +43,15 @@
   padding: 22px 32px;
 }
 
-.landing-nav a[href^="#"] {
+.landing-nav-contact {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.85rem;
   color: var(--landing-ink-soft);
   text-decoration: none;
 }
 
-.landing-nav a[href^="#"]:hover {
+.landing-nav-contact:hover {
   color: var(--landing-ink);
-}
-
-.landing-nav-links {
-  display: flex;
-  gap: 26px;
 }
 
 /* hero */
@@ -390,13 +385,6 @@
     padding: 16px 18px;
   }
 
-  .landing-nav-links {
-    gap: 14px;
-  }
-
-  .landing-nav a[href^="#"] {
-    font-size: 0.78rem;
-  }
 
   .landing-hero {
     padding: 40px 18px 30px;
