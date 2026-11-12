@@ -1,29 +1,36 @@
-# Sparse Intelligence design rules
+# Sparse Intelligence: brutalist rules
 
-## Tokens (use only these)
-- Background #F6F6F3, dark sections #0E0F12
-- Ink #111111, secondary #3A3A36, labels #5F5F58, hairlines #DCDCD5
-- Accent #2F5BFF, used at most once per screen (the logo node counts)
-- Type: Space Grotesk for display and body, IBM Plex Mono for labels and metadata
-- Sizes: 13 / 17 / 20 / 28 / 44 / 104px. No other sizes.
-- Spacing: multiples of 8. Sections are 112px apart.
-- Radius: 0. Shadows: none. Borders: 1px hairlines only.
+## Philosophy
+Show the structure. The page should look like a well-organized document,
+not a product. If something exists only to look nice, delete it.
 
-## Layout
-- Left-aligned, max-width 1280px, 12-column grid. Never center body text.
-- Sections are numbered (§01, §02) with a mono label above the heading.
-- Use hairline rules between items, not cards.
-- The dot lattice from the logo is the only decorative motif.
+## Type
+- One monospace family for everything (IBM Plex Mono or the system mono stack).
+- Optional: one heavy grotesk only for the giant headline.
+- Sizes: 14px body, 14px labels, and one huge display size (clamp 64-160px). Nothing in between.
+- Headings are uppercase or left as-is; never letter-spaced decoratively.
+
+## Color
+- #FFFFFF or #F6F6F3 background, #000000 text. That's it.
+- Accent #2F5BFF is reserved for links and the logo node.
+- Links are underlined, always. Visited links can turn purple.
+
+## Structure
+- Visible grid: 1px or 2px solid black borders between every region.
+- Content lives in tables and bordered boxes, not cards.
+- Every section has a raw label: [01] RESEARCH, [02] AXIOMS.
+- Show metadata openly: dates, version numbers, last-updated timestamps, file sizes.
+- Dense is fine. Long lines of text are fine. Whitespace is a choice, not a default.
+
+## Allowed
+- Default browser elements: native buttons, native inputs, <hr>, <table>, <details>.
+- ASCII and plain-text diagrams.
+- The dot lattice from the logo, drawn with characters (· and ●) or plain SVG.
+- Hard cuts: inverted black sections with white text.
 
 ## Banned
-- Gradients, glows, blurred blobs, glassmorphism
-- Rounded cards with an icon on top in a 3-column grid
-- Emoji, sparkle icons, pill badges, "New!" tags
-- Hover effects that lift or scale; only color changes are allowed
-- Stock icon sets (Lucide/Heroicons) used as decoration
-- Words: seamless, unlock, empower, revolutionize, cutting-edge, leverage
-- Testimonials, logo walls or stats we don't actually have
-
-## Copy
-- Plain, specific sentences. Say what the lab does, not how it feels.
-- Lowercase mono labels, sentence-case headings.
+- Border radius, shadows, gradients, blur, transitions, animation
+- Icons, illustrations, stock photos, emoji
+- Centered layouts, hero sections with two CTA buttons, feature card grids
+- Hover effects other than underline or color inversion
+- Any marketing language
