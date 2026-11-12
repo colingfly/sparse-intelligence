@@ -3,10 +3,12 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 function headSha() {
+  const fromHost = process.env.RAILWAY_GIT_COMMIT_SHA
+  if (fromHost) return fromHost.slice(0, 7)
   try {
     return execSync('git rev-parse --short HEAD').toString().trim()
   } catch {
-    return 'unknown'
+    return ''
   }
 }
 

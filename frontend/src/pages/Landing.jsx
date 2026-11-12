@@ -88,7 +88,7 @@ export default function Landing() {
         <span>research lab</span>
         <span>est. 2026</span>
         <span>updated {__BUILD_DATE__}</span>
-        <span>build {__BUILD_SHA__}</span>
+        {__BUILD_SHA__ && <span>build {__BUILD_SHA__}</span>}
       </p>
 
       <section className="landing-intro">
@@ -174,7 +174,7 @@ export default function Landing() {
           </tr>
           <tr>
             <th scope="row">build</th>
-            <td>built {__BUILD_DATE__} (utc) from commit {__BUILD_SHA__}</td>
+            <td>built {__BUILD_DATE__} (utc){__BUILD_SHA__ && ` from commit ${__BUILD_SHA__}`}</td>
           </tr>
           <tr>
             <th scope="row">contact</th>

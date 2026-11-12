@@ -10,6 +10,8 @@ COPY frontend/package.json frontend/package-lock.json* ./
 RUN npm ci --production=false
 COPY frontend/ ./
 ARG CACHEBUST=13
+ARG RAILWAY_GIT_COMMIT_SHA
+ENV RAILWAY_GIT_COMMIT_SHA=$RAILWAY_GIT_COMMIT_SHA
 RUN npm run build
 
 # Stage 2: Python dependencies (cached layer)
