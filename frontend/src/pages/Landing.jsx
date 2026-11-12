@@ -157,32 +157,6 @@ export default function Landing() {
         </tbody>
       </table>
 
-      <h2 className="landing-bar"><span>[03] COLOPHON</span><span>this page</span></h2>
-      <table className="landing-table landing-colophon">
-        <tbody>
-          <tr>
-            <th scope="row">type</th>
-            <td>IBM Plex Mono 14px for everything. Space Grotesk 700 for the headline only.</td>
-          </tr>
-          <tr>
-            <th scope="row">color</th>
-            <td>#F6F6F3 background, #000000 text, #2F5BFF for links and the logo node.</td>
-          </tr>
-          <tr>
-            <th scope="row">motion</th>
-            <td>none</td>
-          </tr>
-          <tr>
-            <th scope="row">build</th>
-            <td>built {__BUILD_DATE__} (utc){__BUILD_SHA__ && ` from commit ${__BUILD_SHA__}`}</td>
-          </tr>
-          <tr>
-            <th scope="row">contact</th>
-            <td><a href={`mailto:${CONTACT}`}>{CONTACT}</a></td>
-          </tr>
-        </tbody>
-      </table>
-
       <footer className="landing-footer">
         <Lockup height={32} ink="#FFFFFF" sub="#999999" dot="#444444" />
         <p>

@@ -209,8 +209,7 @@ body:has(.landing) {
 .landing-research td:first-child,
 .landing-notes td:first-child,
 .landing-notes td:nth-child(3),
-.landing-notes td:nth-child(4),
-.landing-colophon th {
+.landing-notes td:nth-child(4) {
   white-space: nowrap;
   width: 1%;
 }
