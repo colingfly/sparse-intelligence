@@ -92,7 +92,7 @@ export default function Landing() {
       </p>
 
       <section className="landing-intro">
-        <h1>Most of the signal lives in very few places.</h1>
+        <h1>Zero almost everywhere.</h1>
         <p>
           Sparse Intelligence is a research lab working on evaluations for enterprise
           agent swarms, robotic perception, and the GPU performance underneath both.
@@ -160,7 +160,7 @@ export default function Landing() {
       <footer className="landing-footer">
         <Lockup height={32} ink="#FFFFFF" sub="#999999" dot="#444444" />
         <p>
-          &copy; 2026 Sparse Intelligence / compute less, measure more
+          &copy; 2026 Sparse Intelligence / {'nnz << n'}
           / <a href={`mailto:${CONTACT}`}>{CONTACT}</a> / <Link to="/login">sign in</Link>
         </p>
       </footer>
